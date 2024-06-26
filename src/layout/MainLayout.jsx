@@ -6,12 +6,10 @@ import { useUserContext } from '../context/Context'
 import Block from '../pages/Block'
 
 function MainLayout() {
-    const { load, user, auth } = useUserContext()
+    const { load, user, auth, token, ipAuth } = useUserContext()
     const navigate = useNavigate()
 
-    useEffect(() => {
-        auth()
-    }, []);
+
     return (
         <div>
             {
@@ -20,11 +18,18 @@ function MainLayout() {
                 <Block />
             }
 
-            <>
-                <Navbar />
-                <Outlet />
-                <Footer />
-            </>
+            {
+                load === false ?
+                    <>
+                        <Navbar />
+                        <Outlet />
+                        <Footer />
+                    </>
+                    :
+                    <div>
+                        <h1 className=' p-10 text-5xl font-bold text-center'>Loading...</h1>
+                    </div>
+            }
         </div>
     )
 }

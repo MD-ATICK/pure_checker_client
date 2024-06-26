@@ -1,9 +1,11 @@
 import axios from "axios"
 import { toast } from "react-toastify"
 
-
-export const checkerApi = axios.create({ baseURL: 'http://localhost:9999/api/v1/gmail' })
-export const userApi = axios.create({ baseURL: 'http://localhost:9999/api/v2/user' })
+const server = 'prod'
+// const url = server === 'prod' ? 'https://pure-checker-server.onrender.com/api' : 'http://localhost:9999/api'
+const url = server === 'prod' ? 'https://pure-checker-server.vercel.app/api' : 'http://localhost:9999/api'
+export const checkerApi = axios.create({ baseURL: `${url}/v1/gmail` })
+export const userApi = axios.create({ baseURL: `${url}/v2/user` })
 
 export const greenToast = (msg) => {
     return toast.success(msg, {

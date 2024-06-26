@@ -1,44 +1,58 @@
-import React from 'react'
-import { Link, NavLink, useNavigate } from 'react-router-dom'
-import { useUserContext } from '../../context/Context'
-import { SyncLoader } from 'react-spinners'
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { useUserContext } from "../../context/Context";
+import NavValidate from "./NavValidate";
+
 
 function Navbar() {
-    const navigate = useNavigate()
-    const { load , user} = useUserContext()
-    return (
-        <div className=' h-[90px]  w-full bg-white '>
-            <div className=' h-full container mx-auto flex justify-between  items-center'>
-                <Link to={'/'}>
-                <img src="/3.jpg" className=' h-12 bg-white' alt="pure checker" />
-                </Link>
-                <nav className=' hidden lg:flex items-center gap-x-[2vw] font-semibold'>
-                    <NavLink to={'/'} >Home</NavLink>
-                    <NavLink to={'/bulk-checker'} >Bulk Check</NavLink>
-                    <NavLink to={'/plan'} >Plan</NavLink>
-                    <NavLink to={'/api-docs'} >Api Docs</NavLink>
-                    <NavLink to={'/contact'} >FAQS</NavLink>
-                    <NavLink to={'/contact'} >Contact Us</NavLink>
-                </nav>
-                {
-                    load ?  <div>
-                        <SyncLoader color='blue' />
-                    </div> :(
-                        user ?
-                            <div className='flex items-center gap-x-10'>
-                                <p className=' font-semibold'>Credit : <span className=' font-bold text-2xl bg-gradient-to-r from-pink-700 to-purple-700 text-transparent bg-clip-text'>{user.credit}</span></p>
-                                <button onClick={() => navigate('/account')}>
-                                    <img className=' h-10 aspect-square rounded-full' src="/user.png" alt="" />
-                                </button>
-                            </div> :
-                            <button onClick={() => navigate('/login')} className=' py-3 hover:shadow-lg duration-300 px-8 bg-blue-700  rounded-lg font-semibold text-gray-100'>Login</button>
-                    )
-                }
+	const [open, setOpen] = useState(false);
+	const { user } = useUserContext();
 
-            </div>
+	const navLists = [
+		{ path: "/", name: "Home" },
+		{ path: "/user/checker", name: "Bulk Check" },
+		// { path: "/service", name: "Service" },
+		{ path: "/pricing", name: "Pricing" },
+		// { path: "/blogs", name: "Blogs" },
+		{ path: "/contact-us", name: "Contact Us" },
+		{ path: "/api-docs", name: "API Docs" },
+	];
 
-        </div>
-    )
+	return (
+		<>
+
+
+			{/* separate  */}
+
+			<div className='bg-primary px-3 md:px-0'>
+				<div className='container mx-auto flex items-center justify-between py-8 relative'>
+					<div className='flex items-center gap-10'>
+						<img src='./10.png' alt='' className='h-12 bg-white p-2' />
+						<ul className='hidden md:flex items-center gap-5 text-secondary font-[500]'>
+							{navLists &&
+								navLists?.map((nav) => {
+									if (nav?.name === navLists[1].name || nav?.name === navLists[6]?.name) {
+										if (user && (user.subscription === true || user.payAsGo === true)) {
+											return (
+												<li key={nav.path}>
+													<Link to={nav.path}>{nav.name}</Link>
+												</li>
+											);
+										}
+									} else {
+										return <li key={nav.path}>
+											<Link to={nav.path}>{nav.name}</Link>
+										</li>
+									}
+								})}
+						</ul>
+					</div>
+					<NavValidate open={open} setOpen={setOpen} navLists={navLists} />
+
+				</div>
+			</div>
+		</>
+	);
 }
 
-export default Navbar
+export default Navbar;
