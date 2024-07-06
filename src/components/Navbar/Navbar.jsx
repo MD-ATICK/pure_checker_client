@@ -16,6 +16,8 @@ function Navbar() {
 		// { path: "/blogs", name: "Blogs" },
 		{ path: "/contact-us", name: "Contact Us" },
 		{ path: "/api-docs", name: "API Docs" },
+		{ path: "/blogs", name: "Blogs" },
+		// { path: "/test", name: "test" },
 	];
 
 	return (
@@ -27,11 +29,13 @@ function Navbar() {
 			<div className='bg-primary px-3 md:px-0'>
 				<div className='container mx-auto flex items-center justify-between py-8 relative'>
 					<div className='flex items-center gap-10'>
+						<Link to={'/'}>
 						<img src='./10.png' alt='' className='h-12 bg-white p-2' />
+						</Link>
 						<ul className='hidden md:flex items-center gap-5 text-secondary font-[500]'>
 							{navLists &&
 								navLists?.map((nav) => {
-									if (nav?.name === navLists[1].name || nav?.name === navLists[6]?.name) {
+									if (nav?.name === navLists[1].name || nav?.name === navLists[7]?.name) {
 										if (user && (user.subscription === true || user.payAsGo === true)) {
 											return (
 												<li key={nav.path}>

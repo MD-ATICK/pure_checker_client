@@ -15,7 +15,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 		</ChakraProvider>
 		</UserContextProvider>
 		<ToastContainer
-			position='top-center'
+			position='top-right'
 			autoClose={3000}
 			newestOnTop={false}
 			closeOnClick={true}

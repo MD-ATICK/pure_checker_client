@@ -1,11 +1,12 @@
 import React from 'react'
 import UserChart from '../../components/client/UserChart';
 import { useUserContext } from '../../context/Context';
+import moment from 'moment';
 
 const UserStats = () => {
 
 
-    const { user} = useUserContext()
+    const { user } = useUserContext()
 
     const stats = [
         {
@@ -26,8 +27,9 @@ const UserStats = () => {
     ];
 
 
+
     return (
-        <div className='p-10 w-full'>
+        <div className='p-[3vw] w-[90%] overflow-hidden'>
             <h4 className="text-xl font-semibold text-primary mb-5">Stats</h4>
 
 

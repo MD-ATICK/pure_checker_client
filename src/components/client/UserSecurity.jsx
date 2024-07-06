@@ -20,7 +20,6 @@ const UserSecurity = () => {
         setLoading(true)
         const { status, data } = await userApi.put('/update-pass', {password}, { headers: { Authorization: `Bearer ${token}` } })
         if (status === 202) {
-            console.log(data)
             greenToast(data.msg)
             setPassword('')
             setConfirmPassword('')
@@ -29,7 +28,7 @@ const UserSecurity = () => {
     }
 
     return (
-        <form onSubmit={updatePassword} className='p-10 bg-gray-100 grid grid-cols-2 gap-10 items-center'>
+        <form onSubmit={updatePassword} className='p-10 bg-gray-100 grid grid-cols-1 md:grid-cols-2 gap-10 items-center'>
             <div className='space-y-5'>
                 <div className='space-y-1'>
                     <label htmlFor='nPassword' className='ml-1'>

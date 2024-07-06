@@ -16,7 +16,7 @@ const AboutUs = () => {
             </p> */}
 				</div>
 			</div>
-			<div className='container mx-auto my-20 mt-10 space-y-3 w-full md:w-[80%] lg:w-[60%]'>
+			<div className='container px-[3vw] mx-auto my-20 mt-10 space-y-3 w-full md:w-[80%] lg:w-[60%]'>
 			<h3 className='text-2xl font-extrabold text-slate-700 text-start mb-3'>
 					Welcome to Pure Checker
 				</h3>

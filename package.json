@@ -14,7 +14,9 @@
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
     "axios": "^1.7.2",
+    "deep-email-validator": "^0.1.21",
     "file-saver": "^2.0.5",
+    "firebase": "^10.12.2",
     "framer-motion": "^11.2.11",
     "html2pdf.js": "^0.10.1",
     "jspdf": "^2.5.1",
@@ -24,11 +26,13 @@
     "react-dom": "^18.2.0",
     "react-icons": "^5.2.1",
     "react-loader-spinner": "^6.1.6",
+    "react-paginate": "^8.2.0",
     "react-router-dom": "^6.23.1",
     "react-spinners": "^0.13.8",
     "react-toastify": "^10.0.5",
     "recharts": "^2.12.7",
     "swiper": "^11.1.4",
+    "uuid": "^10.0.0",
     "xlsx": "^0.18.5"
   },
   "devDependencies": {

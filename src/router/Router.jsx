@@ -1,35 +1,45 @@
 import { createBrowserRouter } from "react-router-dom";
-import MainLayout from "../layout/MainLayout";
-import BulkChecker from "../pages/BulkChecker";
-import Plan from "../pages/Plan";
-import Login from "../pages/Login";
-import Register from "../pages/Register";
-import AltLayout from "../layout/AltLayout";
-import Account from "../pages/Account";
-import Makers from "../pages/Makers";
-import MakerAdminDashboard from "../pages/MakerAdminDashboard";
-import FourZeroFour from "../pages/FourZeroFour";
-import Home from "../pages/Home";
-import AdminDashboardLayout from './../layout/AdminDashboardLayout'
-import Dashboard from '../pages/Admin/Dashboard'
-import UserDashboardLayout from "../layout/UserDashboardLayout";
-import UserDashboard from "../pages/User/UserDashboard";
-import Pricing from "../pages/Admin/Pricing";
-import UserSettings from "../pages/User/UserSettings";
-import UserApi from "../pages/User/UserApi";
-import UserStats from "../pages/User/UserStats";
-import SingleApi from "../pages/User/SingleApi";
-import ContactUs from "../pages/ContactUs";
-import Faqs from "../pages/Faqs";
-import AboutUs from "../pages/AboutUs";
-import PrivacyPolicy from "../pages/PrivacyPolicy";
-import Terms from "../pages/Terms";
-import RefundPolicy from "../pages/RefundPolicy";
-import Cookie from "../pages/Cookie";
 import ApiDocs from "../components/ApiDocs";
+import AltLayout from "../layout/AltLayout";
+import MainLayout from "../layout/MainLayout";
+import UserDashboardLayout from "../layout/UserDashboardLayout";
+import AboutUs from "../pages/AboutUs";
+import Dashboard from '../pages/Admin/Dashboard';
+import Pricing from "../pages/Admin/Pricing";
+import Blogs from "../pages/Blogs";
+import ContactUs from "../pages/ContactUs";
+import Cookie from "../pages/Cookie";
+import EmailValidation from "../pages/EmailValidation";
+import Error from "../pages/Error";
+import Faqs from "../pages/Faqs";
+import ForgetPassword from "../pages/ForgetPassword";
+import Home from "../pages/Home";
+import Login from "../pages/Login";
+import MakerAdminDashboard from "../pages/MakerAdminDashboard";
+import Makers from "../pages/Makers";
+import Plan from "../pages/Plan";
+import RefundPolicy from "../pages/RefundPolicy";
+import Register from "../pages/Register";
+import SingleBlog from "../pages/SingleBlog";
+import Terms from "../pages/Terms";
+import SingleApi from "../pages/User/SingleApi";
+import UserApi from "../pages/User/UserApi";
+import UserDashboard from "../pages/User/UserDashboard";
+import UserSettings from "../pages/User/UserSettings";
+import UserStats from "../pages/User/UserStats";
+import AdminDashboardLayout from './../layout/AdminDashboardLayout';
+import Policy from "../pages/Policy";
+import BlogsPanel from "../pages/Admin/BlogsPanel";
+import Settings from "../pages/Admin/Settings";
+import Test from "../pages/Test";
+import Maintenance from "../pages/Admin/Maintenance";
+import TwoFector from "../pages/TwoFector";
+import Users from "../pages/Admin/Users";
+import Orders from "../pages/Admin/Orders";
+import Success from "../pages/Payment/Success";
+import Failed from "../pages/Payment/Failed";
 
 export const router = createBrowserRouter([
-
 	{
 		path: "/",
 		element: <MainLayout />,
@@ -38,17 +48,16 @@ export const router = createBrowserRouter([
 			// { path: "/bulk-checker", element: <BulkChecker /> },
 			{ path: "/pricing", element: <Plan /> },
 			{ path: "/api-docs", element: <ApiDocs /> },
-			{ path: "/account", element: <Account /> },
-
-
+			// { path: "/account", element: <Account /> },
 			{ path: "/faqs", element: <Faqs /> },
 			{ path: "/contact-us", element: <ContactUs /> },
 			{ path: "/about-us", element: <AboutUs /> },
-			{ path: "/privacy-policy", element: <PrivacyPolicy /> },
+			{ path: "/privacy-policy", element: <Policy /> },
 			{ path: "/terms", element: <Terms /> },
 			{ path: "/cookie", element: <Cookie /> },
 			{ path: "/refund-policy", element: <RefundPolicy /> },
-
+			{ path: "/blogs", element: <Blogs /> },
+			{ path: "/blogs/:single", element: <SingleBlog /> },
 			{ path: "/makers", element: <Makers /> },
 			{ path: "/ad", element: <MakerAdminDashboard /> },
 		],
@@ -59,13 +68,20 @@ export const router = createBrowserRouter([
 		children: [
 			{ path: "/login", element: <Login /> },
 			{ path: "/register", element: <Register /> },
+			{ path: "/two-fector", element: <TwoFector /> },
 		],
 	},
 	{
 		path: "/admin",
 		element: <AdminDashboardLayout />,
-		children: [{ path: "dashboard", element: <Dashboard /> }
-			, { path: "pricing", element: <Pricing /> }
+		children: [
+			{ path: "dashboard", element: <Dashboard /> },
+			{ path: "pricing", element: <Pricing /> },
+			{ path: "blogs", element: <BlogsPanel /> },
+			{ path: "users", element: <Users /> },
+			{ path: "orders", element: <Orders /> },
+			{ path: "settings", element: <Settings /> },
+			{ path: "maintenance", element: <Maintenance /> },
 		],
 	},
 	{
@@ -76,12 +92,27 @@ export const router = createBrowserRouter([
 			{ path: "stats", element: <UserStats /> },
 			{ path: "api", element: <UserApi /> },
 			{ path: "settings", element: <UserSettings /> },
-
 			{ path: "single-api", element: <SingleApi /> }
 		],
 	},
+	{ path: "/success", element: <Success /> },
+	{ path: "/failed", element: <Failed /> },
+
+	{
+		path: "/email-validation/:token",
+		element: <EmailValidation />
+	},
+	{
+		path: "/forget-password/:email/:token",
+		element: <ForgetPassword />
+	},
+	{
+		path: "/test",
+		element: <Test />
+	},
 	{
 		path: '*',
-		element: <FourZeroFour />
-	}
+		element: <Error />
+	},
+
 ]);

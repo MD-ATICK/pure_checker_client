@@ -1,157 +1,146 @@
 import { Box, Button, Table, Tbody, Td, Th, Thead, Tr } from "@chakra-ui/react";
-import React, { useState } from "react";
-import { MdBlock, MdUndo } from "react-icons/md";
+import React, { useEffect, useState } from "react";
+import { MdBackHand, MdBlock, MdUndo } from "react-icons/md";
 import AddUserModal from "./AddUserModal";
 import AdjustLimit from "./AdjustLimit";
-import { userApi } from "../../api/Api";
+import { greenToast, userApi } from "../../api/Api";
 import { useUserContext } from "../../context/Context";
+import ReactPaginate from 'react-paginate';
+
 
 const UserManagementTable = () => {
 
+	const { users, setUsers, search, token, getUsers, pageCount, setCurrentPage, currentPage } = useUserContext()
 
+	const [openAdjust, setOpenAdjust] = useState('');
 
-	const [openAdjust, setOpenAdjust] = useState(null);
+	const handleBanUser = async (_id) => {
+		try {
+			const { data, status } = await userApi.get(`/block/${_id}`, { withCredentials: true, headers: { Authorization: `Bearer ${token}` } })
+			if (status === 200) {
+				greenToast(data.msg)
+				setUsers(pv => {
+					const usersAll = pv
+					let newUsers = usersAll.map(u => u._id === data.updatedUser._id ? data.updatedUser : u)
+					return newUsers;
+				})
+			}
+		} catch (error) {
+			console.log(error)
+		}
+	}
 
-	// const initialUsers = [
-	// 	{
-	// 		id: 1,
-	// 		username: "user1",
-	// 		status: "Active",
-	// 		usedLimit: 250,
-	// 		limit: 500,
-	// 		package: "oneTime",
-	// 		createAt: "2023-01-15",
-	// 		buyingDate: "2023-01-01",
-	// 	},
-	// 	{
-	// 		id: 2,
-	// 		username: "user2",
-	// 		status: "Active",
-	// 		usedLimit: 1000,
-	// 		limit: 2000,
-	// 		package: "Daily",
-	// 		createAt: "2023-02-20",
-	// 		buyingDate: "2023-02-01",
-	// 	},
-	// 	{
-	// 		id: 3,
-	// 		username: "user3",
-	// 		status: "Banned",
-	// 		usedLimit: 500,
-	// 		limit: 1000,
-	// 		package: "oneTime",
-	// 		createAt: "2023-03-10",
-	// 		buyingDate: "2023-03-01",
-	// 	},
-	// 	{
-	// 		id: 4,
-	// 		username: "user4",
-	// 		status: "Active",
-	// 		usedLimit: 5000,
-	// 		limit: 10000,
-	// 		package: "Daily",
-	// 		createAt: "2023-04-05",
-	// 		buyingDate: "2023-04-01",
-	// 	},
-	// 	{
-	// 		id: 5,
-	// 		username: "user5",
-	// 		status: "Banned",
-	// 		limit: 200,
-	// 		usedLimit: 500,
-	// 		package: "oneTime",
-	// 		createAt: "2023-05-12",
-	// 		buyingDate: "2023-05-01",
-	// 	},
-	// ];
+	useEffect(() => {
+		getUsers({ search: '', page: currentPage })
+	}, []);
 
-	// const [users, setUsers] = useState(initialUsers);
+	// pagination work.
 
-	// const handleBanUser = userId => {
-	// 	const updatedUsers = users.map(user =>
-	// 		user.id === userId ? { ...user, status: "Banned" } : user,
-	// 	);
-	// 	setUsers(updatedUsers);
-	// };
-
-	// const handleUnbanUser = userId => {
-	// 	const updatedUsers = users.map(user =>
-	// 		user.id === userId ? { ...user, status: "Active" } : user,
-	// 	);
-	// 	setUsers(updatedUsers);
-	// };
-
-	const { users } = useUserContext()
-
-
-	console.log(users	)
-
-
+	// const [itemOffset, setItemOffset] = useState(0);
+	// const items = users;
+	// const endOffset = itemOffset + itemsPerPage;
+	// const currentItems = items.slice(itemOffset, endOffset);
+	const handlePageClick = (event) => {
+		setCurrentPage(event.selected + 1)
+		getUsers({ search, page: (event.selected + 1) })
+	};
 
 	return (
-		<Box p={4}>
-			<Table variant='simple'>
-				<Thead>
-					<Tr>
-						<Th>Username</Th>
-						<Th>Total Limit</Th>
-						<Th>Used Credits</Th>
-						<Th>email</Th>
-						<Th>Ip</Th>
-						<Th>action</Th>
-					</Tr>
-				</Thead>
-				<Tbody>
-					{users && users.map(user => (
-						<Tr key={user.id}>
-							<Td>{user.name}</Td>
-							<Td>
-								{user.limit}
-								<Button
-									onClick={() =>
-										setOpenAdjust({ userId: user?.id, limit: user.limit })
-									}
-									colorScheme='red'
-									size={"xs"}
-									ml={"10px"}
-								>
-									Adjust
-								</Button>
-							</Td>
-							<Td>{user.credit}</Td>
-							<Td>{user.email}</Td>
-							<Td>{user.ip}</Td>
-							<Td>
-								{user.status === "Active" ? (
-									<Button
-										leftIcon={<MdBlock />}
-										colorScheme='red'
-										size='sm'
-									// onClick={() => handleBanUser(user.id)}
-									>
-										Ban
-									</Button>
-								) : (
-									<Button
-										leftIcon={<MdUndo />}
-										colorScheme='green'
-										size='sm'
-									// onClick={() => handleUnbanUser(user.id)}
-									>
-										Unban
-									</Button>
-								)}
-							</Td>
+		<div className=" overflow-x-scroll  overflow-hidden relative">
+			<Box py={8}>
+				<Table variant='simple'>
+					<Thead>
+						<Tr>
+							<Th>NO</Th>
+							<Th>Username</Th>
+							<Th className=" whitespace-nowrap">Total Limit</Th>
+							<Th className=" whitespace-nowrap">Used Credits</Th>
+							<Th>email</Th>
+							<Th>Subscription</Th>
+							<Th>Verified</Th>
+							<Th>Ip</Th>
+							<Th>action</Th>
 						</Tr>
-					))}
-				</Tbody>
-			</Table>
+					</Thead>
+					<Tbody>
+						{users?.length > 0 && users.map((user, i) => (
+							<Tr key={user._id}>
+								<Td className=" font-medium">{i + 1}</Td>
+								<Td className=" font-medium capitalize">{user.name}</Td>
+								<Td>
+									<Button
+										onClick={() =>
+											setOpenAdjust(user)
+										}
+										colorScheme='red'
+										size={"xs"}
+										ml={"10px"}
+									>
+										Adjust
+									</Button>
+								</Td>
+								<Td className=" font-semibold text-primary">{user.credit}</Td>
+								<Td className=" text-sm">{user.email}</Td>
+								<Td className={` capitalize font-medium ${user?.subscription ? 'text-green-700' : 'text-red-600'}`}>{user.subscription ? 'true' : 'false'}</Td>
+								<Td className={user.isVerify ? ' text-green-700 font-[600]' : 'text-red-600 text-[15px] font-[500]'}>{user.isVerify ? 'Yes' : 'No'}</Td>
+								<Td>{user.ip}</Td>
+								<Td className=" flex flex-col items-center gap-2">
+									{!user.block ? (
+										<Button
+											leftIcon={<MdBlock />}
+											colorScheme='red'
+											size='sm'
+											onClick={() => handleBanUser(user._id)}
+										>
+											Ban
+										</Button>
+									) : (
+										<Button
+											leftIcon={<MdUndo />}
+											colorScheme='green'
+											size='sm'
+											onClick={() => handleBanUser(user._id)}
+										>
+											Unban
+										</Button>
 
-			<AddUserModal users={users} />
-			{openAdjust !== null && (
-				<AdjustLimit openAdjust={openAdjust} setOpenAdjust={setOpenAdjust} />
-			)}
-		</Box>
+									)}
+									{/* <Button
+										leftIcon={<MdBackHand />}
+										colorScheme='pink'
+										size='sm'
+									>
+										Refund
+									</Button> */}
+								</Td>
+							</Tr>
+						))}
+					</Tbody>
+				</Table>
+
+				<AddUserModal users={users} />
+				{openAdjust && (
+					<AdjustLimit openAdjust={openAdjust} setOpenAdjust={setOpenAdjust} />
+				)}
+			</Box>
+			<div className=" w-full py-3 flex justify-center items-center">
+
+				<ReactPaginate
+					breakLabel="..."
+					nextLabel="next >"
+					onPageChange={handlePageClick}
+					pageRangeDisplayed={5}
+					className=" flex items-center my-3 gap-3"
+					pageClassName=" duration-300 hover:scale-150 hover:px-4 cursor:pointer"
+					nextClassName=" bg-primary text-white px-4 py-2 hover:scale-105 rounded-full"
+					previousClassName=" bg-primary text-white px-4 py-2 hover:scale-105 rounded-full"
+					activeClassName=" bg-primary text-white h-10 w-10 flex justify-center items-center font-[600] rounded-full"
+					pageCount={pageCount}
+					previousLabel="< previous"
+					renderOnZeroPageCount={null}
+				/>
+			</div>
+		</div>
 	);
 };
 

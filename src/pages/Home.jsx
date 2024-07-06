@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
-import { FaCheckCircle } from 'react-icons/fa';
+import { FaCheckCircle, FaClosedCaptioning } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
+import { checkerApi } from '../api/Api';
 import Testimonial from '../components/Testimonial';
 import Plans from '../components/client/Plans';
 import { useUserContext } from '../context/Context';
-import { checkerApi } from '../api/Api';
-
+import AccordionFags from './../components/client/AccordionFaqs';
+import { TagRightIcon } from '@chakra-ui/react';
+import { IoMdClose, IoMdDoneAll } from 'react-icons/io';
 const Home = () => {
 
 
@@ -13,7 +15,6 @@ const Home = () => {
     const [loading, setLoading] = useState(false);
     const [data, setData] = useState("");
     const { setUser, user, token, setUserIp, userIp } = useUserContext();
-    const navigate = useNavigate();
 
     const HandleSubmit = async e => {
         e.preventDefault();
@@ -27,9 +28,8 @@ const Home = () => {
         });
         if (status === 200) {
             setData(data.data);
-            data.user === "login"
-                ? setUser({ ...user, credit: user.credit - 1 })
-                : setUserIp(data.userIp);
+            data?.user && setUser(data?.user) ||
+                setUserIp(data?.userIp);
         }
         setLoading(false);
         setEmail("");
@@ -39,13 +39,19 @@ const Home = () => {
     return (
         <>
             {/* hero section start */}
-            <div className='bg-alternative'>
+            <div className='bg-green-600'>
                 <div className='bg-primary min-h-screen heroClip pb-28'>
                     <div className='container mx-auto pt-5 md:pt-10'>
                         <div className='flex items-center justify-center min-h-[40vh] m-3 md:m-0'>
                             <div className='bg-secondary p-3 md:p-5'>
-                                <div className='bg-gray-100 p-3 sm:p-5 md:p-10 flex gap-5 border border-primary rounded'>
+                                <div className='bg-gray-100 relative p-3 sm:p-5 md:p-10 flex gap-8 border border-primary rounded'>
                                     <div className='flex flex-col items-center'>
+                                        <div className={` ${data?.exists ? 'scale-100' : 'scale-0'} duration-500 absolute shadow-lg top-10 h-20 flex justify-center items-center bg-green-500 rounded-full w-20 flex justify-center items-center right-12`}>
+                                            <IoMdDoneAll className=' text-white text-4xl' />
+                                        </div>
+                                        <div className={` ${data?.exists === false ? 'scale-100' : 'scale-0'} duration-500 absolute shadow-lg top-10 h-20 flex justify-center items-center bg-red-500 rounded-full w-20 flex justify-center items-center right-12`}>
+                                            <IoMdClose className=' text-white text-5xl' />
+                                        </div>
                                         <img src='./favicon.png' alt='' className='h-16 md:h-20' />
                                         <h3 className='text-xl md:text-2xl font-bold text-accent'>
                                             Pure Checker
@@ -72,7 +78,7 @@ const Home = () => {
                                                 className='bg-primary whitespace-nowrap px-5 py-3 text-secondary font-medium'
                                             >
                                                 {loading ? 'loading...' :
-                                                    `${user ? user.credit : userIp.freeCredit} Credits`
+                                                    `${user?.credit || userIp?.freeCredit || 0} Credits`
                                                 }
                                             </button>
                                         </form>
@@ -87,12 +93,22 @@ const Home = () => {
                                                 <div className=" left flex-[0.5] font-[500] text-gray-700 flex flex-col gap-y-2 text-md">
                                                     <p>Email :</p>
                                                     <p>Exist :</p>
+                                                    <p>Format :</p>
                                                     <p>Disposable :</p>
+                                                    <p>role :</p>
+                                                    <p>Domain :</p>
+                                                    <p>Reason :</p>
+                                                    <p>Mx Server :</p>
                                                 </div>
                                                 <div className=" left flex-1 font-[500] text-gray-800 flex flex-col gap-y-2 text-md">
                                                     <p>{data.email}</p>
-                                                    <p>{data.validators.smtp.valid ? 'true' : 'false'}</p>
-                                                    <p>{data.validators.smtp.disposable ? 'true' : 'false'}</p>
+                                                    <p>{data.exists ? 'true' : 'false'}</p>
+                                                    <p>{data.format ? 'ok' : 'incorrect'}</p>
+                                                    <p>{data.disposable ? 'true' : 'false'}</p>
+                                                    <p>{data.role}</p>
+                                                    <p>{data.domain ? 'ok' : 'bad'}</p>
+                                                    <p>{data.reason}</p>
+                                                    <p>{data.mxServer}</p>
                                                 </div>
                                             </div>
                                         }
@@ -120,9 +136,9 @@ const Home = () => {
                             </p>
                         </div>
 
-                        <div className='grid grid-cols-1 md:grid-cols-8 items-center gap-5 p-3'>
+                        <div className='grid grid-cols-1 md:grid-cols-8 items-center gap-8 p-3'>
                             <div className='col-span-1 md:col-span-3'>
-                                <ul className='flex flex-col gap-5 text-secondary tracking-wide'>
+                                <ul className='flex flex-col gap-8 text-secondary tracking-wide'>
                                     <li>
                                         <h3 className='text-2xl font-bold'>
                                             1. Create a FREE account
@@ -167,14 +183,14 @@ const Home = () => {
             {/* hero section end */}
 
             {/* why should use section start */}
-            <div className='bg-alternative text-secondary px-3 py-16 pb-40 reClip relative -top-1'>
+            <div className=' bg-green-600 text-secondary px-3 py-16 pb-40 reClip relative -top-1'>
                 <h1 className='text-center text-2xl md:text-5xl font-bold'>
                     Why you should give a f@#k
                 </h1>
 
-                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-14 md:gap-6 container mx-auto mt-10'>
-                    <div className='flex flex-col items-center gap-5'>
-                        <img src='./save-money.svg' alt='' className='h-20' />
+                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-14 md:gap-6 container mx-auto mt-20'>
+                    <div className='flex flex-col items-center gap-8'>
+                        <img src='./saving.png' alt='' className='h-24' />
                         <h3 className='self-start text-3xl font-bold'>
                             Save money on email marketing
                         </h3>
@@ -183,8 +199,8 @@ const Home = () => {
                             of your emails by sending them only to real people.
                         </p>
                     </div>
-                    <div className='flex flex-col items-center gap-5'>
-                        <img src='./increase-roi.svg' alt='' className='h-20' />
+                    <div className='flex flex-col items-center gap-8'>
+                        <img src='./increase.png' alt='' className='h-20' />
 
                         <h3 className='self-start text-3xl font-bold'>
                             Increase ROI of your email campaigns
@@ -194,14 +210,14 @@ const Home = () => {
                             sending fewer emails thanks to the verified email list.
                         </p>
                     </div>
-                    <div className='flex flex-col items-center gap-5'>
-                        <img src='./protect.svg' alt='' className='h-20' />
+                    <div className='flex flex-col items-center gap-8'>
+                        <img src='./shield.png' alt='' className='h-20' />
                         <h3 className='self-start text-3xl font-bold'>
                             Protect your domain reputation score
                         </h3>
                         <p>
                             Spam traps and hard bounces kill your reputation. Get rid of them
-                            so your emails don't end up in spam folders anymore.
+                            so your emails donot end up in spam folders anymore.
                         </p>
                     </div>
                 </div>
@@ -210,146 +226,146 @@ const Home = () => {
 
             {/* verify emails section start */}
             <div className='container mx-auto py-28 px-3'>
-				<h1 className='text-2xl md:text-5xl font-extrabold text-center text-gray-700'>
-					How we verify emails
-				</h1>
-				<p className='text-center mt-2'>
-					At Pure Checker, we employ a comprehensive and meticulous email
-					verification process to ensure the highest accuracy and deliverability
-					rates for your email lists. Our advanced verification system goes
-					through several stages to validate each email address, guaranteeing
-					you the best results. Here’s a detailed look at how we verify email:
-				</p>
+                <h1 className='text-2xl md:text-5xl font-extrabold text-center text-gray-700'>
+                    How we verify emails
+                </h1>
+                <p className='text-center mt-2'>
+                    At Pure Checker, we employ a comprehensive and meticulous email
+                    verification process to ensure the highest accuracy and deliverability
+                    rates for your email lists. Our advanced verification system goes
+                    through several stages to validate each email address, guaranteeing
+                    you the best results. Here’s a detailed look at how we verify email:
+                </p>
 
-				<div
-					id='emailVerify'
-					className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-5 lg:gap-10 mt-8 md:mt-16'
-				>
-					<div>
-						<h2 className='text-xl md:text-2xl lg:text-3xl font-bold pb-2 md:pb-3 text-primary'>
-							Syntax and Format Check
-						</h2>
-						<p className='text-lg text-gray-700'>
-							We start by examining the syntax of each email address to ensure
-							it complies with standard email formatting rules. This includes
-							checking for the presence of "@" and valid domain extensions
-							(.com, .net, etc.).
-						</p>
-					</div>
-					<div>
-						<h2 className='text-xl md:text-2xl lg:text-3xl font-bold pb-2 md:pb-3 text-primary'>
-							Domain Validation
-						</h2>
-						<p className='text-lg text-gray-700'>
-							Next, we verify the domain of the email address. This involves
-							checking the DNS records to confirm that the domain exists and is
-							configured correctly to receive emails.
-						</p>
-					</div>
-					<div>
-						<h2 className='text-xl md:text-2xl lg:text-3xl font-bold pb-2 md:pb-3 text-primary'>
-							MX Record Verification
-						</h2>
-						<p className='text-lg text-gray-700'>
-							We then check the Mail Exchange (MX) records of the domain. MX
-							records indicate which mail servers are responsible for receiving
-							emails for the domain. This step ensures that the domain is
-							capable of accepting emails.
-						</p>
-					</div>
-					<div>
-						<h2 className='text-xl md:text-2xl lg:text-3xl font-bold pb-2 md:pb-3 text-primary'>
-							SMTP Protocol Check
-						</h2>
-						<p className='text-lg text-gray-700'>
-							Our system connects to the mail server via SMTP to verify the
-							existence of the email address. This involves simulating an email
-							send process without actually sending an email, to confirm whether
-							the mailbox is active and able to receive messages.
-						</p>
-					</div>
-					<div>
-						<h2 className='text-xl md:text-2xl lg:text-3xl font-bold pb-2 md:pb-3 text-primary'>
-							Mailbox Validation
-						</h2>
-						<p className='text-lg text-gray-700'>
-							We go a step further to verify the existence of the mailbox. This
-							helps in determining if the specific email address exists on the
-							mail server and can receive emails.
-						</p>
-					</div>
-					<div>
-						<h2 className='text-xl md:text-2xl lg:text-3xl font-bold pb-2 md:pb-3 text-primary'>
-							Catch-All Domain Detection
-						</h2>
-						<p className='text-lg text-gray-700'>
-							Some domains are configured to accept all emails sent to them,
-							regardless of the username. We identify such catch-all domains to
-							provide additional insights about the deliverability of emails.
-						</p>
-					</div>
-					<div>
-						<h2 className='text-xl md:text-2xl lg:text-3xl font-bold pb-2 md:pb-3 text-primary'>
-							Role-Based Email Detection
-						</h2>
-						<p className='text-lg text-gray-700'>
-							Our system identifies role-based emails (e.g., info@, admin@) that
-							are typically used for general inquiries or administrative
-							purposes, helping you target individual users more effectively.
-						</p>
-					</div>
-					<div>
-						<h2 className='text-xl md:text-2xl lg:text-3xl font-bold pb-2 md:pb-3 text-primary'>
-							Spam Trap Detection
-						</h2>
-						<p className='text-lg text-gray-700'>
-							We identify known spam traps to prevent your emails from being
-							flagged as spam. Spam traps are email addresses used by ISPs and
-							organizations to catch spammers, and sending emails to these
-							addresses can harm your sender reputation.
-						</p>
-					</div>
-					<div>
-						<h2 className='text-xl md:text-2xl lg:text-3xl font-bold pb-2 md:pb-3 text-primary'>
-							Greylisting and Temporary Issues Handling
-						</h2>
-						<p className='text-lg text-gray-700'>
-							Our verification process also accounts for temporary issues such
-							as greylisting, where the mail server temporarily rejects an
-							email. We handle these instances by re-attempting verification to
-							ensure accuracy.
-						</p>
-					</div>
-					<div>
-						<h2 className='text-xl md:text-2xl lg:text-3xl font-bold pb-2 md:pb-3 text-primary'>
-							Phone Verification (if required)
-						</h2>
-						<p className='text-lg text-gray-700'>
-							For certain emails, additional verification steps such as phone
-							verification might be necessary. We flag these emails for further
-							action to confirm their validity.
-						</p>
-					</div>
-				</div>
+                <div
+                    id='emailVerify'
+                    className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-8 lg:gap-10 mt-8 md:mt-16'
+                >
+                    <div>
+                        <h2 className='text-xl md:text-2xl lg:text-3xl font-bold pb-2 md:pb-3 text-primary'>
+                            Syntax and Format Check
+                        </h2>
+                        <p className='text-md mt-2 text-gray-700'>
+                            We start by examining the syntax of each email address to ensure
+                            it complies with standard email formatting rules. This includes
+                            checking for the presence of "@" and valid domain extensions
+                            (.com, .net, etc.).
+                        </p>
+                    </div>
+                    <div>
+                        <h2 className='text-xl md:text-2xl lg:text-3xl font-bold pb-2 md:pb-3 text-primary'>
+                            Domain Validation
+                        </h2>
+                        <p className='text-md mt-2 text-gray-700'>
+                            Next, we verify the domain of the email address. This involves
+                            checking the DNS records to confirm that the domain exists and is
+                            configured correctly to receive emails.
+                        </p>
+                    </div>
+                    <div>
+                        <h2 className='text-xl md:text-2xl lg:text-3xl font-bold pb-2 md:pb-3 text-primary'>
+                            MX Record Verification
+                        </h2>
+                        <p className='text-md mt-2 text-gray-700'>
+                            We then check the Mail Exchange (MX) records of the domain. MX
+                            records indicate which mail servers are responsible for receiving
+                            emails for the domain. This step ensures that the domain is
+                            capable of accepting emails.
+                        </p>
+                    </div>
+                    <div>
+                        <h2 className='text-xl md:text-2xl lg:text-3xl font-bold pb-2 md:pb-3 text-primary'>
+                            SMTP Protocol Check
+                        </h2>
+                        <p className='text-md mt-2 text-gray-700'>
+                            Our system connects to the mail server via SMTP to verify the
+                            existence of the email address. This involves simulating an email
+                            send process without actually sending an email, to confirm whether
+                            the mailbox is active and able to receive messages.
+                        </p>
+                    </div>
+                    <div>
+                        <h2 className='text-xl md:text-2xl lg:text-3xl font-bold pb-2 md:pb-3 text-primary'>
+                            Mailbox Validation
+                        </h2>
+                        <p className='text-md mt-2 text-gray-700'>
+                            We go a step further to verify the existence of the mailbox. This
+                            helps in determining if the specific email address exists on the
+                            mail server and can receive emails.
+                        </p>
+                    </div>
+                    <div>
+                        <h2 className='text-xl md:text-2xl lg:text-3xl font-bold pb-2 md:pb-3 text-primary'>
+                            Catch-All Domain Detection
+                        </h2>
+                        <p className='text-md mt-2 text-gray-700'>
+                            Some domains are configured to accept all emails sent to them,
+                            regardless of the username. We identify such catch-all domains to
+                            provide additional insights about the deliverability of emails.
+                        </p>
+                    </div>
+                    <div>
+                        <h2 className='text-xl md:text-2xl lg:text-3xl font-bold pb-2 md:pb-3 text-primary'>
+                            Role-Based Email Detection
+                        </h2>
+                        <p className='text-md mt-2 text-gray-700'>
+                            Our system identifies role-based emails (e.g., info@, admin@) that
+                            are typically used for general inquiries or administrative
+                            purposes, helping you target individual users more effectively.
+                        </p>
+                    </div>
+                    <div>
+                        <h2 className='text-xl md:text-2xl lg:text-3xl font-bold pb-2 md:pb-3 text-primary'>
+                            Spam Trap Detection
+                        </h2>
+                        <p className='text-md mt-2 text-gray-700'>
+                            We identify known spam traps to prevent your emails from being
+                            flagged as spam. Spam traps are email addresses used by ISPs and
+                            organizations to catch spammers, and sending emails to these
+                            addresses can harm your sender reputation.
+                        </p>
+                    </div>
+                    <div>
+                        <h2 className='text-xl md:text-2xl lg:text-3xl font-bold pb-2 md:pb-3 text-primary'>
+                            Greylisting and Temporary Issues Handling
+                        </h2>
+                        <p className='text-md mt-2 text-gray-700'>
+                            Our verification process also accounts for temporary issues such
+                            as greylisting, where the mail server temporarily rejects an
+                            email. We handle these instances by re-attempting verification to
+                            ensure accuracy.
+                        </p>
+                    </div>
+                    <div>
+                        <h2 className='text-xl md:text-2xl lg:text-3xl font-bold pb-2 md:pb-3 text-primary'>
+                            Phone Verification (if required)
+                        </h2>
+                        <p className='text-md mt-2 text-gray-700'>
+                            For certain emails, additional verification steps such as phone
+                            verification might be necessary. We flag these emails for further
+                            action to confirm their validity.
+                        </p>
+                    </div>
+                </div>
 
-				<h3 className='text-xl font-bold text-center text-primary mt-10'>
-					Comprehensive Reporting
-				</h3>
+                <h3 className='text-xl font-bold text-center text-primary mt-10'>
+                    Comprehensive Reporting
+                </h3>
 
-				<p className="text-lg font-medium mt-5">
-					After completing the verification process, we provide a detailed
-					report categorizing each email address based on its verification
-					status (Valid, Disable, Phone Verify, Unknown, Not Exist, Duplicate,
-					Wrong Format). This helps you make informed decisions and maintain a
-					clean and effective email list. <br />
-					<br />
-					By leveraging our robust email verification process, you can enhance
-					your email deliverability, reduce bounce rates, and improve the
-					overall performance of your email marketing campaigns. Trust Pure
-					Checker to provide you with the most reliable and accurate email
-					verification service.
-				</p>
-			</div>
+                <p className="text-lg font-medium mt-5">
+                    After completing the verification process, we provide a detailed
+                    report categorizing each email address based on its verification
+                    status (Valid, Disable, Phone Verify, Unknown, Not Exist, Duplicate,
+                    Wrong Format). This helps you make informed decisions and maintain a
+                    clean and effective email list. <br />
+                    <br />
+                    By leveraging our robust email verification process, you can enhance
+                    your email deliverability, reduce bounce rates, and improve the
+                    overall performance of your email marketing campaigns. Trust Pure
+                    Checker to provide you with the most reliable and accurate email
+                    verification service.
+                </p>
+            </div>
             {/* verify emails section end */}
 
             {/* email verification api section start */}
@@ -389,7 +405,7 @@ const Home = () => {
             <section className='container mx-auto'>
                 <img src='./favicon.png' alt='' className='h-20 mx-auto mb-2' />
                 <h1 className='text-2xl font-bold text-center'>Go Premium!</h1>
-                <ul className='flex flex-wrap items-center justify-center gap-1 md:gap-5 my-3 md:my-5'>
+                <ul className='flex flex-wrap items-center justify-center gap-1 md:gap-8 my-3 md:my-5'>
                     <li className='flex items-center gap-2'>
                         <FaCheckCircle /> Volume discount
                     </li>
@@ -425,6 +441,13 @@ const Home = () => {
                 <Testimonial />
             </div>
             {/* carousel sections end */}
+
+
+            {/* accordion start */}
+            <AccordionFags />
+            {/* accordion end */}
+
+
         </>
     )
 }

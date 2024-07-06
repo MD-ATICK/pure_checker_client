@@ -1,20 +1,41 @@
-import React from 'react'
-import { useUserContext } from '../../context/Context';
-import { Link, useNavigate } from 'react-router-dom';
-import NavbarDrawer from './NavbarDrawer';
+import React from 'react';
+import { MdDashboardCustomize } from 'react-icons/md';
 import { IoLogOutOutline } from "react-icons/io5";
+import { Link, useNavigate } from 'react-router-dom';
+import { useUserContext } from '../../context/Context';
+import NavbarDrawer from './NavbarDrawer';
 
 
 function NavValidate({ open, setOpen, navLists }) {
 
-    const { load, user, userIp, logout } = useUserContext();
+    const { user, logout, handleSignOut } = useUserContext();
     const navigate = useNavigate()
 
     return (
         <div className=''>
             {
 
-                !user ?
+                user && user !== 'null' ?
+                    <div className=' cursor-pointer flex items-center gap-x-3'>
+                        <li className='md:hidden  flex justify-center items-center'>
+                            <NavbarDrawer open={open} setOpen={setOpen} navLists={navLists} />
+                        </li>
+                        <Link to={user && user.role === 'admin' ? '/admin/dashboard' : '/user/checker'} className=' group bg-white flex items-center gap-x-2 text-sm border-[4px] border-gray-300 font-medium  duration-300  py-2 px-5 rounded-lg'>
+                            Dashboard <MdDashboardCustomize className=' font-bold text-xl group-hover:translate-x-1 duration-300' />
+                        </Link>
+                        <button onClick={() => {
+                            if (window.confirm('are you sure?')) {
+                                logout()
+                                handleSignOut()
+                                localStorage.removeItem('token')
+                                navigate('/login')
+                            }
+                        }} className=' bg-white text-red-600 h-11 gap-2 px-3 group rounded-md font-[500] flex justify-center items-center text-sm'>
+                            Logout
+                            <IoLogOutOutline className=' font-bold text-xl group-hover:translate-x-1 duration-300' />
+                        </button>
+
+                    </div> :
                     <ul className='flex  items-center gap-5 md:gap-10'>
                         <li className='text-secondary'>
                             <Link to={"/login"}>Login</Link>
@@ -25,38 +46,7 @@ function NavValidate({ open, setOpen, navLists }) {
                         <li className='md:hidden'>
                             <NavbarDrawer open={open} setOpen={setOpen} navLists={navLists} />
                         </li>
-                    </ul> :
-                    <div className=' group cursor-pointer flex items-center gap-x-3'>
-                        <Link to={user && user.role === 'admin' ? '/admin/dashboard' : '/user/checker'} className=' bg-white text-black py-2 px-5 rounded-lg'>
-                            Go to Dashboard
-                        </Link>
-                        <button onClick={() => {
-                            logout()
-                            navigate('/')
-                        }} className=' bg-white text-red-600 h-10 w-10 rounded-md flex justify-center items-center text-2xl'>
-                            <IoLogOutOutline />
-                        </button>
-                        {/* <div
-                                className={`  hidden w-40 bg-gray-100 top-[52px] profile right-0 fixed  group-hover:flex flex-col items-start rounded-lg`}
-                            >
-                                <Link
-                                    to={"/account"}
-                                    className=' text-left p-2 z-20 rounded-t-lg  hover:bg-blue-300 w-full font-semibold px-4'
-                                >
-                                    Account
-                                </Link>
-                                <Link
-                                    to={
-                                        user.role === "admin"
-                                            ? "/admin/dashboard"
-                                            : "/admin/dashboard"
-                                    }
-                                    className=' text-left rounded-b-lg p-2 z-[20] hover:bg-blue-300 w-full font-semibold px-4'
-                                >
-                                    Dashboard
-                                </Link>
-                            </div> */}
-                    </div>
+                    </ul>
 
             }
         </div>

@@ -23,7 +23,8 @@ const Testimonial = () => {
 				>
 					<SwiperSlide className='p-14 md:p-20 overflow-hidden'>
 						<div className='relative min-h-[20vh] flex flex-col items-center h-full justify-between'>
-							<p>
+							<img src="/increase.png" className=" mb-10 max-w-[300px]" alt="" />
+							<p className=" text-lg text-gray-600">
 								Our delivery rates jumped to 99.6% so the ROI of our email
 								campaigns keeps growing. ELV does exactly what it's made for and
 								the pricing is incredible compared to other tools.

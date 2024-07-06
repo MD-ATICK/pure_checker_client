@@ -1,22 +1,13 @@
-import React from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-import { useUserContext } from '../context/Context'
+
 
 function Block() {
 
-  const { logout } = useUserContext()
-  const navigate = useNavigate()
 
-  const logClient = () => {
-    logout()
-    navigate('/login', { replace: true })
-  }
   return (
-    <div className=' text-center bg-white h-screen w-screen fixed top-0 left-0 py-8'>
-      <h1 className=' text-5xl font-bold'>Sorry! 😔</h1> <br />
-      <h1 className=' text-4xl font-bold text-red-600'>You are Blocked By Admin.</h1>
-      <button onClick={logClient} className=' font-semibold mt-3'>Logout</button>
-    </div>
+  <div className=" text-center py-10">
+    <h1 className=" text-[80px] font-bold">Sorry! 😔</h1>
+    <h3 className=" text-[40px] pt-4 text-gray-600 font-bold">You are blocked by admin.</h3>
+  </div>
   )
 }
 

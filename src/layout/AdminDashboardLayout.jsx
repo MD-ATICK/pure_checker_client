@@ -10,7 +10,7 @@ function AdminDashboardLayout() {
       {
         load === false &&
         (
-          user && user.role === 'user' &&
+          user && user.role === 'admin' &&
           <div className=' flex items-start'>
             <div className=' sticky top-0'>
             <SideBar />

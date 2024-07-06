@@ -14,8 +14,8 @@ function Footer() {
 
 	return (
 		<footer className='bg-primary py-20 text-secondary'>
-			<div className='container mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-10 px-5'>
-				<div>
+			<div className='container mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-10 px-5'>
+				<div className="col-span-2">
 					<img src='./3.jpg' alt='' className='w-60' />
 					<h3 className='py-5 text-2xl font-bold'>contact@purechecker.com</h3>
 					<p>
@@ -44,7 +44,7 @@ function Footer() {
 					<h3 className='text-3xl font-bold pb-5'>Recourse</h3>
 					<ul className='space-y-1 tracking-wide'>
 						<li>
-							<Link to={"/blog"}>Blog</Link>
+							<Link to={"/blogs"}>Blogs</Link>
 						</li>
 						<li>
 							<Link to={"/faqs"}>FAQs</Link>

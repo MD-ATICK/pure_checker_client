@@ -93,10 +93,10 @@ const Faqs = () => {
 		<section>
 			<div className='bg-primary themeClip h-[300px]'>
 				<div className='container mx-auto flex flex-col text-center items-center justify-center h-[80%]'>
-					<h1 className='text-5xl font-extrabold text-secondary'>
+					<h1 className=' text-4xl md:text-5xl font-extrabold text-secondary'>
 						Frequently Asked Questions (FAQ)
 					</h1>
-					<p className='text-secondary mt-5'>
+					<p className='text-secondary px-2 mt-5'>
 						Welcome to the Pure Checker FAQ page. Here you’ll find answers to
 						some of the most common questions we receive. If you have a question
 						that’s not addressed here, feel free to contact us at
@@ -105,7 +105,7 @@ const Faqs = () => {
 				</div>
 			</div>
 
-			<div className='container mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 my-20'>
+			<div className='container mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 px-[3vw] my-20'>
 				{faqs?.map((singleFaq, index) => (
 					<div key={index}>
 						<h1 className='text-3xl font-extrabold text-slate-700'>

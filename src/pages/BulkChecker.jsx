@@ -15,15 +15,8 @@ function BulkChecker() {
     const [result, setResult] = useState([])
     const [oldBulk, setOldBulk] = useState('');
     const [loading, setLoading] = useState(false)
-    const { token, setUser, user } = useUserContext()
-    const navigate = useNavigate()
+    const { user } = useUserContext()
 
-
-    // const x = ['atick', 'atick', 'hasib', 'rakib', 'hasib']
-    // const duplicates = x.filter((item, index) => console.log(x.indexOf(item)));
-    // console.log({ duplicates })
-
-    
 
 
 

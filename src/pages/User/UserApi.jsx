@@ -1,29 +1,41 @@
-import { Button } from '@chakra-ui/react'
-import React, { useEffect } from 'react'
-import { useState } from 'react'
+import {
+    Button, Input, Modal, ModalBody,
+    ModalCloseButton,
+    ModalContent,
+    ModalFooter,
+    ModalHeader,
+    ModalOverlay,
+    useDisclosure
+} from '@chakra-ui/react'
+import moment from 'moment'
+import { useEffect, useState } from 'react'
 import { AiTwotoneApi } from 'react-icons/ai'
 import { IoMdAdd } from 'react-icons/io'
+import { IoInformationCircle } from "react-icons/io5"
+import { useNavigate } from 'react-router-dom'
 import { greenToast, redToast, userApi } from '../../api/Api'
 import { useUserContext } from '../../context/Context'
-import moment from 'moment'
-import { Link, useNavigate } from 'react-router-dom'
 
 const UserApi = () => {
 
-    const [apiName, setApiName] = useState('');
-    const [loading, setLoading] = useState(false);
+    const { isOpen, onOpen, onClose } = useDisclosure();
     const { token, allApi, setAllApi } = useUserContext()
     const navigate = useNavigate()
 
-    const CreteApiHandler = async (e) => {
-        e.preventDefault()
+
+
+    const [apiName, setApiName] = useState('');
+    const [loading, setLoading] = useState(false);
+
+    const CreteApiHandler = async () => {
         if (!token) return redToast('token not found')
         setLoading(true)
         const { data, status } = await userApi.post('/create-api', { apiName }, { headers: { Authorization: `Bearer ${token}` } })
         if (status === 201) {
             setLoading(false)
-            console.log(data)
             setAllApi([...allApi, data.newApi])
+            onClose()
+            setApiName('')
             greenToast(data.msg)
         }
     }
@@ -34,7 +46,6 @@ const UserApi = () => {
         if (!token) return redToast('token not found')
         const { data, status } = await userApi.get('/get-api', { headers: { Authorization: `Bearer ${token}` } })
         if (status === 200) {
-            console.log(data)
             setAllApi(data.allApi)
         }
     }
@@ -45,7 +56,7 @@ const UserApi = () => {
     }, []);
 
     return (
-        <div className='p-10 w-full'>
+        <div className='p-[4vw] w-full'>
             <h3 className='text-xl ml-1 font-bold text-primary py-2'>API</h3>
 
             <div>
@@ -60,13 +71,41 @@ const UserApi = () => {
                         display={"flex"}
                         gap={"2px"}
                         alignItems={"center"}
+                        onClick={onOpen}
                     >
                         <IoMdAdd size={20} />
                         New API
                     </Button>
                 </div>
 
-                <div >
+                <Modal isOpen={isOpen} onClose={onClose}>
+                    <ModalOverlay />
+                    <ModalContent>
+                        <ModalHeader>Add New User</ModalHeader>
+                        <ModalCloseButton />
+                        <ModalBody className='space-y-2'>
+                            <Input
+                                placeholder='enter api name'
+                                value={apiName}
+                                onChange={e => setApiName(e.target.value)}
+                            />
+
+                            <p className='text-sm flex items-center gap-1'>
+                                <IoInformationCircle size={20} color='green' />
+                                enter a meaning full name.
+                            </p>
+                        </ModalBody>
+
+                        <ModalFooter>
+                            <Button colorScheme='blue' mr={3} onClick={CreteApiHandler}>
+                                {loading ? 'loading...' : 'Create'}
+                            </Button>
+                            <Button onClick={onClose}>Cancel</Button>
+                        </ModalFooter>
+                    </ModalContent>
+                </Modal>
+
+                {/* <div >
                     <br /> <br />
                     <h1>initial create new api key</h1>
                     <form action="" onSubmit={CreteApiHandler}>
@@ -75,7 +114,7 @@ const UserApi = () => {
                         <button type='submit' className=' bg-primary py-1 px-5 text-white'>{loading ? 'loading... ' : 'create'}</button>
                     </form>
                     <br /> <br />
-                </div>
+                </div> */}
 
                 <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 mt-5 gap-5'>
                     {

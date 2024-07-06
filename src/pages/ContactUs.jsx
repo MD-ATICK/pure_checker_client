@@ -1,24 +1,52 @@
-import React from "react";
 import {
 	Box,
-	Flex,
-	Heading,
-	Text,
-	VStack,
-	Input,
-	Textarea,
 	Button,
+	Flex,
 	Icon,
+	Input,
+	Text,
+	Textarea,
+	VStack
 } from "@chakra-ui/react";
-import { MdLocationOn, MdPhone, MdEmail } from "react-icons/md";
+import React, { useState } from "react";
 import { FaWhatsapp } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { MdEmail, MdLocationOn } from "react-icons/md";
+import { Link, useNavigate } from "react-router-dom";
+import { greenToast, postApi, redToast, userApi } from "../api/Api";
+
+import { SyncLoader } from 'react-spinners'
 
 const ContactUs = () => {
+
+	const [name, setName] = useState('');
+	const [email, setEmail] = useState('');
+	const [body, setBody] = useState('');
+	const [loading, setLoading] = useState(false);
+	const navigate = useNavigate()
+
+	const SendOpinion = async (e) => {
+		e.preventDefault()
+		setLoading(true)
+		const { data, status } = await userApi.post('/contactUs', { name, email, body }, { withCredentials: true })
+		if (status === 201) {
+			setLoading(false)
+			greenToast(data.msg)
+			navigate('/')
+		} else {
+			setLoading(false)
+			redToast(data.err)
+		}
+	}
+
+	const orderHandle = async () => {
+		const { data, status } = await postApi.get('/order', { withCredentials: true })
+	}
+
+
 	return (
 		<section>
 			<div className='bg-primary themeClip h-[300px]'>
-				<div className='container mx-auto flex flex-col text-center items-center justify-center h-[80%]'>
+				<div className='container px-3 mx-auto flex flex-col text-center items-center justify-center h-[80%]'>
 					<h1 className='text-5xl font-extrabold text-secondary'>Contact Us</h1>
 					<p className='text-secondary mt-5'>
 						If you have any questions about these Terms, please contact us at:
@@ -29,7 +57,7 @@ const ContactUs = () => {
 				direction='column'
 				align='center'
 				justify='center'
-				p={10}
+				p={3}
 				bg='white'
 				color='gray.800'
 			>
@@ -49,7 +77,7 @@ const ContactUs = () => {
 							<VStack align='flex-start' rowGap={4}>
 								<Flex align='center'>
 									<Icon as={MdLocationOn} w={6} h={6} mr={2} />
-									<Text>1700,Surabari,kashimpur,Gazipur,Bangladesh</Text>
+									<Text fontSize={'15px'}>1700,Surabari,kashimpur,Gazipur,Bangladesh</Text>
 								</Flex>
 								<Flex align='center'>
 									<Icon as={FaWhatsapp} w={6} h={6} mr={2} />
@@ -67,28 +95,43 @@ const ContactUs = () => {
 						</Box>
 						<Box flex='1'>
 							<VStack spacing={5} align='stretch'>
-								<Input
-									placeholder='Name'
-									border={"1px"}
-									borderColor={"blue"}
-									focusBorderColor='blue.500'
-								/>
-								<Input
-									placeholder='Email'
-									border={"1px"}
-									focusBorderColor='blue.500'
-									borderColor={"blue"}
-								/>
-								<Textarea
-									placeholder='Message'
-									focusBorderColor='blue.500'
-									minH={"180px"}
-									border={"1px"}
-									borderColor={"blue"}
-								/>
-								<Button colorScheme='blue' size='md'>
-									Send Message
-								</Button>
+								<form action="" onSubmit={SendOpinion} className="flex flex-col gap-y-4">
+
+									<Input
+										placeholder='Name'
+										required={true}
+										value={name}
+										onChange={(e) => setName(e.target.value)}
+										border={"1px"}
+										borderColor={"blue"}
+										focusBorderColor='blue.500'
+									/>
+									<Input
+										placeholder='Account Email'
+										value={email}
+										onChange={(e) => setEmail(e.target.value)}
+										required={true}
+										border={"1px"}
+										focusBorderColor='blue.500'
+										borderColor={"blue"}
+									/>
+									<Textarea
+										placeholder='Message'
+										required={true}
+										value={body}
+										onChange={(e) => setBody(e.target.value)}
+										focusBorderColor='blue.500'
+										minH={"180px"}
+										border={"1px"}
+										borderColor={"blue"}
+									/>
+									<Button type="submit" colorScheme='blue' size='md'>
+										{loading ?
+											<SyncLoader color="white" size={8} className="" /> :
+											'Send Message'
+										}
+									</Button>
+								</form>
 							</VStack>
 						</Box>
 					</Flex>

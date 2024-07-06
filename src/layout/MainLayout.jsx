@@ -1,34 +1,29 @@
-import React, { useEffect } from 'react'
-import Navbar from '../components/Navbar/Navbar'
+import { Outlet } from 'react-router-dom'
+import { PropagateLoader } from 'react-spinners'
 import Footer from '../components/Footer/Footer'
-import { Outlet, useNavigate } from 'react-router-dom'
+import Navbar from '../components/Navbar/Navbar'
 import { useUserContext } from '../context/Context'
-import Block from '../pages/Block'
+import Maintenance from '../components/Maintenance'
 
 function MainLayout() {
-    const { load, user, auth, token, ipAuth } = useUserContext()
-    const navigate = useNavigate()
-
+    const { load, mLoading, maintenance } = useUserContext()
 
     return (
         <div>
-            {
-                !load &&
-                user && user.block &&
-                <Block />
-            }
-
-            {
-                load === false ?
-                    <>
-                        <Navbar />
-                        <Outlet />
-                        <Footer />
-                    </>
+            {mLoading === false &&
+                (maintenance ?
+                    <Maintenance maintenance={maintenance} />
                     :
-                    <div>
-                        <h1 className=' p-10 text-5xl font-bold text-center'>Loading...</h1>
-                    </div>
+                    load === false ?
+                        <>
+                            <Navbar />
+                            <Outlet />
+                            <Footer />
+                        </>
+                        :
+                        <div className=' h-screen w-full grid place-items-center'>
+                            <PropagateLoader color='blue' size={18} />
+                        </div>)
             }
         </div>
     )

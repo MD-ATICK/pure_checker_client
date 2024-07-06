@@ -14,7 +14,6 @@ const UserGeneral = () => {
         setLoading(true)  
         const { status, data } = await userApi.put('/update-profile', userData, { headers: { Authorization: `Bearer ${token}` } })
         if (status === 202) {
-            console.log(data)
             setUser(data.user)
             greenToast(data.msg)
             setLoading(false)
@@ -22,7 +21,7 @@ const UserGeneral = () => {
     }
 
     return (
-        <form onSubmit={updateProfile} className='p-10 bg-gray-100 grid grid-cols-2 gap-10'>
+        <form onSubmit={updateProfile} className='p-10 bg-gray-100 grid grid-cols-1  md:grid-cols-2 gap-6 md:gap-10'>
             <div className='space-y-5'>
                 <div className='space-y-1'>
                     <label htmlFor='email' className='ml-1'>

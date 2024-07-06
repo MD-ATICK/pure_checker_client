@@ -9,6 +9,7 @@ import * as Papa from 'papaparse'; // For CSV parsing
 import * as XLSX from 'xlsx'
 import { checkerApi, redToast } from "../../api/Api";
 import { IoIosArrowDown } from 'react-icons/io'
+import { FaFileDownload } from "react-icons/fa";
 
 const BulkMailChecker = ({ title }) => {
 
@@ -37,8 +38,15 @@ const BulkMailChecker = ({ title }) => {
 		} else if (filterValue === 'wrongFormat') {
 			filterData = result.filter(rlt => rlt.format === false)
 		} else if (filterValue === 'duplicate') {
-			filterData = result.filter((item, index, self) => self.findIndex(t => t.email === item.email) === index);
-			console.log(filterData)
+			let duplicates = [];
+			result.forEach(item => {
+				if (new Set().has(item)) {
+					duplicates.push(item);
+				} else {
+					new Set().add(item);
+				}
+			});
+			filterData = duplicates;
 		}
 		setOldBulk(filterData.map(fd => `[${fd.smtp ? "Exist" : "Not Exist"}] ${fd.email}`).join('\n'))
 		setFileResult(filterData)
@@ -57,12 +65,10 @@ const BulkMailChecker = ({ title }) => {
 		setLoading(true)
 		const { status, data } = await checkerApi.post(`/bulk-check`, { bulks }, { withCredentials: true, headers: { Authorization: `Bearer ${token}` } })
 		if (status === 201) {
-			console.log('bulks', data)
 			setUser(data.user)
 			setBulk('')
 			setOldBulk(prev => prev + data.bulkStg)
 			setResult(data.result)
-			console.log(data.result)
 			setLoading(false)
 		} else {
 			setLoading(false)
@@ -113,19 +119,17 @@ const BulkMailChecker = ({ title }) => {
 		reader.readAsBinaryString(file);
 	}
 
-	// console.log(fileResult?.length)
 
 	useEffect(() => {
 		setFileResult(result)
 	}, [result]);
 
 
-	console.log(oldBulk)
 	return (
 		<>
 			{
 				user &&
-				<div className='container mx-auto my-10 px-3 w-full md:w-2/3'>
+				<div className='container mx-auto my-10  w-full md:w-2/3'>
 					<h1 className='text-lg ml-1 md:text-xl font-extrabold text-[#2B6CB0]'>
 						{title || "Bulk Mail Checker"}
 					</h1>
@@ -141,99 +145,83 @@ const BulkMailChecker = ({ title }) => {
 							value={loading ? 'loading...' : oldBulk + bulk}
 							onChange={(e) => setBulk(e.target.value)}
 						/>
-						<div className='flex items-center justify-between mt-2'>
-							<label htmlFor="file" className=" bg-blue-500 text-white font-[600] text-sm gap-x-1 flex  p-[6px] px-3 rounded-lg cursor-pointer">
-								{/* <Button
+						<div>
+							<Select
+								// variant='filled'
+								// placeholder='Filled'
+								size={"sm"}
+								border={"1px"}
+								borderColor={"blue"}
+								rounded={"5px"}
+								fontWeight={500}
+								color={"black"}
+								marginY={'10px'}
+								minWidth={"130px"}
+								// value={filterMail}
+								onChange={handleFilterChange}
+
+							>
+								<option value='all'>all</option>
+								<option value='valid'>valid</option>
+								<option value='notExist'>not Exist</option>
+								<option value='disposable'>disposable</option>
+								<option value='wrongFormat'>Wrong Format</option>
+								<option value='duplicate'>duplicate</option>
+							</Select>
+							<div className='flex items-center justify-between mt-2'>
+								<label htmlFor="file" className=" bg-blue-500 text-white font-[600] text-sm gap-x-1 flex  p-[6px] px-3 rounded-lg cursor-pointer">
+									{/* <Button
 							colorScheme='blue'
 							size='sm'
 							title='WE ACCEPT CSV/XLS/XLSX/TXT'
 							className='flex items-center gap-1'
 							onChange={handleFileUpload}
 						> */}
-								<MdOutlineFilePresent size={20} />
-								<p>Upload</p>
-								{/* </Button> */}
-							</label>
-							<input multiple onChange={handleFileUpload} className=" hidden" id="file" type="file" />
-							<div className='flex items-center gap-1 md:gap-3'>
-								<Select
-									// variant='filled'
-									// placeholder='Filled'
-									size={"sm"}
-									border={"1px"}
-									borderColor={"blue"}
-									rounded={"5px"}
-									fontWeight={500}
-									color={"black"}
-									minWidth={"130px"}
-									// value={filterMail}
-									onChange={handleFilterChange}
+									<MdOutlineFilePresent size={20} />
+									<p>Upload</p>
+									{/* </Button> */}
+								</label>
+								<input multiple onChange={handleFileUpload} className=" hidden" id="file" type="file" />
+								<div className='flex items-center gap-1 md:gap-3'>
 
-								>
-									<option value='all'>all</option>
-									<option value='valid'>valid</option>
-									<option value='notExist'>not Exist</option>
-									<option value='disposable'>disposable</option>
-									<option value='wrongFormat'>Wrong Format</option>
-									<option value='duplicate'>duplicate</option>
-								</Select>
 
-								{/* <IconButton
-									colorScheme={loading || fileResult?.length === 0 ? 'gray' : 'blue'}
-									aria-label='file save'
-									size='sm'
-									className=" none"
-									onClick={() => fileResult?.length > 0 && downloadCSV(fileResult)}
-									icon={<IoSave />}
-								/>
-								<IconButton
-									colorScheme={loading || fileResult?.length === 0 ? 'gray' : 'blue'}
-									aria-label='file save'
-									size='sm'
-									onClick={() => fileResult?.length > 0 && downloadXLSX(fileResult)}
-									icon={<IoSave />}
-								/>
-								<IconButton
-									colorScheme={loading || fileResult?.length === 0 ? 'gray' : 'blue'}
-									aria-label='file save'
-									size='sm'
-									onClick={() => fileResult?.length > 0 && createPDF(fileResult)}
-									icon={<IoSave />}
-								/> */}
 
-								<Menu>
-									<MenuButton
-										size={"sm"}
+									<Menu>
+										<MenuButton
+											size={"sm"}
+											colorScheme='blue'
+											width={"full"}
+											display="hidden"
+											overflow="hidden"
+											as={Button}
+											rightIcon={<IoIosArrowDown />}
+										>
+											Download
+										</MenuButton>
+										<MenuList>
+											<MenuItem
+												onClick={() => fileResult?.length > 0 && downloadCSV(fileResult)}
+											>Download CSV </MenuItem>
+											<MenuItem
+												onClick={() => fileResult?.length > 0 && downloadXLSX(fileResult)}
+											>Download XLSX </MenuItem>
+											<MenuItem
+												onClick={() => fileResult?.length > 0 && createPDF(fileResult)}
+											>Download PDF </MenuItem>
+											<MenuItem>Download TXT </MenuItem>
+										</MenuList>
+									</Menu>
+
+									<Button
 										colorScheme='blue'
-										width={"full"}
-										as={Button}
-										rightIcon={<IoIosArrowDown />}
+										size='sm'
+										onClick={BulkCheckSubmit}
+										className='flex items-center gap-1 w-full'
 									>
-										Download
-									</MenuButton>
-									<MenuList>
-										<MenuItem
-											onClick={() => fileResult?.length > 0 && downloadCSV(fileResult)}
-										>Download CSV </MenuItem>
-										<MenuItem
-											onClick={() => fileResult?.length > 0 && downloadXLSX(fileResult)}
-										>Download XLSX </MenuItem>
-										<MenuItem
-											onClick={() => fileResult?.length > 0 && createPDF(fileResult)}
-										>Download PDF </MenuItem>
-										<MenuItem>Download TXT </MenuItem>
-									</MenuList>
-								</Menu>
-
-								<Button
-									colorScheme='blue'
-									size='sm'
-									onClick={BulkCheckSubmit}
-									className='flex items-center gap-1 w-full'
-								>
-									{loading ? 'loading...' : 'check'}
-									<MdOutlineDocumentScanner size={20} />
-								</Button>
+										{loading ? 'loading...' : 'check'}
+										<MdOutlineDocumentScanner size={20} />
+									</Button>
+								</div>
 							</div>
 						</div>
 					</div>
