@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { postApi, redToast, url } from "../api/Api";
 import { SyncLoader } from 'react-spinners'
 import { Link } from 'react-router-dom'
+import UseHelmet from "../utils/UseHelmet";
 
 
 const Blogs = () => {
@@ -28,6 +29,7 @@ const Blogs = () => {
 
 	return (
 		<section>
+			<UseHelmet param={'blogs'} title={'Insights and Updates on Email Validation and Security | Pure Checker' } description={'Explore the latest articles, tips, and insights on email validation, existence checks, disposable emails, and more. Stay informed with Pure Checker is blog.'} />
 			<div className='bg-primary themeClip h-[300px]'>
 				<div className='container mx-auto flex flex-col text-center items-center justify-center h-[80%]'>
 					<h1 className='text-5xl font-extrabold text-secondary'>Blogs</h1>
@@ -47,7 +49,9 @@ const Blogs = () => {
 						>
 							<img
 								src={`${url}/uploads/${img}`}
-								alt=''
+								alt={title}
+								title={title}
+								loading="lazy"
 								className='w-full h-[270px] md:h-[250px] rounded-lg object-cover'
 							/>
 							<div className="p-2">
@@ -55,14 +59,14 @@ const Blogs = () => {
 									<strong>{category}</strong>-{" "}
 									{moment(createAt).format("LL")}
 								</div>
-								<h2 className='text-2xl font-bold py-1'>{title}</h2>
+								<h1 className='text-2xl font-bold py-1'>{title}</h1>
 								<p>{description}</p>
 							</div>
 						</Link>
 					)
 				})}
 			</div>
-			
+
 		</section >
 	);
 };

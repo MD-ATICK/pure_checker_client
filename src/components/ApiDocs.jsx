@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import UseHelmet from '../utils/UseHelmet';
 
 function ApiDocs() {
 
@@ -10,6 +11,7 @@ function ApiDocs() {
 
     return (
         <section className='container mx-auto px-[3vw] my-16'>
+            <UseHelmet title={'API Documentation - PureChecker | Gmail Validation API'} param={'/api-docs'} description={'Explore the API documentation for PureChecker is Gmail Validation service. Learn how to integrate our API to validate Gmail addresses, check for disposability, existence, and validity with detailed endpoints and examples.'} />
             <div className='space-y-3'>
                 <h4 className='font-semibold text-gray-700 mb-5 text-2xl'>
                     API Documentation

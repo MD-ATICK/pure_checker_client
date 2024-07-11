@@ -20,7 +20,7 @@ support@purechecker.com.
             <div className='container mx-auto my-20 mt-10 space-y-3 w-full md:w-[80%] lg:w-[60%]'>
             <p className='font-bold block pt-5'>Effective Date: [Insert Date]</p>
 
-				<h2 className='text-lg font-bold block pt-5'>1. Introduction</h2>
+				<h1 className='text-lg font-bold block pt-5'>1. Introduction</h1>
 				<p>
 					Pure Checker (“we”, “our”, “us”) uses cookies and similar technologies
 					to enhance your experience on our website purechecker.com. This Cookie
@@ -28,7 +28,7 @@ support@purechecker.com.
 					regarding cookies.
 				</p>
 
-				<h2 className='text-lg font-bold block pt-5'>2. What Are Cookies?</h2>
+				<h1 className='text-lg font-bold block pt-5'>2. What Are Cookies?</h1>
 				<p>
 					Cookies are small text files stored on your device (computer, tablet,
 					or mobile) when you visit a website. They help the site remember your
@@ -37,7 +37,7 @@ support@purechecker.com.
 					to another.
 				</p>
 
-				<h2 className='text-lg font-bold block pt-5'>3. How We Use Cookies</h2>
+				<h1 className='text-lg font-bold block pt-5'>3. How We Use Cookies</h1>
 				<p>We use cookies for the following purposes:</p>
 				<ul className='ml-10 list-disc'>
 					<li>
@@ -63,22 +63,22 @@ support@purechecker.com.
 					</li>
 				</ul>
 
-				<h2 className='text-lg font-bold block pt-5'>4. Managing Cookies</h2>
+				<h1 className='text-lg font-bold block pt-5'>4. Managing Cookies</h1>
 				<p>
 					You can control and manage cookies in various ways. Most browsers
 					allow you to block or delete cookies. Please note that if you disable
 					cookies, some parts of our website may not function properly.
 				</p>
 
-				<h2 className='text-lg font-bold block pt-5'>
+				<h1 className='text-lg font-bold block pt-5'>
 					5. Changes to This Policy
-				</h2>
+				</h1>
 				<p>
 					We may update our Cookie Policy from time to time. Any changes will be
 					posted on this page with an updated effective date.
 				</p>
 
-				<h2 className='text-lg font-bold block pt-5'>6. Contact Us</h2>
+				<h1 className='text-lg font-bold block pt-5'>6. Contact Us</h1>
 				<p>
 					If you have any questions about our Cookie Policy, please contact us
 					at:

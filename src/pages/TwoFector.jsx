@@ -1,8 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { PuffLoader } from 'react-spinners';
 import { greenToast, redToast, userApi } from '../api/Api';
 import { useUserContext } from '../context/Context';
-import { FadeLoader, PuffLoader } from 'react-spinners'
+import UseHelmet from '../utils/UseHelmet';
 
 
 const TwoFector = () => {
@@ -112,7 +113,7 @@ const TwoFector = () => {
 
     return (
         <div className=' h-screen w-full flex justify-center items-center'>
-
+            <UseHelmet param={'two-fector'} title={'Two-Factor Authentication (2FA) for Pure Checker | Secure Login'} description={'Enable two-factor authentication (2FA) on Pure Checker for an extra layer of security. Protect your account with an additional verification step.'} />
             <div className="flex flex-col items-center p-10 py-20 bg-white rounded-lg shadow-md max-w-md border-2 border-blue-200 mx-auto">
                 <img src="/3.jpg" alt="Logo" className=" h-12 mb-6" />
                 <div className="text-lg font-semibold mb-3">Enter Authentication App Code</div>

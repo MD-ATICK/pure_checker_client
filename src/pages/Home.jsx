@@ -1,17 +1,19 @@
 import React, { useState } from 'react';
-import { FaCheckCircle, FaClosedCaptioning } from 'react-icons/fa';
-import { Link, useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
+import { FaCheckCircle } from 'react-icons/fa';
+import { IoMdClose, IoMdDoneAll } from 'react-icons/io';
+import { Link } from 'react-router-dom';
 import { checkerApi } from '../api/Api';
 import Testimonial from '../components/Testimonial';
 import Plans from '../components/client/Plans';
 import { useUserContext } from '../context/Context';
 import AccordionFags from './../components/client/AccordionFaqs';
-import { TagRightIcon } from '@chakra-ui/react';
-import { IoMdClose, IoMdDoneAll } from 'react-icons/io';
+
+
 const Home = () => {
 
 
-    const [email, setEmail] = useState("atick@gmail.com");
+    const [email, setEmail] = useState("");
     const [loading, setLoading] = useState(false);
     const [data, setData] = useState("");
     const { setUser, user, token, setUserIp, userIp } = useUserContext();
@@ -38,9 +40,43 @@ const Home = () => {
 
     return (
         <>
+            <Helmet>
+                <title>Gmail Checker - Validate and Check Gmail Addresses | PureChecker</title>
+                <meta name="description" content="Use PureChecker to validate Gmail addresses. Check if Gmail is disposable, exists, or is valid. Accurate and fast Gmail checker tool." />
+                <meta name="keywords" content="Gmail checker, validate Gmail, check Gmail existence, disposable Gmail checker, email validation tool" />
+                <link rel="canonical" href="https://purechecker.com/" />
+                 {/* social  */}
+                <meta property="og:title" content="Gmail Checker - Validate and Check Gmail Addresses | PureChecker" />
+                <meta property="og:description" content="Use PureChecker to validate Gmail addresses. Check if Gmail is disposable, exists, or is valid. Accurate and fast Gmail checker tool." />
+                <meta property="og:url" content="https://purechecker.com/" />
+                <meta property="og:type" content="website" />
+                <meta property="og:image" content="https://purechecker.com/og-image.jpg" />
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content="Gmail Checker - Validate and Check Gmail Addresses | PureChecker" />
+                <meta name="twitter:description" content="Use PureChecker to validate Gmail addresses. Check if Gmail is disposable, exists, or is valid. Accurate and fast Gmail checker tool." />
+                <meta name="twitter:image" content="https://purechecker.com/twitter-image.jpg" />
+                {/* social end */}
+               {/* Schema */}
+                <script type="application/ld+json">
+                    {`
+          {
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "url": "https://purechecker.com/",
+            "potentialAction": {
+                "@type": "SearchAction",
+                "target": "https://purechecker.com/?s={search_term_string}",
+                "query-input": "required name=search_term_string"
+                }
+                }
+                `}
+                </script>
+                {/* Schema end */}
+            </Helmet>
+           
             {/* hero section start */}
-            <div className='bg-green-600'>
-                <div className='bg-primary min-h-screen heroClip pb-28'>
+            <div className='bg-[#030832]'>
+                <div className='bg-[#229cc5] min-h-screen heroClip pb-28'>
                     <div className='container mx-auto pt-5 md:pt-10'>
                         <div className='flex items-center justify-center min-h-[40vh] m-3 md:m-0'>
                             <div className='bg-secondary p-3 md:p-5'>
@@ -53,9 +89,9 @@ const Home = () => {
                                             <IoMdClose className=' text-white text-5xl' />
                                         </div>
                                         <img src='./favicon.png' alt='' className='h-16 md:h-20' />
-                                        <h3 className='text-xl md:text-2xl font-bold text-accent'>
+                                        <h1 className='text-xl md:text-2xl font-bold text-accent'>
                                             Pure Checker
-                                        </h3>
+                                        </h1>
                                         <h5 className='py-5 font-medium text-gray-600'>
                                             Best for small businesses and startups
                                         </h5>
@@ -174,7 +210,7 @@ const Home = () => {
                                 </ul>
                             </div>
                             <div className='mt-8 md:mt-0 col-span-1 md:col-span-5'>
-                                <img src='./screen4.png' alt='' />
+                                <img src='./screen4.png' title='dashboard | pure checker' alt='dashboard | pure checker' />
                             </div>
                         </div>
                     </div>
@@ -183,14 +219,14 @@ const Home = () => {
             {/* hero section end */}
 
             {/* why should use section start */}
-            <div className=' bg-green-600 text-secondary px-3 py-16 pb-40 reClip relative -top-1'>
+            <div className=' bg-[#030832] text-secondary px-3 py-16 pb-40 reClip relative -top-1'>
                 <h1 className='text-center text-2xl md:text-5xl font-bold'>
                     Why you should give a f@#k
                 </h1>
 
                 <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-14 md:gap-6 container mx-auto mt-20'>
                     <div className='flex flex-col items-center gap-8'>
-                        <img src='./saving.png' alt='' className='h-24' />
+                        <img src='./saving.png' title='Save money on email marketing' alt='Save money on email marketing' className='h-24' />
                         <h3 className='self-start text-3xl font-bold'>
                             Save money on email marketing
                         </h3>
@@ -200,7 +236,7 @@ const Home = () => {
                         </p>
                     </div>
                     <div className='flex flex-col items-center gap-8'>
-                        <img src='./increase.png' alt='' className='h-20' />
+                        <img src='./increase.png' alt=' Increase ROI of your email campaigns' title=' Increase ROI of your email campaigns' className='h-20' />
 
                         <h3 className='self-start text-3xl font-bold'>
                             Increase ROI of your email campaigns
@@ -211,7 +247,7 @@ const Home = () => {
                         </p>
                     </div>
                     <div className='flex flex-col items-center gap-8'>
-                        <img src='./shield.png' alt='' className='h-20' />
+                        <img src='./shield.png' alt='Protect your domain reputation score' title='Protect your domain reputation score' className='h-20' />
                         <h3 className='self-start text-3xl font-bold'>
                             Protect your domain reputation score
                         </h3>
@@ -242,9 +278,9 @@ const Home = () => {
                     className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-8 lg:gap-10 mt-8 md:mt-16'
                 >
                     <div>
-                        <h2 className='text-xl md:text-2xl lg:text-3xl font-bold pb-2 md:pb-3 text-primary'>
+                        <h1 className='text-xl md:text-2xl lg:text-3xl font-bold pb-2 md:pb-3 text-primary'>
                             Syntax and Format Check
-                        </h2>
+                        </h1>
                         <p className='text-md mt-2 text-gray-700'>
                             We start by examining the syntax of each email address to ensure
                             it complies with standard email formatting rules. This includes
@@ -253,9 +289,9 @@ const Home = () => {
                         </p>
                     </div>
                     <div>
-                        <h2 className='text-xl md:text-2xl lg:text-3xl font-bold pb-2 md:pb-3 text-primary'>
+                        <h1 className='text-xl md:text-2xl lg:text-3xl font-bold pb-2 md:pb-3 text-primary'>
                             Domain Validation
-                        </h2>
+                        </h1>
                         <p className='text-md mt-2 text-gray-700'>
                             Next, we verify the domain of the email address. This involves
                             checking the DNS records to confirm that the domain exists and is
@@ -263,9 +299,9 @@ const Home = () => {
                         </p>
                     </div>
                     <div>
-                        <h2 className='text-xl md:text-2xl lg:text-3xl font-bold pb-2 md:pb-3 text-primary'>
+                        <h1 className='text-xl md:text-2xl lg:text-3xl font-bold pb-2 md:pb-3 text-primary'>
                             MX Record Verification
-                        </h2>
+                        </h1>
                         <p className='text-md mt-2 text-gray-700'>
                             We then check the Mail Exchange (MX) records of the domain. MX
                             records indicate which mail servers are responsible for receiving
@@ -274,9 +310,9 @@ const Home = () => {
                         </p>
                     </div>
                     <div>
-                        <h2 className='text-xl md:text-2xl lg:text-3xl font-bold pb-2 md:pb-3 text-primary'>
+                        <h1 className='text-xl md:text-2xl lg:text-3xl font-bold pb-2 md:pb-3 text-primary'>
                             SMTP Protocol Check
-                        </h2>
+                        </h1>
                         <p className='text-md mt-2 text-gray-700'>
                             Our system connects to the mail server via SMTP to verify the
                             existence of the email address. This involves simulating an email
@@ -285,9 +321,9 @@ const Home = () => {
                         </p>
                     </div>
                     <div>
-                        <h2 className='text-xl md:text-2xl lg:text-3xl font-bold pb-2 md:pb-3 text-primary'>
+                        <h1 className='text-xl md:text-2xl lg:text-3xl font-bold pb-2 md:pb-3 text-primary'>
                             Mailbox Validation
-                        </h2>
+                        </h1>
                         <p className='text-md mt-2 text-gray-700'>
                             We go a step further to verify the existence of the mailbox. This
                             helps in determining if the specific email address exists on the
@@ -295,9 +331,9 @@ const Home = () => {
                         </p>
                     </div>
                     <div>
-                        <h2 className='text-xl md:text-2xl lg:text-3xl font-bold pb-2 md:pb-3 text-primary'>
+                        <h1 className='text-xl md:text-2xl lg:text-3xl font-bold pb-2 md:pb-3 text-primary'>
                             Catch-All Domain Detection
-                        </h2>
+                        </h1>
                         <p className='text-md mt-2 text-gray-700'>
                             Some domains are configured to accept all emails sent to them,
                             regardless of the username. We identify such catch-all domains to
@@ -305,9 +341,9 @@ const Home = () => {
                         </p>
                     </div>
                     <div>
-                        <h2 className='text-xl md:text-2xl lg:text-3xl font-bold pb-2 md:pb-3 text-primary'>
+                        <h1 className='text-xl md:text-2xl lg:text-3xl font-bold pb-2 md:pb-3 text-primary'>
                             Role-Based Email Detection
-                        </h2>
+                        </h1>
                         <p className='text-md mt-2 text-gray-700'>
                             Our system identifies role-based emails (e.g., info@, admin@) that
                             are typically used for general inquiries or administrative
@@ -315,9 +351,9 @@ const Home = () => {
                         </p>
                     </div>
                     <div>
-                        <h2 className='text-xl md:text-2xl lg:text-3xl font-bold pb-2 md:pb-3 text-primary'>
+                        <h1 className='text-xl md:text-2xl lg:text-3xl font-bold pb-2 md:pb-3 text-primary'>
                             Spam Trap Detection
-                        </h2>
+                        </h1>
                         <p className='text-md mt-2 text-gray-700'>
                             We identify known spam traps to prevent your emails from being
                             flagged as spam. Spam traps are email addresses used by ISPs and
@@ -326,9 +362,9 @@ const Home = () => {
                         </p>
                     </div>
                     <div>
-                        <h2 className='text-xl md:text-2xl lg:text-3xl font-bold pb-2 md:pb-3 text-primary'>
+                        <h1 className='text-xl md:text-2xl lg:text-3xl font-bold pb-2 md:pb-3 text-primary'>
                             Greylisting and Temporary Issues Handling
-                        </h2>
+                        </h1>
                         <p className='text-md mt-2 text-gray-700'>
                             Our verification process also accounts for temporary issues such
                             as greylisting, where the mail server temporarily rejects an
@@ -337,9 +373,9 @@ const Home = () => {
                         </p>
                     </div>
                     <div>
-                        <h2 className='text-xl md:text-2xl lg:text-3xl font-bold pb-2 md:pb-3 text-primary'>
+                        <h1 className='text-xl md:text-2xl lg:text-3xl font-bold pb-2 md:pb-3 text-primary'>
                             Phone Verification (if required)
-                        </h2>
+                        </h1>
                         <p className='text-md mt-2 text-gray-700'>
                             For certain emails, additional verification steps such as phone
                             verification might be necessary. We flag these emails for further
@@ -371,7 +407,7 @@ const Home = () => {
             {/* email verification api section start */}
             <div className='container mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 px-3 items-center py-20 pt-10'>
                 <div>
-                    <img src='./api.png' alt='' />
+                    <img src='./api.png' title='Pure Checker Api' alt='Pure Checker Api' />
                 </div>
                 <div>
                     <h4 className='text-2xl font-bold text-primary mb-8'>
@@ -401,9 +437,8 @@ const Home = () => {
             {/* email verification api section end */}
 
             {/* pricing section start */}
-
             <section className='container mx-auto'>
-                <img src='./favicon.png' alt='' className='h-20 mx-auto mb-2' />
+                <img src='./favicon.png' alt='favicon' title='favicon' className='h-20 mx-auto mb-2' />
                 <h1 className='text-2xl font-bold text-center'>Go Premium!</h1>
                 <ul className='flex flex-wrap items-center justify-center gap-1 md:gap-8 my-3 md:my-5'>
                     <li className='flex items-center gap-2'>
@@ -426,7 +461,6 @@ const Home = () => {
 
                 <Plans />
             </section>
-
             {/* pricing section end */}
 
             {/* carousel sections start */}

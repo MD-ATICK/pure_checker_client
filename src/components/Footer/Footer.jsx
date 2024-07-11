@@ -1,22 +1,14 @@
 import React from "react";
-import { checkerApi } from "../../api/Api";
 import { Link } from "react-router-dom";
 
 function Footer() {
-	const apiBulkCheck = async () => {
-		const { status, data } = await checkerApi.post(
-			"/check/bulk?key=6672836ec7e53bd1b34ea5e0",
-			["atick@gmail.com", "hasib@yahoo.com"],
-		);
 
-		console.table(data);
-	};
 
 	return (
 		<footer className='bg-primary py-20 text-secondary'>
 			<div className='container mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-10 px-5'>
 				<div className="col-span-2">
-					<img src='./3.jpg' alt='' className='w-60' />
+					<img src='./3.jpg' alt='Pure Checker' title="Pure Checker" className='w-60' />
 					<h3 className='py-5 text-2xl font-bold'>contact@purechecker.com</h3>
 					<p>
 						Get rid of spam traps, hard bounces, disposable or catch-all emails.

@@ -4,12 +4,13 @@ import { IoMdInformationCircle } from "react-icons/io";
 import { Link, useNavigate } from "react-router-dom";
 import { PulseLoader } from "react-spinners";
 import { useUserContext } from "../context/Context";
+import UseHelmet from "../utils/UseHelmet";
 
 function Register() {
 	const [regisData, setRegisData] = useState({
-		name: "user",
-		email: "user@gmail.com",
-		password: "user",
+		name: "",
+		email: "",
+		password: "",
 	});
 	const navigate = useNavigate();
 	const { register, handleGoogleAuthLogin, mailSentTab, setMailSentTab, registerLoading } = useUserContext();
@@ -58,6 +59,7 @@ function Register() {
 
 	return (
 		<>
+		<UseHelmet param={'register'} title={'Register for Pure Checker | Email Validation Services'} description={' Sign up for Pure Checker to start using our email validation, existence check, and disposable email detection services. Create your account securely.'} />
 			{
 				mailSentTab ?
 					<div className=" text-center py-10">

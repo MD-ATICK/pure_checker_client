@@ -26,13 +26,13 @@ function Navbar() {
 
 			{/* separate  */}
 
-			<div className='bg-primary px-3 md:px-0'>
+			<div className='bg-[#229cc5] px-3 md:px-0'>
 				<div className='container mx-auto flex items-center justify-between py-8 relative'>
 					<div className='flex items-center gap-10'>
-						<Link to={'/'}>
-						<img src='./10.png' alt='' className='h-12 bg-white p-2' />
+						<Link to={'/'} className=" flex items-center">
+							<img src='./favicon.png' className='h-12 md:h-14' loading="lazy" title="pure checker" alt='pure checker' />
 						</Link>
-						<ul className='hidden md:flex items-center gap-5 text-secondary font-[500]'>
+						<ul className='hidden md:flex items-center gap-5 text-[#ffffff] font-[500]'>
 							{navLists &&
 								navLists?.map((nav) => {
 									if (nav?.name === navLists[1].name || nav?.name === navLists[7]?.name) {

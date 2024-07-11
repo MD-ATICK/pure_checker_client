@@ -3,6 +3,7 @@ import { IoMdInformationCircleOutline } from "react-icons/io"
 import { Link, useParams } from "react-router-dom"
 import { PulseLoader } from "react-spinners"
 import { userApi } from "../api/Api"
+import UseHelmet from "../utils/UseHelmet"
 
 function ForgetPassword() {
 
@@ -33,6 +34,7 @@ function ForgetPassword() {
 
     return (
         <>
+        <UseHelmet param={'forget-password'} title={'Forgot Password | Pure Checker'} description={'Recover your Pure Checker account password securely. Follow the steps to reset your password and regain access to your account.'} />
             {
                 successModel ?
                     <div className=" h-screen w-full flex justify-center items-center flex-col text-center">
@@ -46,15 +48,17 @@ function ForgetPassword() {
                                 <img
                                     className='mx-auto h-10 w-auto'
                                     src='/3.jpg'
-                                    alt='Your Company'
+                                    loading="lazy"
+                                    title="Forget Password"
+                                    alt='Forget Password'
                                 />
                             </Link>
-                            <h2 className='mt-10 text-center text-3xl font-bold leading-9 tracking-tight text-gray-900'>
+                            <h1 className='mt-10 text-center text-3xl font-bold leading-9 tracking-tight text-gray-900'>
                                 Change Password!
-                            </h2>
+                            </h1>
                         </div>
                         <div className='mt-10 sm:mx-auto sm:w-full sm:max-w-sm'>
-                            <form className='space-y-6'  onSubmit={changePassword} method='POST'>
+                            <form className='space-y-6' onSubmit={changePassword} method='POST'>
                                 <div>
                                     <label
                                         htmlFor='password'

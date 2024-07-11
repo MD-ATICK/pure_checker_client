@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { SyncLoader } from "react-spinners";
 import { postApi, redToast, url } from "../api/Api";
+import UseHelmet from "../utils/UseHelmet";
 
 const SingleBlog = () => {
 
@@ -38,6 +39,7 @@ const SingleBlog = () => {
 
 			{blog &&
 				<>
+					<UseHelmet param={`blogs/${blog?._id}`} title={blog?.title} description={blog?.description} />
 					<div className={`${similarBlogs.length === 0 ? "col-span-3" : 'col-span-2'}`}>
 						<div className="mb-10">
 							<img

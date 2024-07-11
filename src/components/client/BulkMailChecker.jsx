@@ -1,15 +1,13 @@
-import { Button, IconButton, Menu, MenuButton, MenuItem, MenuList, Select, Textarea, filter } from "@chakra-ui/react";
-import React, { useEffect, useState } from "react";
-import { IoSave } from "react-icons/io5";
-import { MdOutlineDocumentScanner, MdOutlineFilePresent } from "react-icons/md";
-import { createPDF, downloadCSV, downloadXLSX } from "../../utils/Utils";
-import { useUserContext } from "../../context/Context";
-import { useNavigate } from "react-router-dom";
+import { Button, Menu, MenuButton, MenuItem, MenuList, Select, Textarea } from "@chakra-ui/react";
 import * as Papa from 'papaparse'; // For CSV parsing
-import * as XLSX from 'xlsx'
+import React, { useEffect, useState } from "react";
+import { IoIosArrowDown } from 'react-icons/io';
+import { MdOutlineDocumentScanner, MdOutlineFilePresent } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
+import * as XLSX from 'xlsx';
 import { checkerApi, redToast } from "../../api/Api";
-import { IoIosArrowDown } from 'react-icons/io'
-import { FaFileDownload } from "react-icons/fa";
+import { useUserContext } from "../../context/Context";
+import { createPDF, downloadCSV, downloadXLSX } from "../../utils/Utils";
 
 const BulkMailChecker = ({ title }) => {
 
@@ -236,11 +234,11 @@ const BulkMailChecker = ({ title }) => {
 					<br />
 
 					<h2 className='text-3xl font-bold mb-4'>
-						How to Use Ychecker's Bulk Email Checker
+						How to Use Ychecker is Bulk Email Checker
 					</h2>
 
 					<p className='text-gray-700'>
-						Never waste time with undeliverable emails again! Ychecker's bulk email
+						Never waste time with undeliverable emails again! Ychecker is bulk email
 						checker helps you validate a large list of email addresses in seconds.
 					</p>
 
@@ -264,9 +262,9 @@ const BulkMailChecker = ({ title }) => {
 					</h3>
 
 					<ol className='list-decimal pl-4 space-y-2 ml-10'>
-						<li className='text-gray-700'>Click on the "Attach File" button.</li>
+						<li className='text-gray-700'>Click on the *Attach File* button.</li>
 						<li className='text-gray-700'>
-							Select the text file from your device and click "Open".
+							Select the text file from your device and click *Open*.
 						</li>
 						<li className='text-gray-700'>
 							The contents of the text file will be automatically displayed in the
@@ -279,7 +277,7 @@ const BulkMailChecker = ({ title }) => {
 					</h3>
 
 					<p className='text-gray-700'>
-						Once you have entered or uploaded your email list, click on the "Verify"
+						Once you have entered or uploaded your email list, click on the *Verify*
 						button to initiate the bulk email verification process. Ychecker will
 						check each email address individually and provide real-time results.
 					</p>
@@ -299,7 +297,7 @@ const BulkMailChecker = ({ title }) => {
 							dropdown menu.
 						</li>
 						<li className='text-gray-700'>
-							Click on the "Copy" button to easily copy the filtered email addresses
+							Click on the *Copy* button to easily copy the filtered email addresses
 							to your clipboard.
 						</li>
 					</ul>

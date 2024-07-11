@@ -1,4 +1,5 @@
 import React from "react";
+import UseHelmet from "../utils/UseHelmet";
 
 const Faqs = () => {
 	const faqs = [
@@ -91,6 +92,7 @@ const Faqs = () => {
 
 	return (
 		<section>
+			<UseHelmet title={'FAQs - PureChecker | Frequently Asked Questions about Gmail Validation'} param={'faqs'} description={'Find answers to common questions about PureChecker is Gmail Validation service. Learn how to use our tool to check if Gmail addresses are disposable, exist, or are valid, and get detailed information on our features and functionalities.'}/>
 			<div className='bg-primary themeClip h-[300px]'>
 				<div className='container mx-auto flex flex-col text-center items-center justify-center h-[80%]'>
 					<h1 className=' text-4xl md:text-5xl font-extrabold text-secondary'>

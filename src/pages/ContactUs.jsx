@@ -12,9 +12,10 @@ import React, { useState } from "react";
 import { FaWhatsapp } from "react-icons/fa";
 import { MdEmail, MdLocationOn } from "react-icons/md";
 import { Link, useNavigate } from "react-router-dom";
-import { greenToast, postApi, redToast, userApi } from "../api/Api";
+import { greenToast, redToast, userApi } from "../api/Api";
 
-import { SyncLoader } from 'react-spinners'
+import { SyncLoader } from 'react-spinners';
+import UseHelmet from "../utils/UseHelmet";
 
 const ContactUs = () => {
 
@@ -38,13 +39,11 @@ const ContactUs = () => {
 		}
 	}
 
-	const orderHandle = async () => {
-		const { data, status } = await postApi.get('/order', { withCredentials: true })
-	}
 
 
 	return (
 		<section>
+			<UseHelmet param={'contact-us'} title={'Contact Us - PureChecker | Get in Touch for Gmail Validation Support'} description={'Reach out to PureChecker for any questions or support regarding our Gmail Validation service. Contact us for assistance, feedback, or inquiries about our features and integrations.'} />
 			<div className='bg-primary themeClip h-[300px]'>
 				<div className='container px-3 mx-auto flex flex-col text-center items-center justify-center h-[80%]'>
 					<h1 className='text-5xl font-extrabold text-secondary'>Contact Us</h1>

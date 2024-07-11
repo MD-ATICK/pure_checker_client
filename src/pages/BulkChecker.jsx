@@ -1,12 +1,6 @@
-import axios from 'axios'
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { checkerApi, redToast } from '../api/Api'
-import { useUserContext } from '../context/Context'
-import * as Papa from 'papaparse'; // For CSV parsing
-import * as XLSX from 'xlsx'
-import countGmailOccurrences, { createPDF, downloadCSV, downloadXLSX } from '../utils/Utils'
 import BulkMailChecker from '../components/client/BulkMailChecker'
+import { useUserContext } from '../context/Context'
 
 
 function BulkChecker() {
@@ -24,7 +18,7 @@ function BulkChecker() {
         <>
             {
                 user &&
-                <BulkMailChecker oldBulk={oldBulk} setOldBulk={setOldBulk} setResult={setResult} result={result} loading={loading} bulk={bulk} setBulk={setBulk} BulkCheckSubmit={BulkCheckSubmit} handleFileUpload={handleFileUpload} />
+                <BulkMailChecker oldBulk={oldBulk} setLoading={setLoading} setOldBulk={setOldBulk} setResult={setResult} result={result} loading={loading} bulk={bulk} setBulk={setBulk} />
             }
         </>
     )

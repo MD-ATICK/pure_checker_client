@@ -1,11 +1,12 @@
-import { AbsoluteCenter, Box, Divider, Input } from "@chakra-ui/react";
 import React from "react";
 import { FaCheckCircle } from "react-icons/fa";
 import Plans from "../components/client/Plans";
+import UseHelmet from "../utils/UseHelmet";
 
 const Pricing = () => {
 	return (
 		<section className='container mx-auto'>
+			<UseHelmet title={'Buy plan in your own choice.'} param={'pricing'} description={'You are always available to provide extra service to our customers. so for that we enhance this pricing.'} />
 			<img src='./favicon.png' alt='' className='h-20 mx-auto mb-2' />
 			<h1 className='text-2xl font-bold text-center'>Go Premium!</h1>
 			<ul className='flex flex-wrap items-center justify-center gap-1 md:gap-5 my-3 md:my-5'>

@@ -83,9 +83,9 @@ const Makers = () => {
 				<br />
 				<br />
 
-				<h2 className='text-3xl font-bold mb-4'>
+				<h1 className='text-3xl font-bold mb-4'>
 					How to Use Ychecker's Bulk Email Checker
-				</h2>
+				</h1>
 
 				<p className='text-gray-700'>
 					Never waste time with undeliverable emails again! Ychecker's bulk
@@ -93,9 +93,9 @@ const Makers = () => {
 					seconds.
 				</p>
 
-				<h3 className='text-xl font-medium mb-2 mt-5'>
+				<h2 className='text-xl font-medium mb-2 mt-5'>
 					Input Email Addresses:
-				</h3>
+				</h2>
 
 				<ul className='list-disc pl-4 space-y-2 ml-10'>
 					<li className='text-gray-700'>
@@ -111,9 +111,9 @@ const Makers = () => {
 					</li>
 				</ul>
 
-				<h3 className='text-xl font-medium mb-2 mt-5'>
+				<h2 className='text-xl font-medium mb-2 mt-5'>
 					Upload Text File (Optional):
-				</h3>
+				</h2>
 
 				<ol className='list-decimal pl-4 space-y-2 ml-10'>
 					<li className='text-gray-700'>Click on the "Attach File" button.</li>
@@ -126,9 +126,9 @@ const Makers = () => {
 					</li>
 				</ol>
 
-				<h3 className='text-xl font-medium mb-2 mt-5'>
+				<h2 className='text-xl font-medium mb-2 mt-5'>
 					Start the Verification Process:
-				</h3>
+				</h2>
 
 				<p className='text-gray-700'>
 					Once you have entered or uploaded your email list, click on the
@@ -137,9 +137,9 @@ const Makers = () => {
 					real-time results.
 				</p>
 
-				<h3 className='text-xl font-medium mb-2 mt-5'>
+				<h2 className='text-xl font-medium mb-2 mt-5'>
 					Filter and Copy Results:
-				</h3>
+				</h2>
 
 				<p className='text-gray-700'>
 					After the verification process is complete, you can filter the results
@@ -167,31 +167,31 @@ const Makers = () => {
 
 				<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-14 md:gap-6 container mx-auto mt-10'>
 					<div className='flex flex-col items-center gap-5'>
-						<img src='./save-money.svg' alt='' className='h-20' />
-						<h3 className='self-start text-3xl font-bold'>
+						<img src='./save-money.svg' alt='Save money on email marketing' title="Save money on email marketing" className='h-20' />
+						<h2 className='self-start text-3xl font-bold'>
 							Save money on email marketing
-						</h3>
+						</h2>
 						<p>
 							Increase the sender reputation, deliverability & conversion rate
 							of your emails by sending them only to real people.
 						</p>
 					</div>
 					<div className='flex flex-col items-center gap-5'>
-						<img src='./increase-roi.svg' alt='' className='h-20' />
+						<img src='./increase-roi.svg' alt='Increase ROI of your email campaigns' title="Increase ROI of your email campaigns" className='h-20' />
 
-						<h3 className='self-start text-3xl font-bold'>
+						<h2 className='self-start text-3xl font-bold'>
 							Increase ROI of your email campaigns
-						</h3>
+						</h2>
 						<p>
 							Stop spending money on spammy email addresses. Spend less by
 							sending fewer emails thanks to the verified email list.
 						</p>
 					</div>
 					<div className='flex flex-col items-center gap-5'>
-						<img src='./protect.svg' alt='' className='h-20' />
-						<h3 className='self-start text-3xl font-bold'>
+						<img src='./protect.svg' title="Protect your domain reputation score" alt='Protect your domain reputation score' className='h-20' />
+						<h2 className='self-start text-3xl font-bold'>
 							Protect your domain reputation score
-						</h3>
+						</h2>
 						<p>
 							Spam traps and hard bounces kill your reputation. Get rid of them
 							so your emails don't end up in spam folders anymore.
@@ -209,72 +209,72 @@ const Makers = () => {
 
 				<div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-5 lg:gap-10 mt-8 md:mt-16'>
 					<div>
-						<h2 className='text-xl md:text-2xl lg:text-3xl font-bold pb-2 md:pb-3 text-primary'>
+						<h1 className='text-xl md:text-2xl lg:text-3xl font-bold pb-2 md:pb-3 text-primary'>
 							Domain & SMTP validation
-						</h2>
+						</h1>
 						<p className='text-lg text-gray-700'>
 							We check the ISPs and remove all emails with invalid, inactive,
 							parked domains or invalid accounts.
 						</p>
 					</div>
 					<div>
-						<h2 className='text-xl md:text-2xl lg:text-3xl font-bold pb-2 md:pb-3 text-primary'>
+						<h1 className='text-xl md:text-2xl lg:text-3xl font-bold pb-2 md:pb-3 text-primary'>
 							Domain & SMTP validation
-						</h2>
+						</h1>
 						<p className='text-lg text-gray-700'>
 							We check the ISPs and remove all emails with invalid, inactive,
 							parked domains or invalid accounts.
 						</p>
 					</div>
 					<div>
-						<h2 className='text-xl md:text-2xl lg:text-3xl font-bold pb-2 md:pb-3 text-primary'>
+						<h1 className='text-xl md:text-2xl lg:text-3xl font-bold pb-2 md:pb-3 text-primary'>
 							Domain & SMTP validation
-						</h2>
+						</h1>
 						<p className='text-lg text-gray-700'>
 							We check the ISPs and remove all emails with invalid, inactive,
 							parked domains or invalid accounts.
 						</p>
 					</div>
 					<div>
-						<h2 className='text-xl md:text-2xl lg:text-3xl font-bold pb-2 md:pb-3 text-primary'>
+						<h1 className='text-xl md:text-2xl lg:text-3xl font-bold pb-2 md:pb-3 text-primary'>
 							Domain & SMTP validation
-						</h2>
+						</h1>
 						<p className='text-lg text-gray-700'>
 							We check the ISPs and remove all emails with invalid, inactive,
 							parked domains or invalid accounts.
 						</p>
 					</div>
 					<div>
-						<h2 className='text-xl md:text-2xl lg:text-3xl font-bold pb-2 md:pb-3 text-primary'>
+						<h1 className='text-xl md:text-2xl lg:text-3xl font-bold pb-2 md:pb-3 text-primary'>
 							Domain & SMTP validation
-						</h2>
+						</h1>
 						<p className='text-lg text-gray-700'>
 							We check the ISPs and remove all emails with invalid, inactive,
 							parked domains or invalid accounts.
 						</p>
 					</div>
 					<div>
-						<h2 className='text-xl md:text-2xl lg:text-3xl font-bold pb-2 md:pb-3 text-primary'>
+						<h1 className='text-xl md:text-2xl lg:text-3xl font-bold pb-2 md:pb-3 text-primary'>
 							Domain & SMTP validation
-						</h2>
+						</h1>
 						<p className='text-lg text-gray-700'>
 							We check the ISPs and remove all emails with invalid, inactive,
 							parked domains or invalid accounts.
 						</p>
 					</div>
 					<div>
-						<h2 className='text-xl md:text-2xl lg:text-3xl font-bold pb-2 md:pb-3 text-primary'>
+						<h1 className='text-xl md:text-2xl lg:text-3xl font-bold pb-2 md:pb-3 text-primary'>
 							Domain & SMTP validation
-						</h2>
+						</h1>
 						<p className='text-lg text-gray-700'>
 							We check the ISPs and remove all emails with invalid, inactive,
 							parked domains or invalid accounts.
 						</p>
 					</div>
 					<div>
-						<h2 className='text-xl md:text-2xl lg:text-3xl font-bold pb-2 md:pb-3 text-primary'>
+						<h1 className='text-xl md:text-2xl lg:text-3xl font-bold pb-2 md:pb-3 text-primary'>
 							Domain & SMTP validation
-						</h2>
+						</h1>
 						<p className='text-lg text-gray-700'>
 							We check the ISPs and remove all emails with invalid, inactive,
 							parked domains or invalid accounts.

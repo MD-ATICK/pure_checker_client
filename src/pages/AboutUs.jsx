@@ -1,9 +1,10 @@
 import React from "react";
-import { Box, Flex, Heading, Text, VStack, Icon } from "@chakra-ui/react";
-import { FaCheckCircle } from "react-icons/fa";
+import UseHelmet from "../utils/UseHelmet";
 
 const AboutUs = () => {
 	return (
+		<>
+		<UseHelmet param={'about-us'} title={'About Us - PureChecker | Learn More About Our Gmail Validation Service'} description={'Discover the story behind PureChecker and learn more about our mission to provide accurate and reliable Gmail validation. Find out who we are, what we do, and why we are committed to ensuring email validity.'} />
 		<section>
 			<div className='bg-primary themeClip h-[300px]'>
 				<div className='container mx-auto flex flex-col text-center items-center justify-center h-[80%]'>
@@ -24,7 +25,7 @@ const AboutUs = () => {
 					At Pure Checker, we aim to provide top-notch email verification
 					services that help businesses maintain clean and effective email
 					lists. We understand the importance of accurate email communications
-					in today's digital world, and we're dedicated to helping you achieve
+					in today is digital world, and we are dedicated to helping you achieve
 					the highest level of email deliverability and performance.
 				</p>
 				<h3 className='text-xl font-bold pt-3'>Who We Are</h3>
@@ -39,7 +40,7 @@ const AboutUs = () => {
 					Pure Checker is a verification service that checks email addresses
 					against multiple criteria to ensure they are valid, active, and safe.
 					We aim to reduce bounce rates, improve email deliverability, and
-					enhance your email marketing strategy. Whether you're a small
+					enhance your email marketing strategy. Whether you are a small
 					business, a large enterprise, or an individual, Pure Checker has the
 					tools and expertise to meet your needs.
 				</p>
@@ -78,6 +79,7 @@ const AboutUs = () => {
 				</p>
 			</div>
 		</section>
+		</>
 	);
 };
 

@@ -1,20 +1,17 @@
 import { Center } from '@chakra-ui/react'
 import React from 'react'
+import UseHelmet from '../utils/UseHelmet'
 
 function Policy() {
     return (
+        <>
+        <UseHelmet param={'privacy-policy'} title={'Privacy Policy - PureChecker | Your Privacy Matters'} description={'Read PureChecker is Privacy Policy to understand how we collect, use, and protect your personal information. Learn about our commitment to maintaining your privacy and ensuring the security of your data.'} />
         <section>
             <div className='bg-primary themeClip h-[300px]'>
                 <div className='container mx-auto flex flex-col text-center items-center justify-center h-[80%]'>
                     <h1 className='text-5xl font-extrabold text-secondary'>
                         Privacy Policy
                     </h1>
-                    {/* <p className='text-secondary mt-5'>
-Welcome to the Pure Checker FAQ page. Here you’ll find answers to
-some of the most common questions we receive. If you have a question
-that’s not addressed here, feel free to contact us at
-support@purechecker.com.
-</p> */}
                 </div>
             </div>
 
@@ -149,6 +146,7 @@ support@purechecker.com.
                 </ul>
             </div>
         </section>
+        </>
     )
 }
 

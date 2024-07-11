@@ -1,11 +1,11 @@
 import { AbsoluteCenter, Box, Button, Divider, Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react";
+import moment from 'moment';
 import { useEffect, useState } from "react";
+import { IoMdArrowDown } from 'react-icons/io';
+import { SiBinance } from 'react-icons/si';
 import { useNavigate } from "react-router-dom";
 import { greenToast, redToast, userApi } from "../../api/Api";
 import { useUserContext } from "../../context/Context";
-import { IoMdArrowDown } from 'react-icons/io';
-import { SiBinance } from 'react-icons/si'
-import moment from 'moment'
 
 const Plans = () => {
 
@@ -178,7 +178,8 @@ const Plans = () => {
 									<MenuItem onClick={() => buyPlan('payAsGo')} alignItems={"center"} gap={"5px"}>
 										<img
 											src='https://sslcommerz.com/wp-content/uploads/2020/03/favicon.png'
-											alt=''
+											alt='SSLCOMMERZ Pay'
+											title="SSLCOMMERZ Pay"
 											className='w-5'
 										/>
 										SSLCOMMERZ Pay
@@ -297,7 +298,8 @@ const Plans = () => {
 									<MenuItem onClick={() => buyPlan('subscription')} alignItems={"center"} gap={"5px"}>
 										<img
 											src='https://sslcommerz.com/wp-content/uploads/2020/03/favicon.png'
-											alt=''
+											alt='SSLCOMMERZ Pay'
+											title="SSLCOMMERZ Pay"
 											className='w-5'
 										/>
 										SSLCOMMERZ Pay

@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
-import { useParams, useSearchParams } from 'react-router-dom';
-import { greenToast, redToast, userApi } from '../api/Api';
-import { useUserContext } from '../context/Context';
+import { useParams } from 'react-router-dom';
 import { SyncLoader } from 'react-spinners';
+import { userApi } from '../api/Api';
+import { useUserContext } from '../context/Context';
+import UseHelmet from '../utils/UseHelmet';
 
 function EmailValidation() {
 
@@ -36,6 +37,7 @@ function EmailValidation() {
     }, []);
     return (
         <div className=' p-10 h-screen w-full flex text-center justify-center items-center'>
+            <UseHelmet param={'email-validation'} title={'Email Validation Services | Pure Checker'} description={'Utilize Pure Checker is email validation services to verify email addresses, check existence, detect disposable emails, and ensure data accuracy.'} />
             {
                 status === 'loading' &&
                 <SyncLoader /> || status === 'failed' &&

@@ -1,13 +1,14 @@
 import moment from 'moment';
 import React from 'react';
 import { BsEnvelopeCheckFill } from "react-icons/bs";
-import { FaChartArea } from 'react-icons/fa';
+import { FaChartArea, FaUsers } from 'react-icons/fa';
 import { IoMdPricetags, IoMdSettings } from 'react-icons/io';
-import { MdDashboard } from 'react-icons/md';
+import { MdDashboard, MdFindInPage } from 'react-icons/md';
 import { TbApi } from "react-icons/tb";
 import { Link, NavLink } from 'react-router-dom';
 import { useUserContext } from '../../context/Context';
-
+import { GrHostMaintenance } from 'react-icons/gr'
+import { VscListOrdered } from 'react-icons/vsc'
 
 
 function SideBar() {
@@ -21,20 +22,26 @@ function SideBar() {
     const daysDifference = user?.subscription && date1.diff(date2, 'days');
     return (
         <>
-            <div className=' w-[13vw] flex flex-col  gay-3 md:hidden bg-primary text-center text-white py-5 rounded-r-lg h-screen'>
+            <div className=' w-[13vw] flex flex-col  gay-3 md:hidden bg-[#030832] text-center text-white py-5 rounded-r-lg h-screen'>
                 <Link to={'/'} className=' mb-16 mt-4 w-full flex items-end gap-x-2 px-[4px]'>
                     <div className=' bg-white py-2 rounded-lg w-full'>
                         <img src='/10.png' alt='' className='h-8 aspect-square bg-white w-full object-contain p-[3px]' />
                     </div>
                 </Link>
                 {
-                    user && user.role === 'admin' ?
+                    user && user?.role === 'admin' ?
                         <div className='sidebar flex flex-col py-10 w-full '>
-                            <NavLink className='  duration-500 hover:scale-105 py-6 border-y-2 border-blue-400 flex justify-center item-center text-2xl font-bold' to='/admin/dashboard' ><MdDashboard />
+                            <NavLink className='  duration-500 hover:scale-105 py-5 border-y-2 border-blue-400 flex justify-center item-center text-2xl font-bold' to='/admin/dashboard' ><MdDashboard />
                             </NavLink>
-                            <NavLink className=' duration-500 hover:scale-105 py-6 border-b-2 border-blue-400 flex justify-center item-center text-2xl font-bold' to='/admin/pricing' ><IoMdPricetags />
+                            <NavLink className=' duration-500 hover:scale-105 py-5 border-b-2 border-blue-400 flex justify-center item-center text-2xl font-bold' to='/admin/pricing' ><IoMdPricetags />
                             </NavLink>
-                            <NavLink className=' duration-500 hover:scale-105 py-6 border-b-2 border-blue-400 flex justify-center item-center text-2xl font-bold' to='/user/settings' ><IoMdSettings />
+                            <NavLink className=' duration-500 hover:scale-105 py-5 border-b-2 border-blue-400 flex justify-center item-center text-2xl font-bold' to='/admin/maintenance' ><GrHostMaintenance />
+                            </NavLink>
+                            <NavLink className=' duration-500 hover:scale-105 py-5 border-b-2 border-blue-400 flex justify-center item-center text-2xl font-bold' to='/admin/blogs' ><MdFindInPage />
+                            </NavLink>
+                            <NavLink className=' duration-500 hover:scale-105 py-5 border-b-2 border-blue-400 flex justify-center item-center text-2xl font-bold' to='/admin/users' ><FaUsers />
+                            </NavLink>
+                            <NavLink className=' duration-500 hover:scale-105 py-5 border-b-2 border-blue-400 flex justify-center item-center text-2xl font-bold' to='/admin/orders' ><VscListOrdered />
                             </NavLink>
 
                         </div>
@@ -51,14 +58,14 @@ function SideBar() {
 
                 }
             </div>
-            <div className={` hidden md:block w-[350px] duration-500  h-screen bg-primary text-white`}>
+            <div className={` hidden md:block w-[350px] duration-500  h-screen bg-[#030832] text-white`}>
                 <Link to={'/'} className=' w-full flex items-end gap-x-2 p-8 '>
                     <img src='/10.png' alt='' className='h-12 aspect-square bg-gray-100 p-2' />
                     <span className=' font-bold text-3xl'> ure Checker</span>
                 </Link>
 
                 {
-                    user && user.role === 'admin' ?
+                    user && user?.role === 'admin' ?
                         <div className='sidebar flex flex-col py-10 w-full '>
                             <NavLink className='  font-medium duration-500 hover:px-8 p-4 border-y-2 border-blue-400' to='/admin/dashboard' >Dashboard</NavLink>
                             <NavLink className=' font-medium duration-500 hover:px-8 p-4 border-b-2 border-blue-400' to='/admin/pricing' >Pricing</NavLink>
@@ -81,7 +88,7 @@ function SideBar() {
                     user?.subscription &&
                     <div className=' absolute w-full p-3 bottom-0 left-0'>
                         <div className=' bg-gray-200 text-black py-2 px-4 rounded-xl'>
-                            <p className=' font-semibold text-[17px]'>🟢 Subscription Running</p>
+                            <p className=' font-semibold texst-[17px]'>🟢 Subscription Running</p>
                             <p className=' pt-1 font-semibold text-[14px] pl-6'>End Date : {user?.subEndDate} ({daysDifference} days)</p>
                         </div>
                     </div>

@@ -6,12 +6,13 @@ import { PulseLoader } from "react-spinners";
 import { greenToast, userApi } from "../api/Api";
 import { useUserContext } from "../context/Context";
 import ForgetMailEnter from "./ForgetMailEnter";
+import UseHelmet from "../utils/UseHelmet";
 
 
 function Login() {
 	const [loginData, setLoginData] = useState({
-		email: "atick.business.info@gmail.com",
-		password: "user",
+		email: "",
+		password: "",
 	});
 	const { login, noVerifyMsg, handleGoogleAuthLogin, loginLoading, loginError } = useUserContext();
 	const [forgetModal, setForgetModal] = useState(false);
@@ -71,6 +72,7 @@ function Login() {
 
 	return (
 		<>
+		<UseHelmet param={'login'} title={'Login to Pure Checker | Email Validation Services'} description={'Log in to Pure Checker to access our email validation and security services. Secure and easy access to your account.'} />
 			{
 				forgetModal ?
 					<ForgetMailEnter setForgetModal={setForgetModal} />
