@@ -95,7 +95,7 @@ const Faqs = () => {
 			<UseHelmet title={'FAQs - PureChecker | Frequently Asked Questions about Gmail Validation'} param={'faqs'} description={'Find answers to common questions about PureChecker is Gmail Validation service. Learn how to use our tool to check if Gmail addresses are disposable, exist, or are valid, and get detailed information on our features and functionalities.'}/>
 			<div className='bg-primary themeClip h-[300px]'>
 				<div className='container mx-auto flex flex-col text-center items-center justify-center h-[80%]'>
-					<h1 className=' text-4xl md:text-5xl font-extrabold text-secondary'>
+					<h1 className=' text-4xl md:text-5xl font-bold text-secondary'>
 						Frequently Asked Questions (FAQ)
 					</h1>
 					<p className='text-secondary px-2 mt-5'>
@@ -110,7 +110,7 @@ const Faqs = () => {
 			<div className='container mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 px-[3vw] my-20'>
 				{faqs?.map((singleFaq, index) => (
 					<div key={index}>
-						<h1 className='text-3xl font-extrabold text-slate-700'>
+						<h1 className='text-3xl font-bold text-slate-700'>
 							{singleFaq?.title}
 						</h1>
 						<p

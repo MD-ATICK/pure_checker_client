@@ -8,17 +8,12 @@ const AboutUs = () => {
 		<section>
 			<div className='bg-primary themeClip h-[300px]'>
 				<div className='container mx-auto flex flex-col text-center items-center justify-center h-[80%]'>
-					<h1 className='text-5xl font-extrabold text-secondary'>About Us</h1>
-					{/* <p className='text-secondary mt-5'>
-                Welcome to the Pure Checker FAQ page. Here you’ll find answers to
-                some of the most common questions we receive. If you have a question
-                that’s not addressed here, feel free to contact us at
-                support@purechecker.com.
-            </p> */}
+					{/* <h1 className='text-5xl font-bold text-secondary'>About Us</h1> */}
+				
 				</div>
 			</div>
 			<div className='container px-[3vw] mx-auto my-20 mt-10 space-y-3 w-full md:w-[80%] lg:w-[60%]'>
-			<h3 className='text-2xl font-extrabold text-slate-700 text-start mb-3'>
+			<h3 className='text-2xl font-bold text-slate-700 text-start mb-3'>
 					Welcome to Pure Checker
 				</h3>
 				<p>

@@ -1,11 +1,11 @@
 import { Box, Button, Table, Tbody, Td, Th, Thead, Tr } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
-import { MdBackHand, MdBlock, MdUndo } from "react-icons/md";
-import AddUserModal from "./AddUserModal";
-import AdjustLimit from "./AdjustLimit";
+// import { MdBlock, MdUndo } from "react-icons/md";
+import ReactPaginate from 'react-paginate';
 import { greenToast, userApi } from "../../api/Api";
 import { useUserContext } from "../../context/Context";
-import ReactPaginate from 'react-paginate';
+import AddUserModal from "./AddUserModal";
+import AdjustLimit from "./AdjustLimit";
 
 
 const UserManagementTable = () => {
@@ -87,7 +87,7 @@ const UserManagementTable = () => {
 								<Td className=" flex flex-col items-center gap-2">
 									{!user.block ? (
 										<Button
-											leftIcon={<MdBlock />}
+											// leftIcon={<MdBlock />}
 											colorScheme='red'
 											size='sm'
 											onClick={() => handleBanUser(user._id)}
@@ -96,7 +96,7 @@ const UserManagementTable = () => {
 										</Button>
 									) : (
 										<Button
-											leftIcon={<MdUndo />}
+											// leftIcon={<MdUndo />}
 											colorScheme='green'
 											size='sm'
 											onClick={() => handleBanUser(user._id)}

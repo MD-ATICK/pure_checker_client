@@ -5,7 +5,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
-import { Pagination, Navigation } from "swiper/modules";
+import { Navigation } from "swiper/modules";
 
 const Testimonial = () => {
 	return (
@@ -30,7 +30,7 @@ const Testimonial = () => {
 								the pricing is incredible compared to other tools.
 							</p>
 
-							<h2 className='text-2xl font-extrabold mt-5'>MD Arif.</h2>
+							<h2 className='text-2xl font-bold mt-5'>MD Arif.</h2>
 						</div>
 					</SwiperSlide>
 					<SwiperSlide>Slide 2</SwiperSlide>

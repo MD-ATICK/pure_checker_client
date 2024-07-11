@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
-import { FaCheckCircle } from 'react-icons/fa';
-import { IoMdClose, IoMdDoneAll } from 'react-icons/io';
+// import { FaCheckCircle } from 'react-icons/fa';
+// import { IoMdClose, IoMdDoneAll } from 'react-icons/io';
 import { Link } from 'react-router-dom';
 import { checkerApi } from '../api/Api';
 import Testimonial from '../components/Testimonial';
@@ -44,17 +44,17 @@ const Home = () => {
                 <title>Gmail Checker - Validate and Check Gmail Addresses | PureChecker</title>
                 <meta name="description" content="Use PureChecker to validate Gmail addresses. Check if Gmail is disposable, exists, or is valid. Accurate and fast Gmail checker tool." />
                 <meta name="keywords" content="Gmail checker, validate Gmail, check Gmail existence, disposable Gmail checker, email validation tool" />
-                <link rel="canonical" href="https://purechecker.com/" />
+                <link rel="canonical" href="http://localhost:5173/" />
                  {/* social  */}
                 <meta property="og:title" content="Gmail Checker - Validate and Check Gmail Addresses | PureChecker" />
                 <meta property="og:description" content="Use PureChecker to validate Gmail addresses. Check if Gmail is disposable, exists, or is valid. Accurate and fast Gmail checker tool." />
-                <meta property="og:url" content="https://purechecker.com/" />
+                <meta property="og:url" content="http://localhost:5173/" />
                 <meta property="og:type" content="website" />
-                <meta property="og:image" content="https://purechecker.com/og-image.jpg" />
+                <meta property="og:image" content="http://localhost:5173/og-image.jpg" />
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:title" content="Gmail Checker - Validate and Check Gmail Addresses | PureChecker" />
                 <meta name="twitter:description" content="Use PureChecker to validate Gmail addresses. Check if Gmail is disposable, exists, or is valid. Accurate and fast Gmail checker tool." />
-                <meta name="twitter:image" content="https://purechecker.com/twitter-image.jpg" />
+                <meta name="twitter:image" content="http://localhost:5173/twitter-image.jpg" />
                 {/* social end */}
                {/* Schema */}
                 <script type="application/ld+json">
@@ -62,10 +62,10 @@ const Home = () => {
           {
             "@context": "https://schema.org",
             "@type": "WebSite",
-            "url": "https://purechecker.com/",
+            "url": "http://localhost:5173/",
             "potentialAction": {
                 "@type": "SearchAction",
-                "target": "https://purechecker.com/?s={search_term_string}",
+                "target": "http://localhost:5173/?s={search_term_string}",
                 "query-input": "required name=search_term_string"
                 }
                 }
@@ -83,10 +83,10 @@ const Home = () => {
                                 <div className='bg-gray-100 relative p-3 sm:p-5 md:p-10 flex gap-8 border border-primary rounded'>
                                     <div className='flex flex-col items-center'>
                                         <div className={` ${data?.exists ? 'scale-100' : 'scale-0'} duration-500 absolute shadow-lg top-10 h-20 flex justify-center items-center bg-green-500 rounded-full w-20 flex justify-center items-center right-12`}>
-                                            <IoMdDoneAll className=' text-white text-4xl' />
+                                            {/* <IoMdDoneAll className=' text-white text-4xl' /> */}
                                         </div>
                                         <div className={` ${data?.exists === false ? 'scale-100' : 'scale-0'} duration-500 absolute shadow-lg top-10 h-20 flex justify-center items-center bg-red-500 rounded-full w-20 flex justify-center items-center right-12`}>
-                                            <IoMdClose className=' text-white text-5xl' />
+                                            {/* <IoMdClose className=' text-white text-5xl' /> */}
                                         </div>
                                         <img src='./favicon.png' alt='' className='h-16 md:h-20' />
                                         <h1 className='text-xl md:text-2xl font-bold text-accent'>
@@ -163,9 +163,9 @@ const Home = () => {
                         </div>
 
                         <div className='flex flex-col items-center text-secondary py-10 md:pt-24 w-full md:w-4/5 mx-auto text-center'>
-                            <h1 className='text-3xl md:text-6xl font-extrabold pb-4 md:pb-8'>
+                            {/* <h1 className='text-2xl md:text-4xl font-bold pb-4 md:pb-8'>
                                 Full-Featured Email Verification But half the price.
-                            </h1>
+                            </h1> */} Full-Featured Email Verification But half the price.
                             <p>
                                 Get rid of spam traps, hard bounces, disposable or catch-all
                                 emails without breaking your budget.
@@ -220,9 +220,9 @@ const Home = () => {
 
             {/* why should use section start */}
             <div className=' bg-[#030832] text-secondary px-3 py-16 pb-40 reClip relative -top-1'>
-                <h1 className='text-center text-2xl md:text-5xl font-bold'>
+                {/* <h1 className='text-center text-2xl md:text-5xl font-bold'>
                     Why you should give a f@#k
-                </h1>
+                </h1> */} Why you should 
 
                 <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-14 md:gap-6 container mx-auto mt-20'>
                     <div className='flex flex-col items-center gap-8'>
@@ -262,9 +262,9 @@ const Home = () => {
 
             {/* verify emails section start */}
             <div className='container mx-auto py-28 px-3'>
-                <h1 className='text-2xl md:text-5xl font-extrabold text-center text-gray-700'>
+                {/* <h1 className='text-2xl md:text-5xl font-bold text-center text-gray-700'>
                     How we verify emails
-                </h1>
+                </h1> */} How we verify emails
                 <p className='text-center mt-2'>
                     At Pure Checker, we employ a comprehensive and meticulous email
                     verification process to ensure the highest accuracy and deliverability
@@ -413,9 +413,9 @@ const Home = () => {
                     <h4 className='text-2xl font-bold text-primary mb-8'>
                         Email verification API
                     </h4>
-                    <h1 className='text-4xl md:text-5xl font-extrabold text-accent my-5'>
+                    {/* <h1 className='text-4xl md:text-5xl font-bold text-accent my-5'>
                         Catch bad emails before they get to database
-                    </h1>
+                    </h1> */} Catch bad emails before they get to
                     <p className='text-lg'>
                         Verify emails before they get to your database. Implement ELV's
                         real-time API into your website registration process, newsletter
@@ -442,16 +442,20 @@ const Home = () => {
                 <h1 className='text-2xl font-bold text-center'>Go Premium!</h1>
                 <ul className='flex flex-wrap items-center justify-center gap-1 md:gap-8 my-3 md:my-5'>
                     <li className='flex items-center gap-2'>
-                        <FaCheckCircle /> Volume discount
+                        {/* <FaCheckCircle /> */}
+                         Volume discount
                     </li>
                     <li className='flex items-center gap-2'>
-                        <FaCheckCircle /> Prioritized job
+                        {/* <FaCheckCircle /> */}
+                         Prioritized job
                     </li>
                     <li className='flex items-center gap-2'>
-                        <FaCheckCircle /> Personalized Support
+                        {/* <FaCheckCircle /> */}
+                         Personalized Support
                     </li>
                     <li className='flex items-center gap-2'>
-                        <FaCheckCircle /> All Features included
+                        {/* <FaCheckCircle /> */}
+                         All Features included
                     </li>
                 </ul>
                 <p className='mx-auto w-full md:w-1/2 text-center'>
@@ -465,9 +469,9 @@ const Home = () => {
 
             {/* carousel sections start */}
             <div className='py-10 md:py-20 container mx-auto text-center'>
-                <h1 className='text-4xl md:text-5xl font-extrabold text-center text-primary'>
+                {/* <h1 className='text-4xl md:text-5xl font-bold text-center text-primary'>
                     Fast. Reliable. Affordable.
-                </h1>
+                </h1> */}
                 <p className='py-3 md:py-5'>
                     Accurate bulk email validation shouldn’t cost a fortune. Rated 4.5/5
                     on{" "}

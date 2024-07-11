@@ -1,6 +1,6 @@
 import { GoogleAuthProvider, onAuthStateChanged, signInWithPopup, signOut } from "firebase/auth";
 import { createContext, useContext, useEffect, useState } from "react";
-import { IoIosArrowUp } from "react-icons/io";
+// import { IoIosArrowUp } from "react-icons/io";
 import { greenToast, maintenanceApi, redToast, userApi } from "../api/Api";
 import { firebaseAuth } from "../firebase/Config";
 import Block from "../pages/Block";
@@ -252,7 +252,8 @@ export default function UserContextProvider({ children }) {
                 <>
 
                     <button onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className={` ${scrollButton ? ' opacity-100  -translate-y-10' : 'opacity-0 '}  bg-primary h-12 w-12 hover:scale-105 duration-500 flex justify-center items-center shadow-lg border-[2px] border-gray-200 text-white rounded-xl fixed bottom-4 right-14 z-[50]`}>
-                        <IoIosArrowUp className=" text-3xl" />
+                        {/* <IoIosArrowUp className=" text-3xl" /> */}
+                        ^
                     </button>
 
                     {children}

@@ -1,11 +1,9 @@
+import { Button, IconButton, Select, Textarea } from "@chakra-ui/react";
 import React from "react";
-import { MdDone } from "react-icons/md";
+// import { IoSave } from "react-icons/io5";
+// import { MdOutlineDocumentScanner, MdOutlineFilePresent } from "react-icons/md";
 import { Link } from "react-router-dom";
 import Testimonial from "../components/Testimonial";
-import { Button, IconButton, Select, Textarea } from "@chakra-ui/react";
-import { MdOutlineFilePresent } from "react-icons/md";
-import { IoSave } from "react-icons/io5";
-import { MdOutlineDocumentScanner } from "react-icons/md";
 import ContactUs from "./ContactUs";
 
 const Makers = () => {
@@ -17,7 +15,7 @@ const Makers = () => {
 
 			{/* bulk mail checker start */}
 			<div className='container mx-auto my-10 px-3 w-full md:w-2/3'>
-				<h1 className='text-lg ml-1 md:text-xl font-extrabold text-[#2B6CB0]'>
+				<h1 className='text-lg ml-1 md:text-xl font-bold text-[#2B6CB0]'>
 					Bulk Mail Checker
 				</h1>
 
@@ -35,7 +33,7 @@ const Makers = () => {
 							title='WE ACCEPT CSV/XLS/XLSX/TXT'
 							className='flex items-center gap-1'
 						>
-							<MdOutlineFilePresent size={20} />
+							{/* <MdOutlineFilePresent size={20} /> */}
 							<p>Upload</p>
 						</Button>
 						<div className='flex items-center gap-1 md:gap-3'>
@@ -59,7 +57,7 @@ const Makers = () => {
 								colorScheme='blue'
 								aria-label='file save'
 								size='sm'
-								icon={<IoSave />}
+								// icon={<IoSave />}
 							/>
 
 							<Button
@@ -68,7 +66,7 @@ const Makers = () => {
 								className='flex items-center gap-1 w-full'
 							>
 								Check
-								<MdOutlineDocumentScanner size={20} />
+								{/* <MdOutlineDocumentScanner size={20} /> */}
 							</Button>
 						</div>
 					</div>
@@ -84,11 +82,11 @@ const Makers = () => {
 				<br />
 
 				<h1 className='text-3xl font-bold mb-4'>
-					How to Use Ychecker's Bulk Email Checker
+					How to Use Ychecker is Bulk Email Checker
 				</h1>
 
 				<p className='text-gray-700'>
-					Never waste time with undeliverable emails again! Ychecker's bulk
+					Never waste time with undeliverable emails again! Ychecker is bulk
 					email checker helps you validate a large list of email addresses in
 					seconds.
 				</p>
@@ -116,9 +114,9 @@ const Makers = () => {
 				</h2>
 
 				<ol className='list-decimal pl-4 space-y-2 ml-10'>
-					<li className='text-gray-700'>Click on the "Attach File" button.</li>
+					<li className='text-gray-700'>Click on the *Attach File* button.</li>
 					<li className='text-gray-700'>
-						Select the text file from your device and click "Open".
+						Select the text file from your device and click *Open*.
 					</li>
 					<li className='text-gray-700'>
 						The contents of the text file will be automatically displayed in the
@@ -132,7 +130,7 @@ const Makers = () => {
 
 				<p className='text-gray-700'>
 					Once you have entered or uploaded your email list, click on the
-					"Verify" button to initiate the bulk email verification process.
+					*Verify* button to initiate the bulk email verification process.
 					Ychecker will check each email address individually and provide
 					real-time results.
 				</p>
@@ -152,7 +150,7 @@ const Makers = () => {
 						the dropdown menu.
 					</li>
 					<li className='text-gray-700'>
-						Click on the "Copy" button to easily copy the filtered email
+						Click on the *Copy* button to easily copy the filtered email
 						addresses to your clipboard.
 					</li>
 				</ul>
@@ -194,7 +192,7 @@ const Makers = () => {
 						</h2>
 						<p>
 							Spam traps and hard bounces kill your reputation. Get rid of them
-							so your emails don't end up in spam folders anymore.
+							so your emails donot end up in spam folders anymore.
 						</p>
 					</div>
 				</div>
@@ -203,7 +201,7 @@ const Makers = () => {
 
 			{/* verify emails section start */}
 			<div className='container mx-auto py-28 px-3'>
-				<h1 className='text-2xl md:text-5xl font-extrabold text-center text-gray-700'>
+				<h1 className='text-2xl md:text-5xl font-bold text-center text-gray-700'>
 					How we verify emails
 				</h1>
 
@@ -293,7 +291,7 @@ const Makers = () => {
 					<h4 className='text-2xl font-bold text-primary mb-8'>
 						Email verification API
 					</h4>
-					<h1 className='text-4xl md:text-5xl font-extrabold text-accent my-5'>
+					<h1 className='text-4xl md:text-5xl font-bold text-accent my-5'>
 						Catch bad emails before they get to database
 					</h1>
 					<p className='text-lg'>
@@ -310,7 +308,7 @@ const Makers = () => {
 
 			{/* carousel sections start */}
 			<div className='py-10 md:py-20 container mx-auto text-center'>
-				<h1 className='text-4xl md:text-5xl font-extrabold text-center text-primary'>
+				<h1 className='text-4xl md:text-5xl font-bold text-center text-primary'>
 					Fast. Reliable. Affordable.
 				</h1>
 				<p className='py-3 md:py-5'>

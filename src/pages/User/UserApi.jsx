@@ -9,9 +9,9 @@ import {
 } from '@chakra-ui/react'
 import moment from 'moment'
 import { useEffect, useState } from 'react'
-import { AiTwotoneApi } from 'react-icons/ai'
-import { IoMdAdd } from 'react-icons/io'
-import { IoInformationCircle } from "react-icons/io5"
+// import { AiTwotoneApi } from 'react-icons/ai'
+// import { IoMdAdd } from 'react-icons/io'
+// import { IoInformationCircle } from "react-icons/io5"
 import { useNavigate } from 'react-router-dom'
 import { greenToast, redToast, userApi } from '../../api/Api'
 import { useUserContext } from '../../context/Context'
@@ -61,7 +61,7 @@ const UserApi = () => {
 
             <div>
                 <div className='rounded-lg shadow-lg border-[1px] border-primary p-5 bg-[#EDF1F9] flex  flex-col gap-5 items-center justify-center min-h-[40vh]'>
-                    <AiTwotoneApi size={70} color='#2B6CB0' />
+                    {/* <AiTwotoneApi size={70} color='#2B6CB0' /> */}
 
                     <h4>Create a new API</h4>
 
@@ -73,7 +73,7 @@ const UserApi = () => {
                         alignItems={"center"}
                         onClick={onOpen}
                     >
-                        <IoMdAdd size={20} />
+                        {/* <IoMdAdd size={20} /> */} +
                         New API
                     </Button>
                 </div>
@@ -91,7 +91,7 @@ const UserApi = () => {
                             />
 
                             <p className='text-sm flex items-center gap-1'>
-                                <IoInformationCircle size={20} color='green' />
+                                {/* <IoInformationCircle size={20} color='green' /> */}!
                                 enter a meaning full name.
                             </p>
                         </ModalBody>

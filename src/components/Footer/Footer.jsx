@@ -16,7 +16,7 @@ function Footer() {
 					</p>
 				</div>
 				<div>
-					<h3 className='text-3xl font-bold pb-5'>Service</h3>
+					{/* <h3 className='text-3xl font-bold pb-5'>Service</h3> */}
 					<ul className='space-y-1 tracking-wide'>
 						<li>
 							<Link to={"/user/checker"}>Single Verification</Link>
@@ -33,7 +33,7 @@ function Footer() {
 					</ul>
 				</div>
 				<div>
-					<h3 className='text-3xl font-bold pb-5'>Recourse</h3>
+					{/* <h3 className='text-3xl font-bold pb-5'>Recourse</h3> */}
 					<ul className='space-y-1 tracking-wide'>
 						<li>
 							<Link to={"/blogs"}>Blogs</Link>
@@ -53,7 +53,7 @@ function Footer() {
 					</ul>
 				</div>
 				<div>
-					<h3 className='text-3xl font-bold pb-5'>Legal</h3>
+					{/* <h3 className='text-3xl font-bold pb-5'>Legal</h3> */}
 					<ul className='space-y-1 tracking-wide'>
 						<li>
 							<Link to={"/privacy-policy"}>Privacy Policy</Link>

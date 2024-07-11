@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { FcGoogle } from "react-icons/fc";
-import { IoMdInformationCircleOutline } from "react-icons/io";
+// import { FcGoogle } from "react-icons/fc";
+// import { IoMdInformationCircleOutline } from "react-icons/io";
 import { Link, useNavigate } from "react-router-dom";
 import { PulseLoader } from "react-spinners";
 import { greenToast, userApi } from "../api/Api";
@@ -149,11 +149,15 @@ function Login() {
 									</div>
 								</div>
 								{noVerifyMsg &&
-									<div className=" text-orange-500 gap-x-2 flex text-sm"><IoMdInformationCircleOutline className=" text-2xl" /> <p className=" flex-col items-start flex">
+									<div className=" text-orange-500 gap-x-2 flex text-sm">
+										{/* <IoMdInformationCircleOutline className=" text-2xl" /> */}
+										 <p className=" flex-col items-start flex">
 										your account not verified. please verify your account. click <span onClick={VerifyMailSent} className={` rounded-md bg-primary py-1 mt-1 font-medium px-3 text-white cursor-pointer ${(timeShow || verifyMailLoading) && ' opacity-50 pointer-events-none cursor-not-allowed'}`}> {verifyMailLoading ? 'loading...' : timeShow ? `remaining 0:${remainingSeconds}` : 'Sent Verify Mail'} </span></p>  </div>
 								}
 								{loginError &&
-									<p className=" flex items-center gap-x-2 text-sm text-orange-500"> <span><IoMdInformationCircleOutline className=" text-xl" /></span> {loginError}</p>
+									<p className=" flex items-center gap-x-2 text-sm text-orange-500"> <span>
+										{/* <IoMdInformationCircleOutline className=" text-xl" /> */}
+										</span> {loginError}</p>
 								}
 								<div>
 									<button
@@ -180,7 +184,7 @@ function Login() {
 							<button
 								onClick={handleGoogleLogin}
 								className='flex items-center gap-3 font-medium justify-center mt-5 py-2 border-[2px] rounded border-gray-300 w-full'>
-								<FcGoogle size={26} /> Google
+								{/* <FcGoogle size={26} /> Google */}
 							</button>
 
 							<p className='mt-10 text-center text-sm text-gray-500'>

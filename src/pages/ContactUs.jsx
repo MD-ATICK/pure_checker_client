@@ -1,16 +1,16 @@
 import {
-	Box,
-	Button,
-	Flex,
-	Icon,
-	Input,
-	Text,
-	Textarea,
-	VStack
+    Box,
+    Button,
+    Flex,
+    Icon,
+    Input,
+    Text,
+    Textarea,
+    VStack
 } from "@chakra-ui/react";
 import React, { useState } from "react";
-import { FaWhatsapp } from "react-icons/fa";
-import { MdEmail, MdLocationOn } from "react-icons/md";
+// import { FaWhatsapp } from "react-icons/fa";
+// import { MdEmail, MdLocationOn } from "react-icons/md";
 import { Link, useNavigate } from "react-router-dom";
 import { greenToast, redToast, userApi } from "../api/Api";
 
@@ -46,7 +46,7 @@ const ContactUs = () => {
 			<UseHelmet param={'contact-us'} title={'Contact Us - PureChecker | Get in Touch for Gmail Validation Support'} description={'Reach out to PureChecker for any questions or support regarding our Gmail Validation service. Contact us for assistance, feedback, or inquiries about our features and integrations.'} />
 			<div className='bg-primary themeClip h-[300px]'>
 				<div className='container px-3 mx-auto flex flex-col text-center items-center justify-center h-[80%]'>
-					<h1 className='text-5xl font-extrabold text-secondary'>Contact Us</h1>
+					<h1 className='text-5xl font-bold text-secondary'>Contact Us</h1>
 					<p className='text-secondary mt-5'>
 						If you have any questions about these Terms, please contact us at:
 					</p>
@@ -75,17 +75,17 @@ const ContactUs = () => {
 						<Box flex='1' mb={{ base: 5, md: 0 }}>
 							<VStack align='flex-start' rowGap={4}>
 								<Flex align='center'>
-									<Icon as={MdLocationOn} w={6} h={6} mr={2} />
+									{/* <Icon as={MdLocationOn} w={6} h={6} mr={2} /> */}
 									<Text fontSize={'15px'}>1700,Surabari,kashimpur,Gazipur,Bangladesh</Text>
 								</Flex>
 								<Flex align='center'>
-									<Icon as={FaWhatsapp} w={6} h={6} mr={2} />
+									{/* <Icon as={FaWhatsapp} w={6} h={6} mr={2} /> */}
 									<Link to='https://wa.me/+8801710115441'>
 										<Text>+8801710115441</Text>
 									</Link>
 								</Flex>
 								<Flex align='center'>
-									<Icon as={MdEmail} w={6} h={6} mr={2} />
+									{/* <Icon as={MdEmail} w={6} h={6} mr={2} /> */}
 									<Link to='mailto:support@purechecker.com'>
 										<Text>support@purechecker.com</Text>
 									</Link>

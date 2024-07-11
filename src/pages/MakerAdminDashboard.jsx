@@ -1,33 +1,17 @@
 import {
-	AbsoluteCenter,
-	Box,
-	Button,
-	Divider,
-	Input,
-	Link,
-	Tab,
-	TabList,
-	TabPanel,
-	TabPanels,
-	Table,
-	TableCaption,
-	TableContainer,
-	Tabs,
-	Tbody,
-	Td,
-	Th,
-	Thead,
-	Tr,
+    AbsoluteCenter,
+    Box,
+    Button,
+    Divider,
+    Table,
+    Tbody,
+    Td,
+    Th,
+    Thead,
+    Tr
 } from "@chakra-ui/react";
 import { React, useState } from "react";
 import PlanEditModal from "../components/admin/PlanEditModal";
-import StatsCard from "../components/admin/StatsCard";
-import UserManagementTable from "../components/admin/UserManagementTable";
-import BulkMailChecker from "../components/client/BulkMailChecker";
-import UserChart from "../components/client/UserChart";
-import { AiTwotoneApi } from "react-icons/ai";
-import { IoMdAdd } from "react-icons/io";
-import { Code } from "@chakra-ui/react";
 
 const MakerAdminDashboard = () => {
 	const daily = {
@@ -170,7 +154,7 @@ const MakerAdminDashboard = () => {
 					<p className='text-center text-orange-500 font-semibold mb-4'>
 						(Pay as you go)
 					</p>
-					<p className='text-center mb-4 font-extrabold text-primary'>
+					<p className='text-center mb-4 font-bold text-primary'>
 						Persistent Credits
 					</p>
 					<p className='text-center mb-4 font-bold'>
@@ -242,7 +226,7 @@ const MakerAdminDashboard = () => {
 						<p className='text-center text-orange-500 font-semibold mb-4'>
 							(Pay monthly)
 						</p>
-						<p className='text-center mb-4 font-extrabold text-primary'>
+						<p className='text-center mb-4 font-bold text-primary'>
 							Per Day Credits
 						</p>
 						<p className='text-center mb-4 font-bold'>

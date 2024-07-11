@@ -1,6 +1,6 @@
 import React from 'react';
-import { MdDashboardCustomize } from 'react-icons/md';
-import { IoLogOutOutline } from "react-icons/io5";
+// import { MdDashboardCustomize } from 'react-icons/md';
+// import { IoLogOutOutline } from "react-icons/io5";
 import { Link, useNavigate } from 'react-router-dom';
 import { useUserContext } from '../../context/Context';
 import NavbarDrawer from './NavbarDrawer';
@@ -21,7 +21,8 @@ function NavValidate({ open, setOpen, navLists }) {
                             <NavbarDrawer open={open} setOpen={setOpen} navLists={navLists} />
                         </li>
                         <Link to={user && user.role === 'admin' ? '/admin/dashboard' : '/user/checker'} className=' group bg-white flex items-center gap-x-2 text-sm border-[4px] border-gray-300 font-medium  duration-300  py-2 px-5 rounded-lg'>
-                            Dashboard <MdDashboardCustomize className=' font-bold text-xl group-hover:translate-x-1 duration-300' />
+                            Dashboard 
+                            {/* <MdDashboardCustomize className=' font-bold text-xl group-hover:translate-x-1 duration-300' /> */}
                         </Link>
                         <button onClick={() => {
                             if (window.confirm('are you sure?')) {
@@ -32,7 +33,7 @@ function NavValidate({ open, setOpen, navLists }) {
                             }
                         }} className=' bg-white text-red-600 h-11 gap-2 px-3 group rounded-md font-[500] flex justify-center items-center text-sm'>
                             Logout
-                            <IoLogOutOutline className=' font-bold text-xl group-hover:translate-x-1 duration-300' />
+                            {/* <IoLogOutOutline className=' font-bold text-xl group-hover:translate-x-1 duration-300' /> */}
                         </button>
 
                     </div> :

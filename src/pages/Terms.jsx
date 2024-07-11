@@ -8,7 +8,7 @@ const Terms = () => {
 			<UseHelmet param={'terms'} title={'Terms and Conditions - PureChecker | Usage Policies and Guidelines'} description={'Review the Terms and Conditions for using PureChecker is Gmail Validation service. Understand the guidelines, policies, and rules that govern the use of our website and services.'} />
 			<div className='bg-primary themeClip h-[300px]'>
 				<div className='container mx-auto flex flex-col text-center items-center justify-center h-[80%]'>
-					<h1 className='text-5xl font-extrabold text-secondary'>
+					<h1 className='text-5xl font-bold text-secondary'>
 						Terms of Use
 					</h1>
 					{/* <p className='text-secondary mt-5'>

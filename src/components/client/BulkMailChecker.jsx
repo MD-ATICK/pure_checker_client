@@ -1,8 +1,8 @@
 import { Button, Menu, MenuButton, MenuItem, MenuList, Select, Textarea } from "@chakra-ui/react";
 import * as Papa from 'papaparse'; // For CSV parsing
 import React, { useEffect, useState } from "react";
-import { IoIosArrowDown } from 'react-icons/io';
-import { MdOutlineDocumentScanner, MdOutlineFilePresent } from "react-icons/md";
+// import { IoIosArrowDown } from 'react-icons/io';
+// import { MdOutlineDocumentScanner, MdOutlineFilePresent } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import * as XLSX from 'xlsx';
 import { checkerApi, redToast } from "../../api/Api";
@@ -128,7 +128,7 @@ const BulkMailChecker = ({ title }) => {
 			{
 				user &&
 				<div className='container mx-auto my-10  w-full md:w-2/3'>
-					<h1 className='text-lg ml-1 md:text-xl font-extrabold text-[#2B6CB0]'>
+					<h1 className='text-lg ml-1 md:text-xl font-bold text-[#2B6CB0]'>
 						{title || "Bulk Mail Checker"}
 					</h1>
 
@@ -175,7 +175,7 @@ const BulkMailChecker = ({ title }) => {
 							className='flex items-center gap-1'
 							onChange={handleFileUpload}
 						> */}
-									<MdOutlineFilePresent size={20} />
+									{/* <MdOutlineFilePresent size={20} /> */}
 									<p>Upload</p>
 									{/* </Button> */}
 								</label>
@@ -192,7 +192,7 @@ const BulkMailChecker = ({ title }) => {
 											display="hidden"
 											overflow="hidden"
 											as={Button}
-											rightIcon={<IoIosArrowDown />}
+											// rightIcon={<IoIosArrowDown />}
 										>
 											Download
 										</MenuButton>
@@ -217,7 +217,7 @@ const BulkMailChecker = ({ title }) => {
 										className='flex items-center gap-1 w-full'
 									>
 										{loading ? 'loading...' : 'check'}
-										<MdOutlineDocumentScanner size={20} />
+										{/* <MdOutlineDocumentScanner size={20} /> */}
 									</Button>
 								</div>
 							</div>

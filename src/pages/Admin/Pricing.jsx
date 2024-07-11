@@ -1,12 +1,10 @@
 import {
-    AbsoluteCenter,
     Box,
     Divider
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { userApi } from "../../api/Api";
 import PlanEditModal from "../../components/admin/PlanEditModal";
-import { useUserContext } from "../../context/Context";
 
 const Pricing = () => {
 
@@ -59,7 +57,7 @@ const Pricing = () => {
                         <p className='text-center text-orange-500 font-semibold mb-3 md:mb-4'>
                             (Pay as you go)
                         </p>
-                        <p className='text-center mb-3 md:mb-4 font-extrabold text-primary'>
+                        <p className='text-center mb-3 md:mb-4 font-bold text-primary'>
                             Persistent Credits
                         </p>
                         <p className='text-center mb-3 md:mb-4 font-bold'>
@@ -138,7 +136,7 @@ const Pricing = () => {
                         <p className='text-center text-orange-500 font-semibold mb-3 md:mb-4'>
                             (Monthly)
                         </p>
-                        <p className='text-center mb-3 md:mb-4 font-extrabold text-primary'>
+                        <p className='text-center mb-3 md:mb-4 font-bold text-primary'>
                             Per Day Credits
                         </p>
                         <p className='text-center mb-3 md:mb-4 font-bold'>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { greenToast, maintenanceApi, redToast } from '../../api/Api';
-import { FaArrowDown } from "react-icons/fa6";
+// import { FaArrowDown } from "react-icons/fa6";
 import MaintenanceTable from '../../components/admin/MaintenanceTable';
 
 function Maintenance() {
@@ -103,7 +103,7 @@ function Maintenance() {
                         </div>
                     </div>
                 }
-                <h1 className='pt-10 flex items-center gap-4 text-xl font-bold text-primary'>All Maintenance <FaArrowDown /> </h1>
+                <h1 className='pt-10 flex items-center gap-4 text-xl font-bold text-primary'>All Maintenance  </h1>
                 {
                     getAllLoading === false &&
                     <MaintenanceTable maintenances={maintenances.reverse()} />

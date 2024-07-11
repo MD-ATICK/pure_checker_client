@@ -12,7 +12,7 @@ import {
     useDisclosure,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
-import { MdClose, MdDelete, MdPersonAdd } from "react-icons/md";
+// import { MdClose, MdDelete, MdPersonAdd } from "react-icons/md";
 import { greenToast, postApi, redToast, url } from "../../api/Api";
 import axios from "axios";
 import { FaFileUpload } from "react-icons/fa";
@@ -77,7 +77,7 @@ const AddBlogModal = ({ blogs, setBlogs }) => {
     return (
         <>
             <Button
-                leftIcon={<MdPersonAdd />}
+                // leftIcon={<MdPersonAdd />}
                 colorScheme='blue'
                 size='sm'
                 position={'sticky'}
@@ -121,7 +121,7 @@ const AddBlogModal = ({ blogs, setBlogs }) => {
                                 <img src={`${url}/uploads/${img}`} className="" alt="" />
                             }
 
-<label htmlFor="file" className="py-3  cursor-pointer my-2 bg-primary rounded-md w-full text-white text-center text-sm flex justify-center items-center gap-2"> {uploadLoading ? 'loading ...' : ' Choose image'} <FaFileUpload className='text-xl' /> </label>
+                            <label htmlFor="file" className="py-3  cursor-pointer my-2 bg-primary rounded-md w-full text-white text-center text-sm flex justify-center items-center gap-2"> {uploadLoading ? 'loading ...' : ' Choose image'} <FaFileUpload className='text-xl' /> </label>
 
                             <Input
                                 type="file"
@@ -141,7 +141,7 @@ const AddBlogModal = ({ blogs, setBlogs }) => {
                             {
                                 tags?.length > 0 ? tags.map((tag, index) => (
                                     <div key={index} className="bg-purple-100 flex items-center gap-1 border-2 border-purple-400 text-black p-2 rounded-full text-sm ">
-                                        {tag} <MdClose onClick={() => setTags(tags.filter(t => t !== tag))} className=" cursor-pointer font-bold text-xl hover:scale-125 duration-300" />
+                                        {tag} <button onClick={() => setTags(tags.filter(t => t !== tag))} className=" cursor-pointer font-bold  rotate-45 text-xl hover:scale-125 duration-300">+</button>
                                     </div>
                                 )) : <p className=" w-full pl-2">add tags!</p>
                             }
@@ -155,7 +155,10 @@ const AddBlogModal = ({ blogs, setBlogs }) => {
                                     }
                                 }} className="mt-2 px-2 py-1 mx-2 focus:outline-none border-2 border-blue-400 rounded-md" type="text" />
                                 {tags.length > 0 &&
-                                    <button onClick={() => setTags([])}> <MdDelete className=" text-purple-600 text-2xl" /> </button>
+                                    <button onClick={() => setTags([])}>
+                                        {/* <MdDelete className=" text-purple-600 text-2xl" />  */}
+                                        D
+                                    </button>
                                 }
                             </div>
                         </div>

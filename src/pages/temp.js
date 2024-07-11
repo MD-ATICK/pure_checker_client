@@ -197,7 +197,7 @@
 					<p className='text-center text-orange-500 font-semibold mb-4'>
 						(Pay as you go)
 					</p>
-					<p className='text-center mb-4 font-extrabold text-primary'>
+					<p className='text-center mb-4 font-bold text-primary'>
 						Persistent Credits
 					</p>
 					<p className='text-center mb-4 font-bold'>
@@ -269,7 +269,7 @@
 						<p className='text-center text-orange-500 font-semibold mb-4'>
 							(Pay monthly)
 						</p>
-						<p className='text-center mb-4 font-extrabold text-primary'>
+						<p className='text-center mb-4 font-bold text-primary'>
 							Per Day Credits
 						</p>
 						<p className='text-center mb-4 font-bold'>

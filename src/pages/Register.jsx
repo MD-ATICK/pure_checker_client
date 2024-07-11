@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { FcGoogle } from "react-icons/fc";
-import { IoMdInformationCircle } from "react-icons/io";
+// import { FcGoogle } from "react-icons/fc";
+// import { IoMdInformationCircle } from "react-icons/io";
 import { Link, useNavigate } from "react-router-dom";
 import { PulseLoader } from "react-spinners";
 import { useUserContext } from "../context/Context";
@@ -59,7 +59,7 @@ function Register() {
 
 	return (
 		<>
-		<UseHelmet param={'register'} title={'Register for Pure Checker | Email Validation Services'} description={' Sign up for Pure Checker to start using our email validation, existence check, and disposable email detection services. Create your account securely.'} />
+			<UseHelmet param={'register'} title={'Register for Pure Checker | Email Validation Services'} description={' Sign up for Pure Checker to start using our email validation, existence check, and disposable email detection services. Create your account securely.'} />
 			{
 				mailSentTab ?
 					<div className=" text-center py-10">
@@ -169,7 +169,9 @@ function Register() {
 								<div className="flex flex-col gap-y-1">
 									{
 										errors?.length > 0 && errors.map(err => {
-											return <p key={err} className='text-red-500 text-sm flex items-start gap-2 '> <IoMdInformationCircle className=" text-lg" />  {err}</p>
+											return <p key={err} className='text-red-500 text-sm flex items-start gap-2 '>
+												{/* <IoMdInformationCircle className=" text-lg" /> */}
+												{err}</p>
 										})
 									}
 								</div>
@@ -198,7 +200,8 @@ function Register() {
 							<button
 								onClick={handleGoogleLogin}
 								className='flex items-center gap-3 font-medium justify-center mt-5 py-2 border-[2px] rounded border-gray-300 w-full'>
-								<FcGoogle size={26} /> Google
+								{/* <FcGoogle size={26} /> */}
+								 Google
 							</button>
 
 							<p className='mt-10 text-center text-sm text-gray-500'>

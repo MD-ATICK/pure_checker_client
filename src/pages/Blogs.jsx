@@ -1,8 +1,8 @@
 import moment from "moment";
 import React, { useEffect, useState } from "react";
+import { Link } from 'react-router-dom';
+import { SyncLoader } from 'react-spinners';
 import { postApi, redToast, url } from "../api/Api";
-import { SyncLoader } from 'react-spinners'
-import { Link } from 'react-router-dom'
 import UseHelmet from "../utils/UseHelmet";
 
 
@@ -32,7 +32,7 @@ const Blogs = () => {
 			<UseHelmet param={'blogs'} title={'Insights and Updates on Email Validation and Security | Pure Checker' } description={'Explore the latest articles, tips, and insights on email validation, existence checks, disposable emails, and more. Stay informed with Pure Checker is blog.'} />
 			<div className='bg-primary themeClip h-[300px]'>
 				<div className='container mx-auto flex flex-col text-center items-center justify-center h-[80%]'>
-					<h1 className='text-5xl font-extrabold text-secondary'>Blogs</h1>
+					<h1 className='text-5xl font-bold text-secondary'>Blogs</h1>
 					<p className='text-secondary mt-5'>
 						Read our blog and put valuable tips into practice.{" "}
 					</p>

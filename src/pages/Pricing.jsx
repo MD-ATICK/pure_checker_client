@@ -1,5 +1,5 @@
 import React from "react";
-import { FaCheckCircle } from "react-icons/fa";
+// import { FaCheckCircle } from "react-icons/fa";
 import Plans from "../components/client/Plans";
 import UseHelmet from "../utils/UseHelmet";
 
@@ -11,16 +11,20 @@ const Pricing = () => {
 			<h1 className='text-2xl font-bold text-center'>Go Premium!</h1>
 			<ul className='flex flex-wrap items-center justify-center gap-1 md:gap-5 my-3 md:my-5'>
 				<li className='flex items-center gap-2'>
-					<FaCheckCircle /> Volume discount
+					{/* <FaCheckCircle /> */}
+					 Volume discount
 				</li>
 				<li className='flex items-center gap-2'>
-					<FaCheckCircle /> Prioritized job
+					{/* <FaCheckCircle /> */}
+					 Prioritized job
 				</li>
 				<li className='flex items-center gap-2'>
-					<FaCheckCircle /> Personalized Support
+					{/* <FaCheckCircle /> */}
+					 Personalized Support
 				</li>
 				<li className='flex items-center gap-2'>
-					<FaCheckCircle /> All Features included
+					{/* <FaCheckCircle /> */}
+					 All Features included
 				</li>
 			</ul>
 			<p className='mx-auto w-full md:w-1/2 text-center'>

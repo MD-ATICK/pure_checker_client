@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from "react";
 import {
 	Button,
 	IconButton,
@@ -10,9 +9,9 @@ import {
 	ModalHeader,
 	ModalOverlay,
 } from "@chakra-ui/react";
-import { CiEdit } from "react-icons/ci";
-import { v4 as uuidv4 } from "uuid";
-import { MdDelete } from "react-icons/md";
+import React, { useState } from "react";
+// import { CiEdit } from "react-icons/ci";
+// import { MdDelete } from "react-icons/md";
 import { greenToast, userApi } from "../../api/Api";
 import { useUserContext } from "../../context/Context";
 
@@ -101,7 +100,7 @@ const PlanEditModal = ({ planType, name, volumes, setVolumes }) => {
 				size='sm'
 				gap='5px'
 			>
-				<CiEdit size={20} />
+				{/* <CiEdit size={20} /> */}
 				{name}
 			</Button>
 
@@ -137,7 +136,8 @@ const PlanEditModal = ({ planType, name, volumes, setVolumes }) => {
 												colorScheme='red'
 												aria-label='delete volumes'
 												size={"sm"}
-												icon={<MdDelete />}
+												icon={"D"}
+											// icon={<MdDelete />}
 											/>
 										</div>
 									}

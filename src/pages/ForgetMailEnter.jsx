@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { PulseLoader } from 'react-spinners';
 import { greenToast, userApi } from '../api/Api';
 import { Link } from 'react-router-dom';
-import { IoMdInformationCircleOutline } from 'react-icons/io';
+// import { IoMdInformationCircleOutline } from 'react-icons/io';
 
 function ForgetMailEnter({ setForgetModal }) {
 
@@ -78,7 +78,9 @@ function ForgetMailEnter({ setForgetModal }) {
                                 </div>
 
                                 {error &&
-                                    <p className=" flex items-center gap-x-2 text-sm text-orange-500"> <span><IoMdInformationCircleOutline className=" text-xl" /></span> {error}</p>
+                                    <p className=" flex items-center gap-x-2 text-sm text-orange-500"> <span>
+                                        {/* <IoMdInformationCircleOutline className=" text-xl" /> */}
+                                        </span> {error}</p>
                                 }
                                 <div>
                                     <button

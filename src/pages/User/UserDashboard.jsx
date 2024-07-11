@@ -1,7 +1,7 @@
 
 import { Tab, TabList, TabPanel, TabPanels, Tabs } from '@chakra-ui/react';
 import React, { useState } from 'react';
-import { IoMdClose, IoMdDoneAll } from 'react-icons/io';
+// import { IoMdClose, IoMdDoneAll } from 'react-icons/io';
 import { checkerApi } from '../../api/Api';
 import BulkMailChecker from '../../components/client/BulkMailChecker';
 import { useUserContext } from '../../context/Context';
@@ -104,10 +104,10 @@ function UserDashboard() {
                     data &&
                     <div className=" relative w-full flex mt-4 border border-primary rounded-lg p-4">
                       <div className={` ${data?.exists === true ? 'scale-100' : 'scale-0'} duration-500 absolute shadow-lg top-8 h-20 flex justify-center items-center bg-green-500 rounded-full w-20 flex justify-center items-center right-10`}>
-                        <IoMdDoneAll className=' text-white text-4xl' />
+                        {/* <IoMdDoneAll className=' text-white text-4xl' /> */}Done
                       </div>
                       <div className={` ${data?.exists === false ? 'scale-100' : 'scale-0'} duration-500 absolute shadow-lg top-8 h-20 flex justify-center items-center bg-red-500 rounded-full w-20 flex justify-center items-center right-10`}>
-                        <IoMdClose className=' text-white text-5xl' />
+                        {/* <IoMdClose className=' text-white text-5xl' /> */} X
                       </div>
                       <div className=" left flex-[0.5] font-[500] text-gray-700 flex flex-col gap-y-2 text-md">
                         <p>Email :</p>
@@ -131,29 +131,6 @@ function UserDashboard() {
                       </div>
                     </div>
 
-                    // old system
-                    // <div>
-                    //   <h1 className='text-2xl font-bold text-primary text-center mt-5'>
-                    //     Result
-                    //   </h1>
-                    //   <ul className='flex items-center gap-3 mt-2'>
-                    //     <li>
-                    //       <strong>Email:</strong> {data.email}
-                    //     </li>
-                    //     <li>
-                    //       <strong>Exist:</strong> {data.validators.smtp.valid ? 'Exist' : 'Not Exist'}
-                    //     </li>
-                    //     <li>
-                    //       <strong>Format Check:</strong> {data.validators.regex.valid ? 'true' : 'false'}
-                    //     </li>
-                    //     <li>
-                    //       <strong>Disposable:</strong> {data.validators.disposable.valid ? 'true' : 'false'}
-                    //     </li>
-                    //     <li>
-                    //       <strong>Typo:</strong> {data.validators.typo.valid ? 'true' : 'false'}
-                    //     </li>
-                    //   </ul>
-                    // </div>
                   }
                 </div>
               </div>

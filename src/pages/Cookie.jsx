@@ -5,7 +5,7 @@ const Cookie = () => {
 		<section>
 			<div className='bg-primary themeClip h-[300px]'>
 				<div className='container mx-auto flex flex-col text-center items-center justify-center h-[80%]'>
-					<h1 className='text-5xl font-extrabold text-secondary'>
+					<h1 className='text-5xl font-bold text-secondary'>
 						Cookie Policy
 					</h1>
 					{/* <p className='text-secondary mt-5'>

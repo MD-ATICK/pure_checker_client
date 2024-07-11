@@ -10,8 +10,8 @@ import {
 } from "@chakra-ui/react";
 import moment from "moment";
 import { default as React, useEffect, useState } from 'react';
-import { FaEdit, FaFileUpload } from "react-icons/fa";
-import { MdClose, MdDelete } from "react-icons/md";
+// import { FaEdit, FaFileUpload } from "react-icons/fa";
+// import { MdClose, MdDelete } from "react-icons/md";
 import { greenToast, postApi, redToast, url } from "../../api/Api";
 import axios from "axios";
 import AddBlogModal from "../../components/admin/AddBlogModal";
@@ -156,8 +156,14 @@ function BlogsPanel() {
                                                     <p onClick={() => {
                                                         setActiveBlog(blog)
                                                         onOpen()
-                                                    }} className=" w-full h-full flex justify-center items-center"><FaEdit className=" text-2xl cursor-pointer hover:scale-125 duration-300 text-green-600" /> </p>
-                                                    <p onClick={() => handleDeletePost(_id)} className=" w-full h-full flex justify-center items-center"><MdDelete className=" text-2xl cursor-pointer hover:scale-125 duration-300 text-orange-600" /> </p>
+                                                    }} className=" w-full h-full flex justify-center items-center">
+                                                        {/* <FaEdit className=" text-2xl cursor-pointer hover:scale-125 duration-300 text-green-600" />  */}
+                                                        E
+                                                        </p>
+                                                    <p onClick={() => handleDeletePost(_id)} className=" w-full h-full flex justify-center items-center">
+                                                        {/* <MdDelete className=" text-2xl cursor-pointer hover:scale-125 duration-300 text-orange-600" />  */}
+                                                        D
+                                                        </p>
                                                 </div>
                                             </Td>
                                         </Tr>
@@ -205,7 +211,9 @@ function BlogsPanel() {
                                             img &&
                                             <img src={`${url}/uploads/${img}`} className=" w-full w-40" alt="" />
                                         }
-                                        <label htmlFor="file" className="py-3  cursor-pointer my-2 bg-primary rounded-md w-full text-white text-center text-sm flex justify-center items-center gap-2">{uploadLoading ? 'loading ...' : ' Choose image'} <FaFileUpload className='text-xl' /> </label>
+                                        <label htmlFor="file" className="py-3  cursor-pointer my-2 bg-primary rounded-md w-full text-white text-center text-sm flex justify-center items-center gap-2">{uploadLoading ? 'loading ...' : ' Choose image'} 
+                                            {/* <FaFileUpload className='text-xl' />  */} U
+                                            </label>
                                         <Input
                                             id="file"
                                             name="file"
@@ -225,7 +233,8 @@ function BlogsPanel() {
                                         {
                                             tags?.length > 0 ? tags.map((tag, index) => (
                                                 <div key={index} className="bg-purple-100 flex items-center gap-1 border-2 border-purple-400 text-black p-2 rounded-full text-sm ">
-                                                    {tag} <MdClose onClick={() => setTags(tags.filter(t => t !== tag))} className=" cursor-pointer font-bold text-xl hover:scale-125 duration-300" />
+                                                    {tag}
+                                                     <button onClick={() => setTags(tags.filter(t => t !== tag))} className=" cursor-pointer font-bold text-xl hover:scale-125 duration-300" >X</button>
                                                 </div>
                                             )) : <p className=" w-full pl-2">add tags!</p>
                                         }
@@ -240,7 +249,10 @@ function BlogsPanel() {
                                                 }
                                             }} className="mt-2 px-2 py-1 mx-2 focus:outline-none border-2 border-blue-400 rounded-md" type="text" />
                                             {tags.length > 0 &&
-                                                <button onClick={() => setTags([])}> <MdDelete className=" text-purple-600 text-2xl" /> </button>
+                                                <button onClick={() => setTags([])}> 
+                                                {/* <MdDelete className=" text-purple-600 text-2xl" />  */}
+                                                D
+                                                </button>
                                             }
                                         </div>
                                     </div>

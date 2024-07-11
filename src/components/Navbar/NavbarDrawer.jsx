@@ -1,21 +1,20 @@
-import React from "react";
 import {
 	Drawer,
 	DrawerBody,
-	DrawerFooter,
-	DrawerHeader,
-	DrawerOverlay,
-	DrawerContent,
 	DrawerCloseButton,
-	Button,
+	DrawerContent,
+	DrawerHeader,
+	DrawerOverlay
 } from "@chakra-ui/react";
-import { FiMenu } from "react-icons/fi";
+import React from "react";
+// import { FiMenu } from "react-icons/fi";
 import { Link } from "react-router-dom";
 
 const NavbarDrawer = ({ open, setOpen, navLists }) => {
 	return (
 		<>
-			<FiMenu size={30} color='white' onClick={() => setOpen(!open)} />
+			{/* <FiMenu size={30} color='white' onClick={() => setOpen(!open)} /> */}
+			<button onClick={() => setOpen(!open)} >M</button>
 			<Drawer isOpen={open} placement='right' onClose={() => setOpen(false)}>
 				<DrawerOverlay />
 				<DrawerContent>

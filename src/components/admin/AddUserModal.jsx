@@ -11,8 +11,8 @@ import {
 	useDisclosure,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
-import { IoInformationCircle } from "react-icons/io5";
-import { MdPersonAdd } from "react-icons/md";
+// import { IoInformationCircle } from "react-icons/io5";
+// import { MdPersonAdd } from "react-icons/md";
 import { greenToast, userApi } from "../../api/Api";
 import { useUserContext } from "../../context/Context";
 
@@ -47,7 +47,7 @@ const AddUserModal = () => {
 	return (
 		<>
 			<Button
-				leftIcon={<MdPersonAdd />}
+				// leftIcon={<MdPersonAdd />}
 				colorScheme='blue'
 				size='sm'
 				position={'sticky'}
@@ -80,7 +80,7 @@ const AddUserModal = () => {
 							onChange={e => setPassword(e.target.value)}
 						/>
 						<p className='text-sm flex items-center gap-1'>
-							<IoInformationCircle size={20} color='green' />
+							{/* <IoInformationCircle size={20} color='green' /> */}
 							We Will Sent Verify Link On User Email
 						</p>
 					</ModalBody>
