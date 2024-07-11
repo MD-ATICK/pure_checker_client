@@ -15,7 +15,7 @@ import React, { useState } from "react";
 // import { MdClose, MdDelete, MdPersonAdd } from "react-icons/md";
 import { greenToast, postApi, redToast, url } from "../../api/Api";
 import axios from "axios";
-import { FaFileUpload } from "react-icons/fa";
+// import { FaFileUpload } from "react-icons/fa";
 
 const AddBlogModal = ({ blogs, setBlogs }) => {
 
@@ -121,7 +121,9 @@ const AddBlogModal = ({ blogs, setBlogs }) => {
                                 <img src={`${url}/uploads/${img}`} className="" alt="" />
                             }
 
-                            <label htmlFor="file" className="py-3  cursor-pointer my-2 bg-primary rounded-md w-full text-white text-center text-sm flex justify-center items-center gap-2"> {uploadLoading ? 'loading ...' : ' Choose image'} <FaFileUpload className='text-xl' /> </label>
+                            <label htmlFor="file" className="py-3  cursor-pointer my-2 bg-primary rounded-md w-full text-white text-center text-sm flex justify-center items-center gap-2"> {uploadLoading ? 'loading ...' : ' Choose image'} 
+                                {/* <FaFileUpload className='text-xl' /> */}U
+                                 </label>
 
                             <Input
                                 type="file"

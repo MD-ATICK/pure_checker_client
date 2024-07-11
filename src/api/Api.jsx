@@ -1,7 +1,7 @@
 import axios from "axios"
 import { toast } from "react-toastify"
 
-const server = 'prod'
+const server = 'local'
 export const url = server === 'prod' ? 'https://pure-checker-server.vercel.app' : 'http://localhost:9999'
 export const checkerApi = axios.create({ baseURL: `${url}/api/v1/gmail` })
 export const userApi = axios.create({ baseURL: `${url}/api/v2/user` })

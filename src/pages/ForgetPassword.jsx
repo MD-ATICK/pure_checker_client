@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { IoMdInformationCircleOutline } from "react-icons/io"
+// import { IoMdInformationCircleOutline } from "react-icons/io"
 import { Link, useParams } from "react-router-dom"
 import { PulseLoader } from "react-spinners"
 import { userApi } from "../api/Api"
@@ -102,7 +102,9 @@ function ForgetPassword() {
                                 </div>
 
                                 {error &&
-                                    <p className=" flex items-center gap-x-2 text-sm text-orange-500"> <span><IoMdInformationCircleOutline className=" text-xl" /></span> {error}</p>
+                                    <p className=" flex items-center gap-x-2 text-sm text-orange-500"> <span>
+                                        {/* <IoMdInformationCircleOutline className=" text-xl" /> */}
+                                        </span> {error}</p>
                                 }
                                 <div>
                                     <button

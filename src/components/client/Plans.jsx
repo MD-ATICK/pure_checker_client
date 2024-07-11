@@ -1,8 +1,8 @@
 import { AbsoluteCenter, Box, Button, Divider, Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react";
 import moment from 'moment';
 import { useEffect, useState } from "react";
-import { IoMdArrowDown } from 'react-icons/io';
-import { SiBinance } from 'react-icons/si';
+// import { IoMdArrowDown } from 'react-icons/io';
+// import { SiBinance } from 'react-icons/si';
 import { useNavigate } from "react-router-dom";
 import { greenToast, redToast, userApi } from "../../api/Api";
 import { useUserContext } from "../../context/Context";
@@ -165,14 +165,14 @@ const Plans = () => {
 									color={"white"}
 									as={Button}
 									_hover={'blue'}
-									rightIcon={<IoMdArrowDown />}
+									// rightIcon={<IoMdArrowDown />}
 									isDisabled={activePayVolume ? false : true}
 								>
 									Buy Now
 								</MenuButton>
 								<MenuList>
 									<MenuItem onClick={HandleBinancePay} alignItems={"center"} gap={"5px"}>
-										<SiBinance color={"orange"} size={18} />
+										{/* <SiBinance color={"orange"} size={18} /> */}
 										Binance Pay
 									</MenuItem>
 									<MenuItem onClick={() => buyPlan('payAsGo')} alignItems={"center"} gap={"5px"}>
@@ -285,14 +285,14 @@ const Plans = () => {
 									color={"white"}
 									as={Button}
 									_hover={'blue'}
-									rightIcon={<IoMdArrowDown />}
+									// rightIcon={<IoMdArrowDown />}
 									isDisabled={activePayVolume ? false : true}
 								>
 									Buy Now
 								</MenuButton>
 								<MenuList>
 									<MenuItem onClick={HandleBinancePay} alignItems={"center"} gap={"5px"}>
-										<SiBinance color={"orange"} size={18} />
+										{/* <SiBinance color={"orange"} size={18} /> */}
 										Binance Pay
 									</MenuItem>
 									<MenuItem onClick={() => buyPlan('subscription')} alignItems={"center"} gap={"5px"}>
