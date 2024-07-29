@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
-import { userApi } from '../../api/Api'
+import { apisApi, paymentApi, userApi } from '../../api/Api'
 import StatsCard from '../../components/admin/StatsCard'
-import UserManagementTable from '../../components/admin/UserManagementTable'
 import { useUserContext } from '../../context/Context'
 
 const Dashboard = () => {
@@ -60,7 +59,7 @@ const Dashboard = () => {
 
     const getAllPayments = async () => {
         try {
-            const { data, status } = await userApi.get('/all-payments')
+            const { data, status } = await paymentApi.get('/all-payments')
             if (status === 200) {
                 setPayments(data?.payments)
             }
@@ -70,7 +69,7 @@ const Dashboard = () => {
     }
     const totalMailCheck = async () => {
         try {
-            const { data, status } = await userApi.get('/total-mail-check')
+            const { data, status } = await apisApi.get('/total-mail-check')
             if (status === 200) {
                 setTotalMailCheckState(data.totalMailCheck)
             }

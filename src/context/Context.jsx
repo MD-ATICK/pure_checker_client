@@ -1,7 +1,7 @@
 import { GoogleAuthProvider, onAuthStateChanged, signInWithPopup, signOut } from "firebase/auth";
 import { createContext, useContext, useEffect, useState } from "react";
 // import { IoIosArrowUp } from "react-icons/io";
-import { greenToast, maintenanceApi, redToast, userApi } from "../api/Api";
+import { adminApi, greenToast, maintenanceApi, redToast, userApi } from "../api/Api";
 import { firebaseAuth } from "../firebase/Config";
 import Block from "../pages/Block";
 
@@ -102,7 +102,7 @@ export default function UserContextProvider({ children }) {
 
     const [totalUsersCount, setTotalUsersCount] = useState(0);
     const getUsers = async ({ search, page }) => {
-        const { status, data } = await userApi.get(`/getUsers?search=${search}&page=${page}&limit={10}`, { withCredentials: true, headers: { Authorization: `Bearer ${token}` } })
+        const { status, data } = await adminApi.get(`/getUsers?search=${search}&page=${page}&limit={10}`, { withCredentials: true, headers: { Authorization: `Bearer ${token}` } })
         if (status === 200) {
             setUsers(data.users)
             setTotalUsersCount(data.count)
@@ -130,7 +130,7 @@ export default function UserContextProvider({ children }) {
 
 
     const deleteUsers = async () => {
-        const { status, data } = await userApi.delete('/delete', { withCredentials: true })
+        const { status, data } = await adminApi.delete('/delete', { withCredentials: true })
         if (status === 200) {
             return;
         } else {

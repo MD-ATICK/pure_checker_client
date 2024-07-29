@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { greenToast, userApi } from "../api/Api";
+import { planApi } from "../api/Api";
 import { useUserContext } from "../context/Context";
 import Pricing from "./Pricing";
 
@@ -17,7 +17,7 @@ function Plan() {
   //     if (!user) return navigate("/login");
   //     if (!token) return greenToast("token not found.");
   //     setLoading(true);
-  //     const { status, data } = await userApi.get("/subscription", {
+  // const { status, data } = await planApi.get("/subscription", {
   //       withCredentials: true,
   //       headers: { Authorization: `Bearer ${token}` },
   //     });
@@ -58,9 +58,8 @@ function Plan() {
   }, []);
 
   return (
-    <div className="p-10">
+    <div className="p-16">
       <Pricing />
-      <br /> <br />
     </div>
   );
 }

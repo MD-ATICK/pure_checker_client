@@ -2,7 +2,7 @@ import { useState } from "react"
 // import { IoMdInformationCircleOutline } from "react-icons/io"
 import { Link, useParams } from "react-router-dom"
 import { PulseLoader } from "react-spinners"
-import { userApi } from "../api/Api"
+import { mailSentApi, userApi } from "../api/Api"
 import UseHelmet from "../utils/UseHelmet"
 
 function ForgetPassword() {
@@ -21,7 +21,7 @@ function ForgetPassword() {
         setError('')
         if (password !== confirmPassword) return setError('password not match')
         setLoading(true)
-        const { status, data } = await userApi.post(`/forget-password/${token}`, { email, password })
+        const { status, data } = await mailSentApi.post(`/forget-password/${token}`, { email, password })
         if (status === 201) {
             setLoading(false)
             setSuccessModel(true)
@@ -34,7 +34,7 @@ function ForgetPassword() {
 
     return (
         <>
-        <UseHelmet param={'forget-password'} title={'Forgot Password | Pure Checker'} description={'Recover your Pure Checker account password securely. Follow the steps to reset your password and regain access to your account.'} />
+            <UseHelmet param={'forget-password'} title={'Forgot Password | Pure Checker'} description={'Recover your Pure Checker account password securely. Follow the steps to reset your password and regain access to your account.'} />
             {
                 successModel ?
                     <div className=" h-screen w-full flex justify-center items-center flex-col text-center">
@@ -104,7 +104,7 @@ function ForgetPassword() {
                                 {error &&
                                     <p className=" flex items-center gap-x-2 text-sm text-orange-500"> <span>
                                         {/* <IoMdInformationCircleOutline className=" text-xl" /> */}
-                                        </span> {error}</p>
+                                    </span> {error}</p>
                                 }
                                 <div>
                                     <button

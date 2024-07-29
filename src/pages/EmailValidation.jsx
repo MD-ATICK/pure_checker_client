@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { SyncLoader } from 'react-spinners';
-import { userApi } from '../api/Api';
+import { mailSentApi, userApi } from '../api/Api';
 import { useUserContext } from '../context/Context';
 import UseHelmet from '../utils/UseHelmet';
 
@@ -16,7 +16,7 @@ function EmailValidation() {
     // const token = searchParams
     const validationCall = async () => {
         setStatus('loading')
-        const { data, status } = await userApi.get(`/emailAuthCheck/${token}`, { withCredentials: true })
+        const { data, status } = await mailSentApi.get(`/emailAuthCheck/${token}`, { withCredentials: true })
         if (status === 200) {
             setStatus('success')
             setUser(data.user)

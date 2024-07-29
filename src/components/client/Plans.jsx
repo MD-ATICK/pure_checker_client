@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 // import { IoMdArrowDown } from 'react-icons/io';
 // import { SiBinance } from 'react-icons/si';
 import { useNavigate } from "react-router-dom";
-import { greenToast, redToast, userApi } from "../../api/Api";
+import { greenToast, planApi, redToast, userApi, volumeApi } from "../../api/Api";
 import { useUserContext } from "../../context/Context";
 
 const Plans = () => {
@@ -20,7 +20,7 @@ const Plans = () => {
 
 	const getAllVolumes = async () => {
 		try {
-			const { status, data } = await userApi.get('/get-volume', { withCredentials: true });
+			const { status, data } = await volumeApi.get('/get-volume', { withCredentials: true });
 			if (status === 201) {
 				setVolumes(data.volumes);
 				const payVol = data?.volumes.filter(vol => vol?.planType === 'payAsGo')
@@ -48,7 +48,7 @@ const Plans = () => {
 		try {
 			if (!token) return alert('token not found')
 			planType === 'subscription' ? (activeSubsVolume === '' && alert('select one subscription')) : (activePayVolume === '' && alert('select one subscription'))
-			const { status, data } = await userApi.post('/buy-plan', planType === 'subscription' ? { planType, ...activeSubsVolume } : { planType, ...activePayVolume }, { headers: { Authorization: `Bearer ${token}` } })
+			const { status, data } = await planApi.post('/buy-plan', planType === 'subscription' ? { planType, ...activeSubsVolume } : { planType, ...activePayVolume }, { headers: { Authorization: `Bearer ${token}` } })
 			if (status === 201) {
 				greenToast(data?.msg)
 				navigate('/user/settings', { state: { status: 'payment' } })

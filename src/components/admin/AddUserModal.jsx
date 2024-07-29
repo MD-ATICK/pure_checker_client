@@ -13,7 +13,7 @@ import {
 import React, { useState } from "react";
 // import { IoInformationCircle } from "react-icons/io5";
 // import { MdPersonAdd } from "react-icons/md";
-import { greenToast, userApi } from "../../api/Api";
+import { adminApi, greenToast } from "../../api/Api";
 import { useUserContext } from "../../context/Context";
 
 const AddUserModal = () => {
@@ -27,7 +27,7 @@ const AddUserModal = () => {
 	const handleAddUser = async () => {
 		try {
 			setAddUserLoading(true)
-			const { data, status } = await userApi.post('/add-user', { name: userName, email, password }, { withCredentials: true, headers: { Authorization: `Bearer ${token}` } })
+			const { data, status } = await adminApi.post('/add-user', { name: userName, email, password }, { withCredentials: true, headers: { Authorization: `Bearer ${token}` } })
 			if (status === 201) {
 				greenToast(data.msg)
 				setUsers([...users, data.user]);

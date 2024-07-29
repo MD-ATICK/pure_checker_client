@@ -12,7 +12,7 @@ import {
 import React, { useState } from "react";
 // import { CiEdit } from "react-icons/ci";
 // import { MdDelete } from "react-icons/md";
-import { greenToast, userApi } from "../../api/Api";
+import { greenToast, userApi, volumeApi } from "../../api/Api";
 import { useUserContext } from "../../context/Context";
 
 
@@ -41,7 +41,7 @@ const PlanEditModal = ({ planType, name, volumes, setVolumes }) => {
 			return;
 		}
 		if (!token) return alert('token not found')
-		const { status, data } = await userApi.post('/create-volume', { planType, totalCredits: newVolumeValue, perDay: newVolumePerDayCredit, price: newVolumePrice }, { withCredentials: true, headers: { Authorization: `Bearer ${token}` } });
+		const { status, data } = await volumeApi.post('/create-volume', { planType, totalCredits: newVolumeValue, perDay: newVolumePerDayCredit, price: newVolumePrice }, { withCredentials: true, headers: { Authorization: `Bearer ${token}` } });
 		if (status === 201) {
 			greenToast(data.msg)
 			setVolumes([...volumes, data?.volume]);
@@ -55,7 +55,7 @@ const PlanEditModal = ({ planType, name, volumes, setVolumes }) => {
 	const handleDeleteVolume = async (_id) => {
 		// e.preventDefault();
 		if (!token) return alert('token not found')
-		const { status, data } = await userApi.delete(`/delete-volume/${_id}`, { withCredentials: true, headers: { Authorization: `Bearer ${token}` } });
+		const { status, data } = await volumeApi.delete(`/delete-volume/${_id}`, { withCredentials: true, headers: { Authorization: `Bearer ${token}` } });
 		if (status === 200) {
 			greenToast(data.msg)
 			setVolumes(
@@ -70,7 +70,7 @@ const PlanEditModal = ({ planType, name, volumes, setVolumes }) => {
 	const handleUpdateVolume = async () => {
 		if (!token) return alert('token not found')
 		if (!updateVolume) return alert('pls select one field;')
-		const { status, data } = await userApi.put('/update-volume', { volumeId: updateVolume._id, planType, totalCredits: updateVolume.totalCredits, price: updateVolume.price }, { withCredentials: true, headers: { Authorization: `Bearer ${token}` } });
+		const { status, data } = await volumeApi.put('/update-volume', { volumeId: updateVolume._id, planType, totalCredits: updateVolume.totalCredits, price: updateVolume.price }, { withCredentials: true, headers: { Authorization: `Bearer ${token}` } });
 		if (status === 201) {
 			greenToast(data.msg)
 			const updatedVolumes = volumes.map(vol =>

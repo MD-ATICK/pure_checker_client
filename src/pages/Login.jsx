@@ -3,7 +3,7 @@ import React, { useState } from "react";
 // import { IoMdInformationCircleOutline } from "react-icons/io";
 import { Link, useNavigate } from "react-router-dom";
 import { PulseLoader } from "react-spinners";
-import { greenToast, userApi } from "../api/Api";
+import { greenToast, mailSentApi, userApi } from "../api/Api";
 import { useUserContext } from "../context/Context";
 import ForgetMailEnter from "./ForgetMailEnter";
 import UseHelmet from "../utils/UseHelmet";
@@ -37,7 +37,7 @@ function Login() {
 	// --- verify mail sent
 	const VerifyMailSent = async () => {
 		setVerifyMailLoading(true)
-		const { status, data } = await userApi.post('/verify-mail-sent', { email: loginData?.email })
+		const { status, data } = await mailSentApi.post('/verify-mail-sent', { email: loginData?.email })
 		if (status === 201) {
 			setTimeShow(true)
 			countdown()

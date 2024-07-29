@@ -18,7 +18,7 @@ const UserSecurity = () => {
         if (password !== confirmPassword) return redToast('password not match')
         if (!token) return redToast('token not found')
         setLoading(true)
-        const { status, data } = await userApi.put('/update-pass', {password}, { headers: { Authorization: `Bearer ${token}` } })
+        const { status, data } = await userApi.put('/update-password', {password}, { headers: { Authorization: `Bearer ${token}` } })
         if (status === 202) {
             greenToast(data.msg)
             setPassword('')

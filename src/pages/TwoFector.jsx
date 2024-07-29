@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { PuffLoader } from 'react-spinners';
-import { greenToast, redToast, userApi } from '../api/Api';
+import { greenToast, otpApi, redToast } from '../api/Api';
 import { useUserContext } from '../context/Context';
 import UseHelmet from '../utils/UseHelmet';
 
@@ -30,7 +30,7 @@ const TwoFector = () => {
         if (!email) return alert('provide email pls.')
         if (!tokenTwoFA) return alert('send otp again.')
         if (code.length !== 6) return alert('provide token pls.')
-        const { data, status } = await userApi.post(`/verifyOTP`, { email, otp: code.join(''), tokenTwoFA, twoFectorAuthSave: saveTFA })
+        const { data, status } = await otpApi.post(`/verifyOTP`, { email, otp: code.join(''), tokenTwoFA, twoFectorAuthSave: saveTFA })
         if (status === 201) {
             greenToast('login successful')
             localStorage.removeItem('tokenTwoFA')
@@ -46,7 +46,7 @@ const TwoFector = () => {
         if (!email) return alert('provide email pls.')
         setAllowResend(false)
         setOptLoading(true)
-        const { data, status } = await userApi.get(`/otpSent/${email}`,)
+        const { data, status } = await otpApi.get(`/otpSent/${email}`,)
         if (status === 200) {
 
             countdown()

@@ -2,7 +2,7 @@ import { Box, Button, Table, Tbody, Td, Th, Thead, Tr } from "@chakra-ui/react";
 import { default as React, useEffect, useState } from 'react';
 // import { MdBackHand } from "react-icons/md";
 import ReactPaginate from 'react-paginate';
-import { userApi } from '../../api/Api';
+import { paymentApi } from '../../api/Api';
 
 function Orders() {
 
@@ -10,7 +10,7 @@ function Orders() {
     const [count, setCount] = useState(0);
 
     const orderFetch = async ({ page }) => {
-        const { data, status } = await userApi.get(`/all-payments?page=${page}`, { withCredentials: true })
+        const { data, status } = await paymentApi.get(`/all-payments?page=${page}`, { withCredentials: true })
         if (status === 200) {
             setOrders(data?.payments)
             setCount(data?.count)

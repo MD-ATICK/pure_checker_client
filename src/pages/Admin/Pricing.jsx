@@ -3,7 +3,7 @@ import {
     Divider
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
-import { userApi } from "../../api/Api";
+import { volumeApi } from "../../api/Api";
 import PlanEditModal from "../../components/admin/PlanEditModal";
 
 const Pricing = () => {
@@ -16,7 +16,7 @@ const Pricing = () => {
 
     const getAllVolumes = async () => {
         try {
-            const { status, data } = await userApi.get('/get-volume', { withCredentials: true });
+            const { status, data } = await volumeApi.get('/get-volume', { withCredentials: true });
             if (status === 201) {
                 setVolumes(data.volumes);
             } else {

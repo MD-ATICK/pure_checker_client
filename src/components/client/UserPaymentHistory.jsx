@@ -1,8 +1,8 @@
-import { Box, Button, Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react'
-import { useEffect, useState } from 'react'
-import { userApi } from '../../api/Api'
-import { useUserContext } from '../../context/Context'
+import { Box, Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react'
 import moment from 'moment'
+import { useEffect, useState } from 'react'
+import { paymentApi } from '../../api/Api'
+import { useUserContext } from '../../context/Context'
 
 const UserPaymentHistory = () => {
 
@@ -12,7 +12,7 @@ const UserPaymentHistory = () => {
 
     const userPayments = async () => {
         setLoading(true)
-        const { data, status } = await userApi.get('/payments', { withCredentials: true, headers: { Authorization: `Bearer ${token}` } })
+        const { data, status } = await paymentApi.get('/payments', { withCredentials: true, headers: { Authorization: `Bearer ${token}` } })
         if (status === 200) {
             setPayments(data.payments)
         } else {
@@ -56,7 +56,7 @@ const UserPaymentHistory = () => {
                             {payments?.length > 0 && payments.map((item, i) => {
                                 const { price, planType, credit, _id, dayLimit, createdAt, status } = item
                                 return <Tr key={_id}>
-                                    <Td className=" font-medium text-gray-400 font-bold text-xl ">{i + 1}</Td>
+                                    <Td className=" font-medium text-gray-400 text-xl ">{i + 1}</Td>
                                     <Td title={_id} className=" text-sm whitespace-nowrap font-[500]">
                                         <p className=' bg-gray-200 rounded-lg py-1 px-2'>{_id}</p>
                                     </Td>

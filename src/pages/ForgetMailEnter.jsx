@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
-import { PulseLoader } from 'react-spinners';
-import { greenToast, userApi } from '../api/Api';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { PulseLoader } from 'react-spinners';
+import { greenToast, mailSentApi } from '../api/Api';
 // import { IoMdInformationCircleOutline } from 'react-icons/io';
 
 function ForgetMailEnter({ setForgetModal }) {
@@ -14,7 +14,7 @@ function ForgetMailEnter({ setForgetModal }) {
     const ForgetHandler = async (e) => {
         e.preventDefault()
         setLoading(true)
-        const { status, data } = await userApi.post('/mail-sent', { email: mail })
+        const { status, data } = await mailSentApi.post('/mail-sent', { email: mail })
         if (status === 201) {
             setLoading(false)
             setMailSent(true)

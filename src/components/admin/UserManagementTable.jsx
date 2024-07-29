@@ -2,7 +2,7 @@ import { Box, Button, Table, Tbody, Td, Th, Thead, Tr } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 // import { MdBlock, MdUndo } from "react-icons/md";
 import ReactPaginate from 'react-paginate';
-import { greenToast, userApi } from "../../api/Api";
+import { adminApi, greenToast } from "../../api/Api";
 import { useUserContext } from "../../context/Context";
 import AddUserModal from "./AddUserModal";
 import AdjustLimit from "./AdjustLimit";
@@ -16,7 +16,7 @@ const UserManagementTable = () => {
 
 	const handleBanUser = async (_id) => {
 		try {
-			const { data, status } = await userApi.get(`/block/${_id}`, { withCredentials: true, headers: { Authorization: `Bearer ${token}` } })
+			const { data, status } = await adminApi.get(`/block/${_id}`, { withCredentials: true, headers: { Authorization: `Bearer ${token}` } })
 			if (status === 200) {
 				greenToast(data.msg)
 				setUsers(pv => {

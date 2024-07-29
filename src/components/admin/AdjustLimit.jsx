@@ -10,7 +10,7 @@ import {
 	ModalOverlay,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
-import { greenToast, redToast, userApi } from "../../api/Api";
+import { adminApi, greenToast, redToast } from "../../api/Api";
 import { useUserContext } from "../../context/Context";
 
 const AdjustLimit = ({ openAdjust, setOpenAdjust }) => {
@@ -21,7 +21,7 @@ const AdjustLimit = ({ openAdjust, setOpenAdjust }) => {
 	const HandleUserLimit = async () => {
 		if (!openAdjust || !newLimit) return;
 		setLoading(true)
-		const { data, status } = await userApi.post(`/adjust/${openAdjust?._id}`, { limit: newLimit }, { withCredentials: true })
+		const { data, status } = await adminApi.post(`/adjust/${openAdjust?._id}`, { limit: newLimit }, { withCredentials: true })
 		if (status === 201) {
 			setLoading(false)
 			greenToast(data?.msg)

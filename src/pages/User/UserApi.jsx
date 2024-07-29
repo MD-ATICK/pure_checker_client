@@ -13,7 +13,7 @@ import { useEffect, useState } from 'react'
 // import { IoMdAdd } from 'react-icons/io'
 // import { IoInformationCircle } from "react-icons/io5"
 import { useNavigate } from 'react-router-dom'
-import { greenToast, redToast, userApi } from '../../api/Api'
+import { apisApi, greenToast, redToast } from '../../api/Api'
 import { useUserContext } from '../../context/Context'
 
 const UserApi = () => {
@@ -30,7 +30,7 @@ const UserApi = () => {
     const CreteApiHandler = async () => {
         if (!token) return redToast('token not found')
         setLoading(true)
-        const { data, status } = await userApi.post('/create-api', { apiName }, { headers: { Authorization: `Bearer ${token}` } })
+        const { data, status } = await apisApi.post('/create-api', { apiName }, { headers: { Authorization: `Bearer ${token}` } })
         if (status === 201) {
             setLoading(false)
             setAllApi([...allApi, data.newApi])
@@ -44,7 +44,7 @@ const UserApi = () => {
 
     const getAllApi = async () => {
         if (!token) return redToast('token not found')
-        const { data, status } = await userApi.get('/get-api', { headers: { Authorization: `Bearer ${token}` } })
+        const { data, status } = await apisApi.get('/get-api', { headers: { Authorization: `Bearer ${token}` } })
         if (status === 200) {
             setAllApi(data.allApi)
         }

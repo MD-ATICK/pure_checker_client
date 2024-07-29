@@ -1,18 +1,17 @@
 import {
-    Box,
-    Button,
-    Flex,
-    Icon,
-    Input,
-    Text,
-    Textarea,
-    VStack
+	Box,
+	Button,
+	Flex,
+	Input,
+	Text,
+	Textarea,
+	VStack
 } from "@chakra-ui/react";
 import React, { useState } from "react";
 // import { FaWhatsapp } from "react-icons/fa";
 // import { MdEmail, MdLocationOn } from "react-icons/md";
 import { Link, useNavigate } from "react-router-dom";
-import { greenToast, redToast, userApi } from "../api/Api";
+import { greenToast, mailSentApi, redToast } from "../api/Api";
 
 import { SyncLoader } from 'react-spinners';
 import UseHelmet from "../utils/UseHelmet";
@@ -28,7 +27,7 @@ const ContactUs = () => {
 	const SendOpinion = async (e) => {
 		e.preventDefault()
 		setLoading(true)
-		const { data, status } = await userApi.post('/contactUs', { name, email, body }, { withCredentials: true })
+		const { data, status } = await mailSentApi.post('/contact-mail', { name, email, body }, { withCredentials: true })
 		if (status === 201) {
 			setLoading(false)
 			greenToast(data.msg)
