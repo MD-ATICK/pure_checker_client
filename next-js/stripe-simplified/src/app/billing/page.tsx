@@ -55,9 +55,6 @@ export default function BillingPage() {
         return date.toLocaleDateString('en-US', options)
     }
 
-    if(!userData || subscription === undefined){
-        return <Loading />
-    }
 
     return (
         <div className=" container mx-auto py-12 px-4 max-w-4xl">

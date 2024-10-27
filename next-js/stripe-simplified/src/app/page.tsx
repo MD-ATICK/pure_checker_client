@@ -17,8 +17,8 @@ export default async function Home() {
 
         {/* HEADING */}
         <div className=" text-center mb-16">
-          <h1 className=" text-4xl font-bold mb-4">Forge Your Path in Modern Developmentj</h1>
-          <p className='text-muted-foreground font-medium max-w-2xl mx-auto'>Master fullstack skills through engaging, project-bases learning. Unlock your potential with Masterclass</p>
+          <h1 className=" text-2xl md:text-4xl font-bold mb-4">Forge Your Path in Modern Development</h1>
+          <p className=' text-gray-500 text-sm md:text-lg font-medium max-w-2xl mx-auto'>Master fullstack skills through engaging, project-bases learning. Unlock your potential with Masterclass</p>
         </div>
 
         {/* COURSES */}
